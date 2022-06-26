@@ -71,7 +71,7 @@ class PaymentController extends Controller
         $cust = User::find($request->get('user_id'));
         $data['user_role'] = $cust->role;
         $data['nama'] = $cust->nama;
-        $data['jenis_pemasukan'] = 2;
+        $data['jenis_pemasukan'] = 1;
 
         $receiptno = 01;
         $lastreceipt = Payment::latest('id')->first();

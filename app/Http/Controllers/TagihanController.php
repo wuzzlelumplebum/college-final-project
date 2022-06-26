@@ -163,7 +163,7 @@ class TagihanController extends Controller
             //
         ]);
 
-        $data = $request->except(['_token', '_method','masa_berlaku']);
+        $data = $request->except(['_token', '_method','masa_berlaku','txtnominal']);
         $tagihan = Tagihan::find($id);
         if($request->get('langganan')==''){
             $data['langganan'] = 0;
@@ -190,8 +190,10 @@ class TagihanController extends Controller
         $tagihan->update($data);
 
         $proyek = Proyek::find($tagihan->id_proyek);
-        $proyek->masa_berlaku = $tagihan->masa_berlaku;
-        $proyek->save();
+        // $proyek->masa_berlaku = $tagihan->masa_berlaku;
+        $proyek->update([
+            'masa_berlaku' => $tagihan->masa_berlaku,
+        ]);
 
         return redirect('/tagihans')->with('success', 'Tagihan updated!');
     }

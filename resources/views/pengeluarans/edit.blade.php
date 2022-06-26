@@ -75,7 +75,9 @@
 						<div class="form-group row">
 							<label class="col-form-label col-lg-2">Nominal</label>
 							<div class="col-lg-10">
-								<input type="number" min="0" name="nominal" class="form-control border-teal border-1" value="{{ $epengeluaran->nominal }}" placeholder="Nominal" required>
+								<input id="tertulis" type="text" onkeyup="ribuan()" value="{{ number_format($epengeluaran->nominal) }}" class="form-control" placeholder="Nominal" required>
+								<input id="nominal" type="hidden" name="nominal" value="{{ $epengeluaran->nominal }}">
+								{{-- <input type="number" min="0" name="nominal" class="form-control border-teal border-1" value="{{ $epengeluaran->nominal }}" onkeyup="ribuan()" placeholder="Nominal" required> --}}
 							</div>
 						</div>
 						<div class="form-group row">

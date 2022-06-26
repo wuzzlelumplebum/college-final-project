@@ -94,14 +94,14 @@
 						<label class="col-form-label col-lg-2">Nominal</label>
 						<div class="col-lg-10">
 							<input id="datanominal" type="hidden" name="nominal" value="{{$tagihan->nominal}}" class="form-control border-teal border-1">
-							<input id="nilainominal" type="text" name="txtnominal" class="form-control border-teal border-1" placeholder="Nominal" onfocus="ribuan()" onkeyup="ribuan()" value="{{$tagihan->nominal}}">
+							<input id="nilainominal" type="text" class="form-control border-teal border-1" placeholder="Nominal" onkeyup="ribuan()" value="{{number_format($tagihan->nominal)}}">
 						</div>
 					</div>
 					<div class="form-group row">
 						<label class="col-form-label col-lg-2">Uang Muka</label>
 						<div class="col-lg-10">
 							<input id="datauang_muka" type="hidden" name="uang_muka" value="{{$tagihan->uang_muka}}" class="form-control border-teal border-1">
-							<input id="nilaiuang_muka" type="text" class="form-control border-teal border-1" placeholder="Uang Muka" onfocus="ribuan()" onkeyup="ribuan()" value="{{$tagihan->uang_muka}}">
+							<input id="nilaiuang_muka" type="text" class="form-control border-teal border-1" placeholder="Uang Muka" onkeyup="ribuan()" value="{{number_format($tagihan->uang_muka)}}">
 						</div>
 					</div>
                     <div class="form-group row">
@@ -194,44 +194,44 @@
 				// alert(len);
 				if(len > 0){
 					// Read data and create <option >
-						for(var i=0; i<len; i++){
+					for(var i=0; i<len; i++){
 
-							var id = res['data'][i].id;
-							var website = res['data'][i].website;
+						var id = res['data'][i].id;
+						var website = res['data'][i].website;
 
-							var option = "<option value='"+id+"'>"+website+"</option>";
+						var option = "<option value='"+id+"'>"+website+"</option>";
 
-							$("#select_proyek").append(option);
-						}
+						$("#select_proyek").append(option);
 					}
-					console.log('Success2');
-				},
-				error:function(data){
-					console.log('Error2',data);
 				}
-			});
-
+				console.log('Success2');
+			},
+			error:function(data){
+				console.log('Error2',data);
+			}
 		});
 
-		$('#select_proyek').on('change',function() {
-			var proyek = $('#select_proyek option:selected').text();
-			$('#nama_proyek').val(proyek);
-            var id_proyek = $('#select_proyek option:selected').val();
-			$('#id_proyek').val(id_proyek);
-            $.ajax({
-                type: 'get',
-                url : '{{url("getmasa_berlaku")}}/'+id_proyek,
-                success : function(data){
-                    // $('#kadaluarsa').val(data);
-                    $('#masa_berlaku').val(data);
-                    $('#masa_berlaku').text(data);
-                    console.log('Success');
-                },
-                error:function(data){
-                    console.log('Error',data);
-                }
-            });
+	});
+
+	$('#select_proyek').on('change',function() {
+		var proyek = $('#select_proyek option:selected').text();
+		$('#nama_proyek').val(proyek);
+		var id_proyek = $('#select_proyek option:selected').val();
+		$('#id_proyek').val(id_proyek);
+		$.ajax({
+			type: 'get',
+			url : '{{url("getmasa_berlaku")}}/'+id_proyek,
+			success : function(data){
+				// $('#kadaluarsa').val(data);
+				$('#masa_berlaku').val(data);
+				$('#masa_berlaku').text(data);
+				console.log('Success');
+			},
+			error:function(data){
+				console.log('Error',data);
+			}
 		});
+	});
 
 	var FormValidation = function() {
 
