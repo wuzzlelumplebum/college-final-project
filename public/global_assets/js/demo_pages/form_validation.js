@@ -118,7 +118,7 @@ var FormValidation = function() {
         var validator = $('.form-validate-jquery').validate({
             ignore: 'input[type=hidden], .select2-search__field', // ignore hidden fields
             errorClass: 'validation-invalid-label',
-            //successClass: 'validation-valid-label',
+            successClass: 'validation-valid-label',
             validClass: 'validation-valid-label',
             highlight: function(element, errorClass) {
                 $(element).removeClass(errorClass);
@@ -126,9 +126,9 @@ var FormValidation = function() {
             unhighlight: function(element, errorClass) {
                 $(element).removeClass(errorClass);
             },
-            // success: function(label) {
-            //    label.addClass('validation-valid-label').text('Success.'); // remove to hide Success message
-            //},
+            success: function(label) {
+                label.addClass('validation-valid-label').text('Success.'); // remove to hide Success message
+            },
 
             // Different components require proper error label placement
             errorPlacement: function(error, element) {

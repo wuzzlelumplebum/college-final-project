@@ -41,8 +41,38 @@ class AdminController extends Controller
         $pengeluaranlast =  Pengeluaran::whereMonth('created_at','=',Carbon::now()->subMonth()->month)->get();
         $pendapatanthis = Payment::whereMonth('created_at','=',Carbon::now()->today()->month)->get();
         $pendapatanlast =  Payment::whereMonth('created_at','=',Carbon::now()->subMonth()->month)->get();
+        $pendapatanyear = Payment::whereYear('created_at','=',Carbon::now()->year)->get();
+        $pengeluaranyear = Pengeluaran::whereYear('created_at','=',Carbon::now()->year)->get();
+
+        //yearly graph
+        $chart = array();
+        $chart2 = array();
+
+        $chart[0] = array_fill(1, 12, 0);
+        $chart2[0] = array_fill(1, 12, 0);
+
+        $qry = Payment::selectRaw('month(tanggal) as bulan, user_role, sum(nominal) as total ')
+        ->whereYear('created_at',Carbon::now()->year)->groupBy('bulan', 'user_role')->get()->toArray();
+
+        $qry2 = Pengeluaran::selectRaw('month(tanggal) as bulan, jenis_pengeluaran, sum(nominal) as total ')
+        ->whereYear('tanggal',Carbon::now()->year)->groupBy('bulan', 'jenis_pengeluaran')->get()->toArray();
+
+        foreach ($qry as $val) {
+            // $chart[$val['user_role']][$val['bulan']] = $val['total'];
+            $chart[0][$val['bulan']] += $val['total'];
+
+        }
+
+        foreach ($qry2 as $val2) {
+            // $chart[$val['user_role']][$val['bulan']] = $val['total'];
+            $chart2[0][$val2['bulan']] += $val2['total'];
+
+        }
+        // dd($val2);
+
         return view("index", compact('new','ongoing','done','todaynew','todayongoing','todaydone','member','proyek','simple','prioritas','premium',
-        'pengeluarans','pendapatans','memberlast','memberthis','proyekthis','proyeklast','pengeluaranthis','pengeluaranlast','pendapatanthis','pendapatanlast'));
+        'pengeluarans','pendapatans','memberlast','memberthis','proyekthis','proyeklast','pengeluaranthis','pengeluaranlast','pendapatanthis','pendapatanlast',
+        'pendapatanyear','pengeluaranyear','chart','chart2'));
     }
 
     public function karyawan()

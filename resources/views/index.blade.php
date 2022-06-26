@@ -21,6 +21,31 @@
 		<h4><span class="font-weight-semibold">Info penting</span></h4>
 	</div>
 	<div class="row">
+		<h5><span class="font-weight">Grafik Pemasukan & Pengeluaran</span></h5>
+	</div>
+	<div class="card">
+		<div class="card-header header-elements-inline">
+			<h5 class="card-title">Grafik Pemasukan</h5>
+		</div>
+
+		<div class="card-body">
+			<div class="chart-container">
+				<div class="chart has-fixed-height" id="area_pemasukan"></div>
+			</div>
+		</div>
+	</div>
+	<div class="card">
+		<div class="card-header header-elements-inline">
+			<h5 class="card-title">Grafik Pengeluaran</h5>
+		</div>
+
+		<div class="card-body">
+			<div class="chart-container">
+				<div class="chart has-fixed-height" id="area_pengeluaran"></div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
 		<h5><span class="font-weight">Info Klien</span></h5>
 	</div>
 	<div class="row">
@@ -540,8 +565,350 @@
 <script src="{{asset('global_assets/js/plugins/forms/selects/bootstrap_multiselect.js') }}"></script>
 <script src="{{asset('global_assets/js/plugins/ui/moment/moment.min.js') }}"></script>
 <script src="{{asset('global_assets/js/plugins/pickers/daterangepicker.js') }}"></script>
+<script src="{{ asset('global_assets\js\plugins\visualization\echarts\echarts.min.js') }}"></script>
 
 <script src="{{asset('assets/js/app.js') }}"></script>
 <script src="{{asset('global_assets/js/demo_pages/dashboard.js') }}"></script>
+<script src="{{asset('global_assets/js/demo_charts/echarts/light/lines/area_basic.js') }}"></script>
 <!-- /theme JS files -->
+
+<script>
+	//pemasukan
+	var EchartsAreaBasicLight = function() {
+
+		var _areaBasicLightExample = function() {
+			if (typeof echarts == 'undefined') {
+				console.warn('Warning - echarts.min.js is not loaded.');
+				return;
+			}
+
+			// Define element
+			var area_basic_element = document.getElementById('area_pemasukan');
+
+			//
+			// Charts configuration
+			//
+
+			if (area_basic_element) {
+
+				// Initialize chart
+				var area_basic = echarts.init(area_basic_element);
+
+				// Options
+				area_basic.setOption({
+
+					// Define colors
+					color: ['#2ec7c9','#b6a2de','#5ab1ef','#ffb980','#d87a80'],
+
+					// Global text styles
+					textStyle: {
+						fontFamily: 'Roboto, Arial, Verdana, sans-serif',
+						fontSize: 13
+					},
+
+					// Chart animation duration
+					animationDuration: 750,
+
+					// Setup grid
+					grid: {
+						left: 0,
+						right: 40,
+						top: 35,
+						bottom: 0,
+						containLabel: true
+					},
+
+					// Add legend
+					legend: {
+						data: ['Total Pemasukan'],
+						itemHeight: 8,
+						itemGap: 20
+					},
+
+					// Add tooltip
+					tooltip: {
+						trigger: 'axis',
+						backgroundColor: 'rgba(0,0,0,0.75)',
+						padding: [10, 15],
+						textStyle: {
+							fontSize: 13,
+							fontFamily: 'Roboto, sans-serif'
+						}
+					},
+
+					// Horizontal axis
+					xAxis: [{
+						type: 'category',
+						boundaryGap: false,
+						data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+						axisLabel: {
+							color: '#333'
+						},
+						axisLine: {
+							lineStyle: {
+								color: '#999'
+							}
+						},
+						splitLine: {
+							show: true,
+							lineStyle: {
+								color: '#eee',
+								type: 'dashed'
+							}
+						}
+					}],
+
+					// Vertical axis
+					yAxis: [{
+						type: 'value',
+						axisLabel: {
+							color: '#333'
+						},
+						axisLine: {
+							lineStyle: {
+								color: '#999'
+							}
+						},
+						splitLine: {
+							lineStyle: {
+								color: '#eee'
+							}
+						},
+						splitArea: {
+							show: true,
+							areaStyle: {
+								color: ['rgba(250,250,250,0.1)', 'rgba(0,0,0,0.01)']
+							}
+						}
+					}],
+
+					// Add series
+					series: [
+						@foreach($chart as $name => $data)
+						{
+							name: 'Total Pemasukan',
+							type: 'line',
+							data: [
+								@foreach($data as $val)
+								{{ $val }},
+								@endforeach
+							],
+							areaStyle: {
+								normal: {
+									opacity: 0.25
+								}
+							},
+							smooth: true,
+							symbolSize: 7,
+							itemStyle: {
+								normal: {
+									borderWidth: 2
+								}
+							}
+						},
+						@endforeach
+					]
+				});
+			}
+
+			// Resize function
+			var triggerChartResize = function() {
+				area_basic_element && area_basic.resize();
+			};
+
+			// On sidebar width change
+			var sidebarToggle = document.querySelector('.sidebar-control');
+			sidebarToggle && sidebarToggle.addEventListener('click', triggerChartResize);
+
+			// On window resize
+			var resizeCharts;
+			window.addEventListener('resize', function() {
+				clearTimeout(resizeCharts);
+				resizeCharts = setTimeout(function () {
+					triggerChartResize();
+				}, 200);
+			});
+		};
+
+		return {
+			init: function() {
+				_areaBasicLightExample();
+			}
+		}
+	}();
+
+	document.addEventListener('DOMContentLoaded', function() {
+		EchartsAreaBasicLight.init();
+	});
+</script>
+
+<script>
+	//pengeluaran
+	var EchartsAreaBasicLight2 = function() {
+
+		var _areaBasicLightExample2 = function() {
+			if (typeof echarts == 'undefined') {
+				console.warn('Warning - echarts.min.js is not loaded.');
+				return;
+			}
+
+			// Define element
+			var area_basic_element2 = document.getElementById('area_pengeluaran');
+
+			//
+			// Charts configuration
+			//
+
+			if (area_basic_element2) {
+
+				// Initialize chart
+				var area_basic2 = echarts.init(area_basic_element2);
+
+				// Options
+				area_basic2.setOption({
+
+					// Define colors
+					color: ['#2ec7c9','#b6a2de','#5ab1ef','#ffb980','#d87a80'],
+
+					// Global text styles
+					textStyle: {
+						fontFamily: 'Roboto, Arial, Verdana, sans-serif',
+						fontSize: 13
+					},
+
+					// Chart animation duration
+					animationDuration: 750,
+
+					// Setup grid
+					grid: {
+						left: 0,
+						right: 40,
+						top: 35,
+						bottom: 0,
+						containLabel: true
+					},
+
+					// Add legend
+					legend: {
+						data: ['Total Pengeluaran'],
+						itemHeight: 8,
+						itemGap: 20
+					},
+
+					// Add tooltip
+					tooltip: {
+						trigger: 'axis',
+						backgroundColor: 'rgba(0,0,0,0.75)',
+						padding: [10, 15],
+						textStyle: {
+							fontSize: 13,
+							fontFamily: 'Roboto, sans-serif'
+						}
+					},
+
+					// Horizontal axis
+					xAxis: [{
+						type: 'category',
+						boundaryGap: false,
+						data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+						axisLabel: {
+							color: '#333'
+						},
+						axisLine: {
+							lineStyle: {
+								color: '#999'
+							}
+						},
+						splitLine: {
+							show: true,
+							lineStyle: {
+								color: '#eee',
+								type: 'dashed'
+							}
+						}
+					}],
+
+					// Vertical axis
+					yAxis: [{
+						type: 'value',
+						axisLabel: {
+							color: '#333'
+						},
+						axisLine: {
+							lineStyle: {
+								color: '#999'
+							}
+						},
+						splitLine: {
+							lineStyle: {
+								color: '#eee'
+							}
+						},
+						splitArea: {
+							show: true,
+							areaStyle: {
+								color: ['rgba(250,250,250,0.1)', 'rgba(0,0,0,0.01)']
+							}
+						}
+					}],
+
+					// Add series
+					series: [
+						@foreach($chart2 as $name => $data)
+						{
+							name: 'Total Pengeluaran',
+							type: 'line',
+							data: [
+								@foreach($data as $val)
+								{{ $val }},
+								@endforeach
+							],
+							areaStyle: {
+								normal: {
+									opacity: 0.25
+								}
+							},
+							smooth: true,
+							symbolSize: 7,
+							itemStyle: {
+								normal: {
+									borderWidth: 2
+								}
+							},
+						},
+						@endforeach
+					]
+				});
+			}
+
+			// Resize function
+			var triggerChartResize = function() {
+				area_basic_element2 && area_basic2.resize();
+			};
+
+			// On sidebar width change
+			var sidebarToggle = document.querySelector('.sidebar-control');
+			sidebarToggle && sidebarToggle.addEventListener('click', triggerChartResize);
+
+			// On window resize
+			var resizeCharts;
+			window.addEventListener('resize', function() {
+				clearTimeout(resizeCharts);
+				resizeCharts = setTimeout(function () {
+					triggerChartResize();
+				}, 200);
+			});
+		};
+
+		return {
+			init: function() {
+				_areaBasicLightExample2();
+			}
+		}
+	}();
+
+	document.addEventListener('DOMContentLoaded', function() {
+		EchartsAreaBasicLight2.init();
+	});
+</script>
 @endsection
