@@ -50,7 +50,7 @@
 	</div>
 	<div class="row">
 		<div class="col-lg-4">
-			<div class="card bg-blue-600">
+			<div class="card bg-blue-600" style="border-radius: 10px;">
 				<blockquote class="blockquote d-flex py-2 mb-0">
 					<div class="mr-4" style="padding-left: 1.875rem;">
 						<i class="icon-users icon-4x"></i>
@@ -60,7 +60,7 @@
 						<div class="d-flex">
 							<h3 class="font-weight-semibold mb-0">{{ $member }}</h3>
 						</div>
-						<div>
+						<div style="font-size: 22px;">
 							Jumlah Klien
 						</div>
 					</div>
@@ -68,7 +68,7 @@
 			</div>
 		</div>
 		<div class="col-lg-4">
-			<div class="card bg-blue-600">
+			<div class="card bg-blue-600" style="border-radius: 10px;">
 				<blockquote class="blockquote d-flex py-2 mb-0">
 					<div class="mr-4" style="padding-left: 1.875rem;">
 						<i class="icon-user icon-4x"></i>
@@ -78,7 +78,7 @@
 						<div class="d-flex">
 							<h3 class="font-weight-semibold mb-0">{{ $memberthis }}</h3>
 						</div>
-						<div>
+						<div style="font-size: 22px;">
 							Jumlah Klien Bulan Ini
 						</div>
 					</div>
@@ -86,7 +86,7 @@
 			</div>
 		</div>
 		<div class="col-lg-4">
-			<div class="card bg-blue-600">
+			<div class="card bg-blue-600" style="border-radius: 10px;">
 				<blockquote class="blockquote d-flex py-2 mb-0">
 					<div class="mr-4" style="padding-left: 1.875rem;">
 						<i class="icon-user icon-4x"></i>
@@ -96,7 +96,7 @@
 						<div class="d-flex">
 							<h3 class="font-weight-semibold mb-0">{{ $memberlast }}</h3>
 						</div>
-						<div>
+						<div style="font-size: 22px;">
 							Jumlah Klien Bulan Lalu
 						</div>
 					</div>
@@ -109,7 +109,7 @@
 	</div>
 	<div class="row">
 		<div class="col-lg-4">
-			<div class="card bg-green-600">
+			<div class="card bg-green-600" style="border-radius: 10px;">
 				<blockquote class="blockquote d-flex py-2 mb-0">
 					<div class="mr-4" style="padding-left: 1.875rem;">
 						<i class="icon-display icon-4x"></i>
@@ -118,7 +118,7 @@
 						<div class="d-flex">
 							<h3 class="font-weight-semibold mb-0">{{ count($proyek) }}</h3>
 						</div>
-						<div>
+						<div style="font-size: 22px;">
 							Total Website (All Layanan)
 						</div>
 					</div>
@@ -126,7 +126,7 @@
 			</div>
 		</div>
 		<div class="col-lg-4">
-			<div class="card bg-green-600">
+			<div class="card bg-green-600" style="border-radius: 10px;">
 				<blockquote class="blockquote d-flex py-2 mb-0">
 					<div class="mr-4" style="padding-left: 1.875rem;">
 						<i class="icon-display icon-4x"></i>
@@ -135,7 +135,7 @@
 						<div class="d-flex">
 							<h3 class="font-weight-semibold mb-0">{{ $proyekthis }}</h3>
 						</div>
-						<div>
+						<div style="font-size: 22px;">
 							Total Website Bulan Ini
 						</div>
 					</div>
@@ -143,7 +143,7 @@
 			</div>
 		</div>
 		<div class="col-lg-4">
-			<div class="card bg-green-600">
+			<div class="card bg-green-600" style="border-radius: 10px;">
 				<blockquote class="blockquote d-flex py-2 mb-0">
 					<div class="mr-4" style="padding-left: 1.875rem;">
 						<i class="icon-display icon-4x"></i>
@@ -152,7 +152,7 @@
 						<div class="d-flex">
 							<h3 class="font-weight-semibold mb-0">{{ $proyeklast }}</h3>
 						</div>
-						<div>
+						<div style="font-size: 22px;">
 							Total Website Bulan Lalu
 						</div>
 					</div>
@@ -165,7 +165,7 @@
 	</div>
 	<div class="row">
 		<div class="col-lg-4">
-			<div class="card bg-orange-600">
+			<div class="card bg-orange-600" style="border-radius: 10px;">
 				<blockquote class="blockquote d-flex py-2 mb-0">
 					<div class="mr-4" style="padding-left: 1.875rem;">
 						<i class="icon-sphere icon-4x"></i>
@@ -174,7 +174,7 @@
 						<div class="d-flex">
 							<h3 class="font-weight-semibold mb-0">{{ $simple }}</h3>
 						</div>
-						<div>
+						<div style="font-size: 22px;">
 							Total Website Simple
 						</div>
 					</div>
@@ -182,7 +182,7 @@
 			</div>
 		</div>
 		<div class="col-lg-4">
-			<div class="card bg-orange-600">
+			<div class="card bg-orange-600" style="border-radius: 10px;">
 				<blockquote class="blockquote d-flex py-2 mb-0">
 					<div class="mr-4" style="padding-left: 1.875rem;">
 						<i class="icon-sphere icon-4x"></i>
@@ -191,7 +191,7 @@
 						<div class="d-flex">
 							<h3 class="font-weight-semibold mb-0">{{ $prioritas }}</h3>
 						</div>
-						<div>
+						<div style="font-size: 22px;">
 							Total Website Prioritas
 						</div>
 					</div>
@@ -199,7 +199,7 @@
 			</div>
 		</div>
 		<div class="col-lg-4">
-			<div class="card bg-orange-600">
+			<div class="card bg-orange-600" style="border-radius: 10px;">
 				<blockquote class="blockquote d-flex py-2 mb-0">
 					<div class="mr-4" style="padding-left: 1.875rem;">
 						<i class="icon-sphere icon-4x"></i>
@@ -208,7 +208,7 @@
 						<div class="d-flex">
 							<h3 class="font-weight-semibold mb-0">{{ $premium }}</h3>
 						</div>
-						<div>
+						<div style="font-size: 22px;">
 							Total Website Premium
 						</div>
 					</div>
@@ -222,7 +222,7 @@
 		</div>
 		<div class="row">
 			<div class="col-lg-4">
-				<div class="card bg-slate-600">
+				<div class="card bg-slate-600" style="border-radius: 10px;">
 					<blockquote class="blockquote d-flex py-2 mb-0">
 						<div class="mr-4" style="padding-left: 1.875rem;">
 							<i class="icon-download icon-4x"></i>
@@ -235,7 +235,7 @@
 							@endforeach
 								<h3 class="font-weight-semibold mb-0">Rp {{number_format((@$gross),0,',','.')}}, -</h3>
 							</div>
-							<div>
+							<div style="font-size: 22px;">
 								Total Pendapatan
 							</div>
 						</div>
@@ -243,7 +243,7 @@
 				</div>
 			</div>
 			<div class="col-lg-4">
-				<div class="card bg-slate-600">
+				<div class="card bg-slate-600" style="border-radius: 10px;">
 					<blockquote class="blockquote d-flex py-2 mb-0">
 						<div class="mr-4" style="padding-left: 1.875rem;">
 							<i class="icon-download icon-4x"></i>
@@ -256,7 +256,7 @@
 									@endforeach
 								<h3 class="font-weight-semibold mb-0">Rp {{number_format((@$grossthis),0,',','.')}}, -</h3>
 							</div>
-							<div>
+							<div style="font-size: 22px;">
 								Total pendapatan bulan ini
 							</div>
 						</div>
@@ -264,7 +264,7 @@
 				</div>
 			</div>
 			<div class="col-lg-4">
-				<div class="card bg-slate-600">
+				<div class="card bg-slate-600" style="border-radius: 10px;">
 					<blockquote class="blockquote d-flex py-2 mb-0">
 						<div class="mr-4" style="padding-left: 1.875rem;">
 							<i class="icon-download icon-4x"></i>
@@ -277,7 +277,7 @@
 									@endforeach
 								<h3 class="font-weight-semibold mb-0">Rp {{number_format((@$grosslast),0,',','.')}}, -</h3>
 							</div>
-							<div>
+							<div style="font-size: 22px;">
 								Total pendapatan bulan lalu
 							</div>
 						</div>
@@ -290,7 +290,7 @@
 		</div>
 		<div class="row">
 			<div class="col-lg-4">
-				<div class="card bg-grey-600">
+				<div class="card bg-grey-600" style="border-radius: 10px;">
 					<blockquote class="blockquote d-flex py-2 mb-0">
 						<div class="mr-4" style="padding-left: 1.875rem;">
 							<i class="icon-upload icon-4x"></i>
@@ -305,7 +305,7 @@
 									Rp {{number_format((@$total),0,',','.')}}, -
 								</h3>
 							</div>
-							<div>
+							<div style="font-size: 22px;">
 								Total pengeluaran
 							</div>
 						</div>
@@ -313,7 +313,7 @@
 				</div>
 			</div>
 			<div class="col-lg-4">
-				<div class="card bg-grey-600">
+				<div class="card bg-grey-600" style="border-radius: 10px;">
 					<blockquote class="blockquote d-flex py-2 mb-0">
 						<div class="mr-4" style="padding-left: 1.875rem;">
 							<i class="icon-upload icon-4x"></i>
@@ -326,7 +326,7 @@
 								@endforeach
 								<h3 class="font-weight-semibold mb-0">Rp {{number_format((@$expendthis),0,',','.')}}, -</h3>
 							</div>
-							<div>
+							<div style="font-size: 22px;">
 								Total pengeluaran bulan ini
 							</div>
 						</div>
@@ -334,7 +334,7 @@
 				</div>
 			</div>
 			<div class="col-lg-4">
-				<div class="card bg-grey-600">
+				<div class="card bg-grey-600" style="border-radius: 10px;">
 					<blockquote class="blockquote d-flex py-2 mb-0">
 						<div class="mr-4" style="padding-left: 1.875rem;">
 							<i class="icon-upload icon-4x"></i>
@@ -347,7 +347,7 @@
 								@endforeach
 								<h3 class="font-weight-semibold mb-0">Rp {{number_format((@$expendlast),0,',','.')}}, -</h3>
 							</div>
-							<div>
+							<div style="font-size: 22px;">
 								Total pengeluaran bulan lalu
 							</div>
 						</div>
@@ -360,7 +360,7 @@
 		</div>
 		<div class="row">
 			<div class="col-lg-4">
-				<div class="card bg-brown-600">
+				<div class="card bg-brown-600" style="border-radius: 10px;">
 					<blockquote class="blockquote d-flex py-2 mb-0">
 						<div class="mr-4" style="padding-left: 1.875rem;">
 							<i class="icon-coin-dollar icon-4x"></i>
@@ -369,7 +369,7 @@
 							<div class="d-flex">
 								<h3 class="font-weight-semibold mb-0">Rp {{number_format((@$gross - @$total),0,',','.')}}, -</h3>
 							</div>
-							<div>
+							<div style="font-size: 22px;">
 								Total nett/profit
 							</div>
 						</div>
@@ -377,7 +377,7 @@
 				</div>
 			</div>
 			<div class="col-lg-4">
-				<div class="card bg-brown-600">
+				<div class="card bg-brown-600" style="border-radius: 10px;">
 					<blockquote class="blockquote d-flex py-2 mb-0">
 						<div class="mr-4" style="padding-left: 1.875rem;">
 							<i class="icon-coin-dollar icon-4x"></i>
@@ -386,7 +386,7 @@
 							<div class="d-flex">
 								<h3 class="font-weight-semibold mb-0">Rp {{number_format((@$grossthis - @$expendthis),0,',','.')}}, -</h3>
 							</div>
-							<div>
+							<div style="font-size: 22px;">
 								Total nett/profit bulan ini
 							</div>
 						</div>
@@ -394,7 +394,7 @@
 				</div>
 			</div>
 			<div class="col-lg-4">
-				<div class="card bg-brown-600">
+				<div class="card bg-brown-600" style="border-radius: 10px;">
 					<blockquote class="blockquote d-flex py-2 mb-0">
 						<div class="mr-4" style="padding-left: 1.875rem;">
 							<i class="icon-coin-dollar icon-4x"></i>
@@ -403,7 +403,7 @@
 							<div class="d-flex">
 								<h3 class="font-weight-semibold mb-0">Rp {{number_format((@$grosslast - @$expendlast),0,',','.')}}, - </h3>
 							</div>
-							<div>
+							<div style="font-size: 22px;">
 								Total nett/profit bulan lalu
 							</div>
 						</div>
@@ -423,7 +423,7 @@
 	</div>
 	<div class="row">
 		<div class="col-lg-4">
-			<div class="card bg-green-400">
+			<div class="card bg-green-400" style="border-radius: 10px;">
 				<blockquote class="blockquote d-flex py-2 mb-0">
 					<div class="mr-4" style="padding-left: 1.875rem;">
 						<i class="icon-stack-plus icon-4x"></i>
@@ -433,7 +433,7 @@
 						<div class="d-flex">
 							<h3 class="font-weight-semibold mb-0">{{ $new }}</h3>
 						</div>
-						<div>
+						<div style="font-size: 22px;">
 							Task Baru
 						</div>
 					</div>
@@ -441,7 +441,7 @@
 			</div>
 		</div>
 		<div class="col-lg-4">
-			<div class="card bg-orange-400">
+			<div class="card bg-orange-400" style="border-radius: 10px;">
 				<blockquote class="blockquote d-flex py-2 mb-0">
 					<div class="mr-4" style="padding-left: 1.875rem;">
 						<i class="icon-forward icon-4x"></i>
@@ -451,7 +451,7 @@
 						<div class="d-flex">
 							<h3 class="font-weight-semibold mb-0">{{ $ongoing }}</h3>
 						</div>
-						<div>
+						<div style="font-size: 22px;">
 							Task Sedang Dikerjakan
 						</div>
 					</div>
@@ -459,7 +459,7 @@
 			</div>
 		</div>
 		<div class="col-lg-4">
-			<div class="card bg-success-400">
+			<div class="card bg-success-400" style="border-radius: 10px;">
 				<blockquote class="blockquote d-flex py-2 mb-0">
 					<div class="mr-4" style="padding-left: 1.875rem;">
 						<i class="icon-clipboard2 icon-4x"></i>
@@ -469,7 +469,7 @@
 						<div class="d-flex">
 							<h3 class="font-weight-semibold mb-0">{{ $done }}</h3>
 						</div>
-						<div>
+						<div style="font-size: 22px;">
 							Task Selesai
 						</div>
 					</div>
@@ -491,7 +491,7 @@
 	</div>
 	<div class="row">
 		<div class="col-lg-4">
-			<div class="card bg-green-400">
+			<div class="card bg-green-400" style="border-radius: 10px;">
 				<blockquote class="blockquote d-flex py-2 mb-0">
 					<div class="mr-4" style="padding-left: 1.875rem;">
 						<i class="icon-stack-plus icon-4x"></i>
@@ -501,7 +501,7 @@
 						<div class="d-flex">
 							<h3 class="font-weight-semibold mb-0">{{ $todaynew }}</h3>
 						</div>
-						<div>
+						<div style="font-size: 22px;">
 							Task Baru
 						</div>
 					</div>
@@ -509,7 +509,7 @@
 			</div>
 		</div>
 		<div class="col-lg-4">
-			<div class="card bg-orange-400">
+			<div class="card bg-orange-400" style="border-radius: 10px;">
 				<blockquote class="blockquote d-flex py-2 mb-0">
 					<div class="mr-4" style="padding-left: 1.875rem;">
 						<i class="icon-forward icon-4x"></i>
@@ -519,7 +519,7 @@
 						<div class="d-flex">
 							<h3 class="font-weight-semibold mb-0">{{ $todayongoing }}</h3>
 						</div>
-						<div>
+						<div style="font-size: 22px;">
 							Task Sedang Dikerjakan
 						</div>
 					</div>
@@ -527,7 +527,7 @@
 			</div>
 		</div>
 		<div class="col-lg-4">
-			<div class="card bg-success-400">
+			<div class="card bg-success-400" style="border-radius: 10px;">
 				<blockquote class="blockquote d-flex py-2 mb-0">
 					<div class="mr-4" style="padding-left: 1.875rem;">
 						<i class="icon-clipboard2 icon-4x"></i>
@@ -537,7 +537,7 @@
 						<div class="d-flex">
 							<h3 class="font-weight-semibold mb-0">{{ $todaydone }}</h3>
 						</div>
-						<div>
+						<div style="font-size: 22px;">
 							Task Selesai
 						</div>
 					</div>
