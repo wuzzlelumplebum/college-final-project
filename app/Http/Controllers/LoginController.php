@@ -35,11 +35,11 @@ class LoginController extends Controller
 			elseif(\Auth::user()->role>50){
 	    		return redirect('/customer');
 	    	} else {
-	    		return redirect('/login')->with('error', 'Invalid Email address or Password');
+	    		return redirect('/login')->with('error', 'Invalid Username or Password');
 	    	}
 	        
 	    }
-	    return redirect('/login')->with('error', 'Invalid Email address or Password');
+	    return redirect('/login')->with('error', 'Invalid Username or Password');
 	}
 	/* GET
 	*/

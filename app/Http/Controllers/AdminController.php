@@ -48,8 +48,16 @@ class AdminController extends Controller
         $chart = array();
         $chart2 = array();
 
+        //pie
+        $pie = array();
+
         $chart[0] = array_fill(1, 12, 0);
         $chart2[0] = array_fill(1, 12, 0);
+
+        foreach(config("custom.jenis_proyek") as $key => $value)
+        {
+            $pie[$key] = 0;
+        }
 
         $qry = Payment::selectRaw('month(tanggal) as bulan, user_role, sum(nominal) as total ')
         ->whereYear('created_at',Carbon::now()->year)->groupBy('bulan', 'user_role')->get()->toArray();
@@ -68,11 +76,22 @@ class AdminController extends Controller
             $chart2[0][$val2['bulan']] += $val2['total'];
 
         }
-        // dd($val2);
+
+        $qrypie1 = Proyek::selectRaw('jenis_proyek, count(*) as total');
+
+        $qrypie1 = $qrypie1->groupBy('jenis_proyek')->whereNotNull('jenis_proyek')->get()->toArray();
+        // dd($qrypie1);
+
+        foreach ($qrypie1 as $pie1val) {
+            if($pie1val['total'] != 0){
+                $pie[$pie1val['jenis_proyek']] += $pie1val['total'];
+            }
+        }
+        // dd($pie);
 
         return view("index", compact('new','ongoing','done','todaynew','todayongoing','todaydone','member','proyek','simple','prioritas','premium',
         'pengeluarans','pendapatans','memberlast','memberthis','proyekthis','proyeklast','pengeluaranthis','pengeluaranlast','pendapatanthis','pendapatanlast',
-        'pendapatanyear','pengeluaranyear','chart','chart2'));
+        'pendapatanyear','pengeluaranyear','chart','chart2','pie'));
     }
 
     public function karyawan()

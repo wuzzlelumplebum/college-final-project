@@ -20,31 +20,44 @@
 	<div class="row">
 		<h4><span class="font-weight-semibold">Info penting</span></h4>
 	</div>
-	<div class="row">
-		<h5><span class="font-weight">Grafik Pemasukan & Pengeluaran</span></h5>
-	</div>
-	<div class="card">
-		<div class="card-header header-elements-inline">
-			<h5 class="card-title">Grafik Pemasukan per Tahun</h5>
+	@if(Auth::user()->role == 1)
+		<div class="row">
+			<h5><span class="font-weight">Grafik Pemasukan & Pengeluaran</span></h5>
 		</div>
+		<div class="card">
+			<div class="card-header header-elements-inline">
+				<h5 class="card-title">Grafik Pemasukan per Tahun</h5>
+			</div>
 
-		<div class="card-body">
-			<div class="chart-container">
-				<div class="chart has-fixed-height" id="area_pemasukan"></div>
+			<div class="card-body">
+				<div class="chart-container">
+					<div class="chart has-fixed-height" id="area_pemasukan"></div>
+				</div>
 			</div>
 		</div>
-	</div>
-	<div class="card">
-		<div class="card-header header-elements-inline">
-			<h5 class="card-title">Grafik Pengeluaran per Tahun</h5>
-		</div>
+		<div class="card">
+			<div class="card-header header-elements-inline">
+				<h5 class="card-title">Grafik Pengeluaran per Tahun</h5>
+			</div>
 
-		<div class="card-body">
-			<div class="chart-container">
-				<div class="chart has-fixed-height" id="area_pengeluaran"></div>
+			<div class="card-body">
+				<div class="chart-container">
+					<div class="chart has-fixed-height" id="area_pengeluaran"></div>
+				</div>
 			</div>
 		</div>
-	</div>
+		<div class="card">
+			<div class="card-header header-elements-inline">
+				<h5 class="card-title">Chart Proyek Klien Berdasarkan Jenis Proyek</h5>
+			</div>
+
+			<div class="card-body">
+				<div class="chart-container">
+					<div class="chart has-fixed-height" id="pie_basic"></div>
+				</div>
+			</div>
+		</div>
+	@endif
 	<div class="row">
 		<h5><span class="font-weight">Info Klien</span></h5>
 	</div>
@@ -570,8 +583,9 @@
 <script src="{{asset('assets/js/app.js') }}"></script>
 <script src="{{asset('global_assets/js/demo_pages/dashboard.js') }}"></script>
 <script src="{{asset('global_assets/js/demo_charts/echarts/light/lines/area_basic.js') }}"></script>
+<script src="{{asset('global_assets/js/demo_charts/echarts/light/pies/pie_basic.js') }}"></script>
 <!-- /theme JS files -->
-
+@if (Auth::user()->role == 1)
 <script>
 	//pemasukan
 	var EchartsAreaBasicLight = function() {
@@ -739,6 +753,143 @@
 
 	document.addEventListener('DOMContentLoaded', function() {
 		EchartsAreaBasicLight.init();
+	});
+
+	var EchartsPieBasicLight = function() {
+
+		var _scatterPieBasicLightExample = function() {
+			if (typeof echarts == 'undefined') {
+				console.warn('Warning - echarts.min.js is not loaded.');
+				return;
+			}
+
+			// Define element
+			var pie_basic_element = document.getElementById('pie_basic');
+
+			if (pie_basic_element) {
+
+				// Initialize chart
+				var pie_basic = echarts.init(pie_basic_element);
+
+				// Options
+				pie_basic.setOption({
+
+					// Colors
+					color: [
+						'#2ec7c9','#b6a2de','#5ab1ef','#ffb980','#d87a80',
+						'#8d98b3','#e5cf0d','#97b552','#95706d','#dc69aa',
+						'#07a2a4','#9a7fd1','#588dd5','#f5994e','#c05050',
+						'#59678c','#c9ab00','#7eb00a','#6f5553','#c14089'
+					],
+
+					// Global text styles
+					textStyle: {
+						fontFamily: 'Roboto, Arial, Verdana, sans-serif',
+						fontSize: 13
+					},
+
+					// Add title
+					title: {
+						text: 'Proyek Klien',
+						subtext: 'Berdasarkan Jenis Proyek',
+						left: 'center',
+						textStyle: {
+							fontSize: 17,
+							fontWeight: 500
+						},
+						subtextStyle: {
+							fontSize: 12
+						}
+					},
+
+					// Add tooltip
+					tooltip: {
+						trigger: 'item',
+						backgroundColor: 'rgba(0,0,0,0.75)',
+						padding: [10, 15],
+						textStyle: {
+							fontSize: 13,
+							fontFamily: 'Roboto, sans-serif'
+						},
+						formatter: "{a} <br/>{b}: {c} ({d}%)"
+					},
+
+					// Add legend
+					legend: {
+						orient: 'vertical',
+						top: 'center',
+						left: 0,
+						data: [@foreach($pie as $key => $val)
+						'{{config("custom.jenis_proyek.".$key)}}',
+						@endforeach],
+						itemHeight: 8,
+						itemWidth: 8
+					},
+
+					// Add series
+					series: [{
+						name: 'Jenis Proyek',
+						type: 'pie',
+						radius: '70%',
+						center: ['50%', '50%'],
+						itemStyle: {
+							normal: {
+								borderWidth: 1,
+								borderColor: '#fff'
+							}
+						},
+						data: [
+							@foreach($pie as $key => $val)
+							@if($val>0)
+							{value: {{$val}}, name: '{{config("custom.jenis_proyek.".$key)}}' },
+							@endif
+							@endforeach
+						]
+					}]
+				});
+			}
+
+
+			//
+			// Resize charts
+			//
+
+			// Resize function
+			var triggerChartResize = function() {
+				pie_basic_element && pie_basic.resize();
+			};
+
+			// On sidebar width change
+			var sidebarToggle = document.querySelector('.sidebar-control');
+			sidebarToggle && sidebarToggle.addEventListener('click', triggerChartResize);
+
+			// On window resize
+			var resizeCharts;
+			window.addEventListener('resize', function() {
+				clearTimeout(resizeCharts);
+				resizeCharts = setTimeout(function () {
+					triggerChartResize();
+				}, 200);
+			});
+		};
+
+
+		//
+		// Return objects assigned to module
+		//
+
+		return {
+			init: function() {
+				_scatterPieBasicLightExample();
+			}
+		}
+	}();
+
+	// Initialize module
+	// ------------------------------
+
+	document.addEventListener('DOMContentLoaded', function() {
+		EchartsPieBasicLight.init();
 	});
 </script>
 
@@ -911,4 +1062,5 @@
 		EchartsAreaBasicLight2.init();
 	});
 </script>
+@endif
 @endsection
