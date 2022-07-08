@@ -7,7 +7,7 @@ ul{
 </style>
 
 
-<div class="sidebar sidebar-dark sidebar-main sidebar-expand-md" style="background-color: #229c59">
+<div class="sidebar sidebar-dark sidebar-main sidebar-expand-md" style="background-color: #6EBA93">
 
 	<!-- Sidebar mobile toggler -->
 	<div class="sidebar-mobile-toggler text-center">

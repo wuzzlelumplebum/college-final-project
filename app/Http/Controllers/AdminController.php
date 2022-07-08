@@ -41,8 +41,8 @@ class AdminController extends Controller
         $pengeluaranlast =  Pengeluaran::whereMonth('created_at','=',Carbon::now()->subMonth()->month)->get();
         $pendapatanthis = Payment::whereMonth('created_at','=',Carbon::now()->today()->month)->get();
         $pendapatanlast =  Payment::whereMonth('created_at','=',Carbon::now()->subMonth()->month)->get();
-        $pendapatanyear = Payment::whereYear('created_at','=',Carbon::now()->year)->get();
-        $pengeluaranyear = Pengeluaran::whereYear('created_at','=',Carbon::now()->year)->get();
+        $pendapatanyear = Payment::whereYear('tanggal','=',Carbon::now()->year)->get();
+        $pengeluaranyear = Pengeluaran::whereYear('tanggal','=',Carbon::now()->year)->get();
 
         //yearly graph
         $chart = array();
@@ -59,23 +59,23 @@ class AdminController extends Controller
             $pie[$key] = 0;
         }
 
-        $qry = Payment::selectRaw('month(tanggal) as bulan, user_role, sum(nominal) as total ')
-        ->whereYear('created_at',Carbon::now()->year)->groupBy('bulan', 'user_role')->get()->toArray();
+        $qry = Payment::selectRaw('month(tanggal) as bulan, sum(nominal) as total ')
+        ->whereYear('tanggal',Carbon::now()->year)->groupBy('bulan')->get()->toArray();
 
-        $qry2 = Pengeluaran::selectRaw('month(tanggal) as bulan, jenis_pengeluaran, sum(nominal) as total ')
-        ->whereYear('tanggal',Carbon::now()->year)->groupBy('bulan', 'jenis_pengeluaran')->get()->toArray();
+        $qry2 = Pengeluaran::selectRaw('month(tanggal) as bulan, sum(nominal) as total ')
+        ->whereYear('tanggal',Carbon::now()->year)->groupBy('bulan')->get()->toArray();
 
         foreach ($qry as $val) {
             // $chart[$val['user_role']][$val['bulan']] = $val['total'];
             $chart[0][$val['bulan']] += $val['total'];
-
         }
+        // dd($val);
 
         foreach ($qry2 as $val2) {
             // $chart[$val['user_role']][$val['bulan']] = $val['total'];
             $chart2[0][$val2['bulan']] += $val2['total'];
-
         }
+        // dd($val2);
 
         $qrypie1 = Proyek::selectRaw('jenis_proyek, count(*) as total');
 

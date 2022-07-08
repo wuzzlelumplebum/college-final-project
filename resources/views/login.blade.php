@@ -23,10 +23,10 @@
 	<!-- /core JS files -->
 
 	<!-- Theme JS files -->
-	{{-- <script src="global_assets/js/plugins/forms/validation/validate.min.js"></script> --}}
+	<script src="global_assets/js/plugins/forms/validation/validate.min.js"></script>
 
 	<script src="assets/js/app.js"></script>
-	<script src="global_assets/js/demo_pages/form_validation.js"></script>
+	{{-- <script src="global_assets/js/demo_pages/form_validation.js"></script> --}}
 	<!-- /theme JS files -->
 
 </head>

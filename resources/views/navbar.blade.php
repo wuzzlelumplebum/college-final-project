@@ -1,5 +1,5 @@
 
-<div class="navbar navbar-expand-md navbar-dark" style="background-color: #39b772">
+<div class="navbar navbar-expand-md navbar-dark" style="background-color: #6EBA93">
 	<div class="navbar-brand" style="padding-top: 0px;padding-bottom: 0px;min-width:100px">
 		<a class="d-inline-block">
 			<img src="{{ URL::asset('global_assets/images/nore_w_1000px.png') }}" alt="" style="height:48px">

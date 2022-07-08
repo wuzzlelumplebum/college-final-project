@@ -1,5 +1,40 @@
 @extends('layout')
 
+@section('css')
+	<style>
+		.bg-600{
+			border-radius: 10px;
+			width: 95%;
+		}
+		.rectangle{
+			position: static;
+			width: 70px;
+			height: 6px;
+			background: #6EBA93;
+			border-radius: 5px;
+			margin-top: -5px;
+		}
+		.row{
+			margin-top: 15px;
+		}
+		.row-a{
+			margin-top: 15px;
+		}
+		.content{
+			background: #F5F5F4;
+		}
+		.contents{
+			padding-left: 30px;
+		}
+		.title{
+
+		}
+		.card{
+			padding-bottom: 20px;
+		}
+	</style>
+@endsection
+
 @section('content')
 
 <!-- Page header -->
@@ -16,17 +51,19 @@
 <!-- Content area -->
 <div class="content">
 	
+	<!-- Greetings message -->
+	<h2 id="greetings" style="text-align: center"></h2>
+
 	<!-- Quick stats boxes -->
-	<div class="row">
-		<h4><span class="font-weight-semibold">Info penting</span></h4>
+	<div class="title" style="padding-bottom: 20px">
+		<h4><span class="font-weight-semibold">Info Penting</span></h4>
+		<div class="rectangle">
+		</div>
 	</div>
 	@if(Auth::user()->role == 1)
-		<div class="row">
-			<h5><span class="font-weight">Grafik Pemasukan & Pengeluaran</span></h5>
-		</div>
-		<div class="card">
+		<div class="card" style="border-radius: 10px">
 			<div class="card-header header-elements-inline">
-				<h5 class="card-title">Grafik Pemasukan per Tahun</h5>
+				<h5 class="font-weight-semibold">Grafik Pemasukan per Tahun</h5>
 			</div>
 
 			<div class="card-body">
@@ -35,9 +72,9 @@
 				</div>
 			</div>
 		</div>
-		<div class="card">
+		<div class="card" style="border-radius: 10px">
 			<div class="card-header header-elements-inline">
-				<h5 class="card-title">Grafik Pengeluaran per Tahun</h5>
+				<h5 class="font-weight-semibold">Grafik Pengeluaran per Tahun</h5>
 			</div>
 
 			<div class="card-body">
@@ -46,9 +83,9 @@
 				</div>
 			</div>
 		</div>
-		<div class="card">
+		<div class="card" style="border-radius: 10px">
 			<div class="card-header header-elements-inline">
-				<h5 class="card-title">Chart Proyek Klien Berdasarkan Jenis Proyek</h5>
+				<h5 class="font-weight-semibold">Chart Proyek Klien Berdasarkan Jenis Proyek</h5>
 			</div>
 
 			<div class="card-body">
@@ -58,12 +95,16 @@
 			</div>
 		</div>
 	@endif
+	<div class="card" style="border-radius: 10px">
 	<div class="row">
-		<h5><span class="font-weight">Info Klien</span></h5>
+		<div class="contents">
+		<h5><span class="font-weight-semibold">Info Klien</span></h5>
+	</div>
 	</div>
 	<div class="row">
 		<div class="col-lg-4">
-			<div class="card bg-blue-600" style="border-radius: 10px;">
+			<div class="contents">
+				<div class="bg-600" style="background: linear-gradient(to right, #4169E1, #00CED1)">
 				<blockquote class="blockquote d-flex py-2 mb-0">
 					<div class="mr-4" style="padding-left: 1.875rem;">
 						<i class="icon-users icon-4x"></i>
@@ -73,15 +114,17 @@
 						<div class="d-flex">
 							<h3 class="font-weight-semibold mb-0">{{ $member }}</h3>
 						</div>
-						<div style="font-size: 22px;">
+						<div style="font-size: 18px;">
 							Jumlah Klien
 						</div>
 					</div>
 				</blockquote>
 			</div>
 		</div>
+	</div>
 		<div class="col-lg-4">
-			<div class="card bg-blue-600" style="border-radius: 10px;">
+			<div class="contents">
+				<div class="bg-600" style="background: linear-gradient(to right, #4169E1, #00CED1)">
 				<blockquote class="blockquote d-flex py-2 mb-0">
 					<div class="mr-4" style="padding-left: 1.875rem;">
 						<i class="icon-user icon-4x"></i>
@@ -91,15 +134,17 @@
 						<div class="d-flex">
 							<h3 class="font-weight-semibold mb-0">{{ $memberthis }}</h3>
 						</div>
-						<div style="font-size: 22px;">
+						<div style="font-size: 18px;">
 							Jumlah Klien Bulan Ini
 						</div>
 					</div>
 				</blockquote>
 			</div>
 		</div>
+	</div>
 		<div class="col-lg-4">
-			<div class="card bg-blue-600" style="border-radius: 10px;">
+			<div class="contents">
+				<div class="bg-600" style="background: linear-gradient(to right, #4169E1, #00CED1)">
 				<blockquote class="blockquote d-flex py-2 mb-0">
 					<div class="mr-4" style="padding-left: 1.875rem;">
 						<i class="icon-user icon-4x"></i>
@@ -109,20 +154,26 @@
 						<div class="d-flex">
 							<h3 class="font-weight-semibold mb-0">{{ $memberlast }}</h3>
 						</div>
-						<div style="font-size: 22px;">
+						<div style="font-size: 18px;">
 							Jumlah Klien Bulan Lalu
 						</div>
 					</div>
+				</div>
 				</blockquote>
 			</div>
 		</div>
 	</div>
+</div>
+<div class="card" style="border-radius: 10px">
 	<div class="row">
-		<h5><span>Info Website</span></h5>
+		<div class="contents">
+		<h5><span class="font-weight-semibold">Info Website</span></h5>
 	</div>
+</div>
 	<div class="row">
 		<div class="col-lg-4">
-			<div class="card bg-green-600" style="border-radius: 10px;">
+			<div class="contents">
+				<div class="bg-600" style="background: linear-gradient(to right, #00FF00, #008000)">
 				<blockquote class="blockquote d-flex py-2 mb-0">
 					<div class="mr-4" style="padding-left: 1.875rem;">
 						<i class="icon-display icon-4x"></i>
@@ -131,15 +182,17 @@
 						<div class="d-flex">
 							<h3 class="font-weight-semibold mb-0">{{ count($proyek) }}</h3>
 						</div>
-						<div style="font-size: 22px;">
+						<div style="font-size: 18px;">
 							Total Website (All Layanan)
 						</div>
 					</div>
+				</div>
 				</blockquote>
 			</div>
 		</div>
 		<div class="col-lg-4">
-			<div class="card bg-green-600" style="border-radius: 10px;">
+			<div class="contents">
+				<div class="bg-600" style="background: linear-gradient(to right, #00FF00, #008000)">
 				<blockquote class="blockquote d-flex py-2 mb-0">
 					<div class="mr-4" style="padding-left: 1.875rem;">
 						<i class="icon-display icon-4x"></i>
@@ -148,15 +201,17 @@
 						<div class="d-flex">
 							<h3 class="font-weight-semibold mb-0">{{ $proyekthis }}</h3>
 						</div>
-						<div style="font-size: 22px;">
+						<div style="font-size: 18px;">
 							Total Website Bulan Ini
 						</div>
 					</div>
+				</div>
 				</blockquote>
 			</div>
 		</div>
 		<div class="col-lg-4">
-			<div class="card bg-green-600" style="border-radius: 10px;">
+			<div class="contents">
+				<div class="bg-600" style="background: linear-gradient(to right, #00FF00, #008000)">
 				<blockquote class="blockquote d-flex py-2 mb-0">
 					<div class="mr-4" style="padding-left: 1.875rem;">
 						<i class="icon-display icon-4x"></i>
@@ -165,20 +220,26 @@
 						<div class="d-flex">
 							<h3 class="font-weight-semibold mb-0">{{ $proyeklast }}</h3>
 						</div>
-						<div style="font-size: 22px;">
+						<div style="font-size: 18px;">
 							Total Website Bulan Lalu
 						</div>
 					</div>
+				</div>
 				</blockquote>
 			</div>
 		</div>
 	</div>
+</div>
+<div class="card" style="border-radius: 10px">
 	<div class="row">
-		<h5>Info Layanan Website</h5>
+		<div class="contents">
+		<h5 class="font-weight-semibold">Info Layanan Website</h5>
 	</div>
+</div>
 	<div class="row">
 		<div class="col-lg-4">
-			<div class="card bg-orange-600" style="border-radius: 10px;">
+			<div class="contents">
+				<div class="bg-600" style="background: linear-gradient(to right, #FFA500, #FF4500)">
 				<blockquote class="blockquote d-flex py-2 mb-0">
 					<div class="mr-4" style="padding-left: 1.875rem;">
 						<i class="icon-sphere icon-4x"></i>
@@ -187,15 +248,17 @@
 						<div class="d-flex">
 							<h3 class="font-weight-semibold mb-0">{{ $simple }}</h3>
 						</div>
-						<div style="font-size: 22px;">
+						<div style="font-size: 18px;">
 							Total Website Simple
 						</div>
 					</div>
+				</div>
 				</blockquote>
 			</div>
 		</div>
 		<div class="col-lg-4">
-			<div class="card bg-orange-600" style="border-radius: 10px;">
+			<div class="contents">
+				<div class="bg-600" style="background: linear-gradient(to right, #FFA500, #FF4500)">
 				<blockquote class="blockquote d-flex py-2 mb-0">
 					<div class="mr-4" style="padding-left: 1.875rem;">
 						<i class="icon-sphere icon-4x"></i>
@@ -204,15 +267,17 @@
 						<div class="d-flex">
 							<h3 class="font-weight-semibold mb-0">{{ $prioritas }}</h3>
 						</div>
-						<div style="font-size: 22px;">
+						<div style="font-size: 18px;">
 							Total Website Prioritas
 						</div>
 					</div>
+				</div>
 				</blockquote>
 			</div>
 		</div>
 		<div class="col-lg-4">
-			<div class="card bg-orange-600" style="border-radius: 10px;">
+			<div class="contents">
+				<div class="bg-600" style="background: linear-gradient(to right, #FFA500, #FF4500)">
 				<blockquote class="blockquote d-flex py-2 mb-0">
 					<div class="mr-4" style="padding-left: 1.875rem;">
 						<i class="icon-sphere icon-4x"></i>
@@ -221,21 +286,27 @@
 						<div class="d-flex">
 							<h3 class="font-weight-semibold mb-0">{{ $premium }}</h3>
 						</div>
-						<div style="font-size: 22px;">
+						<div style="font-size: 18px;">
 							Total Website Premium
 						</div>
 					</div>
+				</div>
 				</blockquote>
 			</div>
 		</div>
 	</div>
+</div>
 	@if (\Auth::user()->role==1)
+	<div class="card" style="border-radius: 10px">
 		<div class="row">
-			<h5>Info pendapatan</h5>
+			<div class="contents">
+			<h5 class="font-weight-semibold">Info Pendapatan</h5>
 		</div>
+	</div>
 		<div class="row">
 			<div class="col-lg-4">
-				<div class="card bg-slate-600" style="border-radius: 10px;">
+				<div class="contents">
+					<div class="bg-600" style="background: linear-gradient(to right, #FFFF00, #FFD700)">
 					<blockquote class="blockquote d-flex py-2 mb-0">
 						<div class="mr-4" style="padding-left: 1.875rem;">
 							<i class="icon-download icon-4x"></i>
@@ -248,15 +319,17 @@
 							@endforeach
 								<h3 class="font-weight-semibold mb-0">Rp {{number_format((@$gross),0,',','.')}}, -</h3>
 							</div>
-							<div style="font-size: 22px;">
+							<div style="font-size: 18px;">
 								Total Pendapatan
 							</div>
 						</div>
+					</div>
 					</blockquote>
 				</div>
 			</div>
 			<div class="col-lg-4">
-				<div class="card bg-slate-600" style="border-radius: 10px;">
+				<div class="contents">
+					<div class="bg-600" style="background: linear-gradient(to right, #FFFF00, #FFD700)">
 					<blockquote class="blockquote d-flex py-2 mb-0">
 						<div class="mr-4" style="padding-left: 1.875rem;">
 							<i class="icon-download icon-4x"></i>
@@ -269,15 +342,17 @@
 									@endforeach
 								<h3 class="font-weight-semibold mb-0">Rp {{number_format((@$grossthis),0,',','.')}}, -</h3>
 							</div>
-							<div style="font-size: 22px;">
-								Total pendapatan bulan ini
+							<div style="font-size: 18px;">
+								Total Pendapatan Bulan Ini
 							</div>
 						</div>
+					</div>
 					</blockquote>
 				</div>
 			</div>
 			<div class="col-lg-4">
-				<div class="card bg-slate-600" style="border-radius: 10px;">
+				<div class="contents">
+					<div class="bg-600" style="background: linear-gradient(to right, #FFFF00, #FFD700)">
 					<blockquote class="blockquote d-flex py-2 mb-0">
 						<div class="mr-4" style="padding-left: 1.875rem;">
 							<i class="icon-download icon-4x"></i>
@@ -290,20 +365,26 @@
 									@endforeach
 								<h3 class="font-weight-semibold mb-0">Rp {{number_format((@$grosslast),0,',','.')}}, -</h3>
 							</div>
-							<div style="font-size: 22px;">
-								Total pendapatan bulan lalu
+							<div style="font-size: 18px;">
+								Total Pendapatan Bulan Lalu
 							</div>
 						</div>
+					</div>
 					</blockquote>
 				</div>
 			</div>
 		</div>
+	</div>
+	<div class="card" style="border-radius: 10px">
 		<div class="row">
-			<h5>Info pengeluaran</h5>
+			<div class="contents">
+			<h5 class="font-weight-semibold">Info Pengeluaran</h5>
 		</div>
+	</div>
 		<div class="row">
 			<div class="col-lg-4">
-				<div class="card bg-grey-600" style="border-radius: 10px;">
+				<div class="contents">
+					<div class="bg-600" style="background: linear-gradient(to right, #FF6347, #800000)">
 					<blockquote class="blockquote d-flex py-2 mb-0">
 						<div class="mr-4" style="padding-left: 1.875rem;">
 							<i class="icon-upload icon-4x"></i>
@@ -318,15 +399,17 @@
 									Rp {{number_format((@$total),0,',','.')}}, -
 								</h3>
 							</div>
-							<div style="font-size: 22px;">
-								Total pengeluaran
+							<div style="font-size: 18px;">
+								Total Pengeluaran
 							</div>
 						</div>
+					</div>
 					</blockquote>
 				</div>
 			</div>
 			<div class="col-lg-4">
-				<div class="card bg-grey-600" style="border-radius: 10px;">
+				<div class="contents">
+					<div class="bg-600" style="background: linear-gradient(to right, #FF6347, #800000)">
 					<blockquote class="blockquote d-flex py-2 mb-0">
 						<div class="mr-4" style="padding-left: 1.875rem;">
 							<i class="icon-upload icon-4x"></i>
@@ -339,15 +422,17 @@
 								@endforeach
 								<h3 class="font-weight-semibold mb-0">Rp {{number_format((@$expendthis),0,',','.')}}, -</h3>
 							</div>
-							<div style="font-size: 22px;">
-								Total pengeluaran bulan ini
+							<div style="font-size: 18px;">
+								Total Pengeluaran Bulan Ini
 							</div>
 						</div>
+					</div>
 					</blockquote>
 				</div>
 			</div>
 			<div class="col-lg-4">
-				<div class="card bg-grey-600" style="border-radius: 10px;">
+				<div class="contents">
+					<div class="bg-600" style="background: linear-gradient(to right, #FF6347, #800000)">
 					<blockquote class="blockquote d-flex py-2 mb-0">
 						<div class="mr-4" style="padding-left: 1.875rem;">
 							<i class="icon-upload icon-4x"></i>
@@ -360,20 +445,26 @@
 								@endforeach
 								<h3 class="font-weight-semibold mb-0">Rp {{number_format((@$expendlast),0,',','.')}}, -</h3>
 							</div>
-							<div style="font-size: 22px;">
-								Total pengeluaran bulan lalu
+							<div style="font-size: 18px;">
+								Total Pengeluaran Bulan Lalu
 							</div>
 						</div>
+					</div>
 					</blockquote>
 				</div>
 			</div>
 		</div>
+	</div>
+	<div class="card" style="border-radius: 10px">
 		<div class="row">
-			<h5>Info net/profit</h5>
+			<div class="contents">
+			<h5 class="font-weight-semibold">Info Nett/Profit</h5>
 		</div>
+	</div>
 		<div class="row">
 			<div class="col-lg-4">
-				<div class="card bg-brown-600" style="border-radius: 10px;">
+				<div class="contents">
+					<div class="bg-600" style="background: linear-gradient(to right, #2F4F4F, #808080)">
 					<blockquote class="blockquote d-flex py-2 mb-0">
 						<div class="mr-4" style="padding-left: 1.875rem;">
 							<i class="icon-coin-dollar icon-4x"></i>
@@ -382,15 +473,17 @@
 							<div class="d-flex">
 								<h3 class="font-weight-semibold mb-0">Rp {{number_format((@$gross - @$total),0,',','.')}}, -</h3>
 							</div>
-							<div style="font-size: 22px;">
-								Total nett/profit
+							<div style="font-size: 18px;">
+								Total Nett/Profit
 							</div>
 						</div>
+					</div>
 					</blockquote>
 				</div>
 			</div>
 			<div class="col-lg-4">
-				<div class="card bg-brown-600" style="border-radius: 10px;">
+				<div class="contents">
+					<div class="bg-600" style="background: linear-gradient(to right, #2F4F4F, #808080)">
 					<blockquote class="blockquote d-flex py-2 mb-0">
 						<div class="mr-4" style="padding-left: 1.875rem;">
 							<i class="icon-coin-dollar icon-4x"></i>
@@ -399,15 +492,17 @@
 							<div class="d-flex">
 								<h3 class="font-weight-semibold mb-0">Rp {{number_format((@$grossthis - @$expendthis),0,',','.')}}, -</h3>
 							</div>
-							<div style="font-size: 22px;">
-								Total nett/profit bulan ini
+							<div style="font-size: 18px;">
+								Total Nett/Profit Bulan Ini
 							</div>
 						</div>
+					</div>
 					</blockquote>
 				</div>
 			</div>
 			<div class="col-lg-4">
-				<div class="card bg-brown-600" style="border-radius: 10px;">
+				<div class="contents">
+					<div class="bg-600" style="background: linear-gradient(to right, #2F4F4F, #808080)">
 					<blockquote class="blockquote d-flex py-2 mb-0">
 						<div class="mr-4" style="padding-left: 1.875rem;">
 							<i class="icon-coin-dollar icon-4x"></i>
@@ -416,27 +511,27 @@
 							<div class="d-flex">
 								<h3 class="font-weight-semibold mb-0">Rp {{number_format((@$grosslast - @$expendlast),0,',','.')}}, - </h3>
 							</div>
-							<div style="font-size: 22px;">
-								Total nett/profit bulan lalu
+							<div style="font-size: 18px;">
+								Total Nett/Profit Bulan Lalu
 							</div>
 						</div>
+					</div>
 					</blockquote>
 				</div>
 			</div>
 		</div>
 	@endif
+</div>
+<div class="card" style="border-radius: 10px">
 	<div class="row">
-		<hr><hr>
-	</div>
-	<div class="row">
-		<hr><hr>
-	</div>
-	<div class="row">
+		<div class="contents">
 		<h4><span class="font-weight-semibold">Total Task</span></h4>
 	</div>
+</div>
 	<div class="row">
 		<div class="col-lg-4">
-			<div class="card bg-green-400" style="border-radius: 10px;">
+			<div class="contents">
+				<div class="bg-600" style="background: linear-gradient(to right, #BDB76B, #B8860B)">
 				<blockquote class="blockquote d-flex py-2 mb-0">
 					<div class="mr-4" style="padding-left: 1.875rem;">
 						<i class="icon-stack-plus icon-4x"></i>
@@ -446,15 +541,17 @@
 						<div class="d-flex">
 							<h3 class="font-weight-semibold mb-0">{{ $new }}</h3>
 						</div>
-						<div style="font-size: 22px;">
+						<div style="font-size: 18px;">
 							Task Baru
 						</div>
 					</div>
+				</div>
 				</blockquote>
 			</div>
 		</div>
 		<div class="col-lg-4">
-			<div class="card bg-orange-400" style="border-radius: 10px;">
+			<div class="contents">
+				<div class="bg-600" style="background: linear-gradient(to right, #F4A460, #FF4500)">
 				<blockquote class="blockquote d-flex py-2 mb-0">
 					<div class="mr-4" style="padding-left: 1.875rem;">
 						<i class="icon-forward icon-4x"></i>
@@ -464,15 +561,17 @@
 						<div class="d-flex">
 							<h3 class="font-weight-semibold mb-0">{{ $ongoing }}</h3>
 						</div>
-						<div style="font-size: 22px;">
+						<div style="font-size: 18px;">
 							Task Sedang Dikerjakan
 						</div>
 					</div>
+				</div>
 				</blockquote>
 			</div>
 		</div>
 		<div class="col-lg-4">
-			<div class="card bg-success-400" style="border-radius: 10px;">
+			<div class="contents">
+				<div class="bg-600" style="background: linear-gradient(to right, #006400, #556B2F)">
 				<blockquote class="blockquote d-flex py-2 mb-0">
 					<div class="mr-4" style="padding-left: 1.875rem;">
 						<i class="icon-clipboard2 icon-4x"></i>
@@ -482,10 +581,11 @@
 						<div class="d-flex">
 							<h3 class="font-weight-semibold mb-0">{{ $done }}</h3>
 						</div>
-						<div style="font-size: 22px;">
+						<div style="font-size: 18px;">
 							Task Selesai
 						</div>
 					</div>
+				</div>
 				</blockquote>
 			</div>
 		</div>
@@ -493,18 +593,17 @@
 	<!-- /quick stats boxes -->
 	 <!-- TODAY -->
 	<!-- Quick stats boxes -->
+</div>
+<div class="card" style="border-radius: 10px">
 	<div class="row">
-		<hr><hr>
+		<div class="contents">
+		<h4><span class="font-weight-semibold">Task Hari Ini</span></h4>
 	</div>
-	<div class="row">
-		<hr><hr>
-	</div>
-	<div class="row">
-		<h4><span class="font-weight-semibold">Task hari ini</span></h4>
-	</div>
+</div>
 	<div class="row">
 		<div class="col-lg-4">
-			<div class="card bg-green-400" style="border-radius: 10px;">
+			<div class="contents">
+				<div class="bg-600" style="background: linear-gradient(to right, #BDB76B, #B8860B)">
 				<blockquote class="blockquote d-flex py-2 mb-0">
 					<div class="mr-4" style="padding-left: 1.875rem;">
 						<i class="icon-stack-plus icon-4x"></i>
@@ -514,15 +613,17 @@
 						<div class="d-flex">
 							<h3 class="font-weight-semibold mb-0">{{ $todaynew }}</h3>
 						</div>
-						<div style="font-size: 22px;">
+						<div style="font-size: 18px;">
 							Task Baru
 						</div>
 					</div>
+				</div>
 				</blockquote>
 			</div>
 		</div>
 		<div class="col-lg-4">
-			<div class="card bg-orange-400" style="border-radius: 10px;">
+			<div class="contents">
+				<div class="bg-600" style="background: linear-gradient(to right, #F4A460, #FF4500)">
 				<blockquote class="blockquote d-flex py-2 mb-0">
 					<div class="mr-4" style="padding-left: 1.875rem;">
 						<i class="icon-forward icon-4x"></i>
@@ -532,15 +633,17 @@
 						<div class="d-flex">
 							<h3 class="font-weight-semibold mb-0">{{ $todayongoing }}</h3>
 						</div>
-						<div style="font-size: 22px;">
+						<div style="font-size: 18px;">
 							Task Sedang Dikerjakan
 						</div>
 					</div>
+				</div>
 				</blockquote>
 			</div>
 		</div>
 		<div class="col-lg-4">
-			<div class="card bg-success-400" style="border-radius: 10px;">
+			<div class="contents">
+				<div class="bg-600" style="background: linear-gradient(to right, #006400, #556B2F)">
 				<blockquote class="blockquote d-flex py-2 mb-0">
 					<div class="mr-4" style="padding-left: 1.875rem;">
 						<i class="icon-clipboard2 icon-4x"></i>
@@ -550,10 +653,11 @@
 						<div class="d-flex">
 							<h3 class="font-weight-semibold mb-0">{{ $todaydone }}</h3>
 						</div>
-						<div style="font-size: 22px;">
+						<div style="font-size: 18px;">
 							Task Selesai
 						</div>
 					</div>
+				</div>
 				</blockquote>
 			</div>
 		</div>
@@ -561,10 +665,8 @@
 	<!-- /quick stats boxes -->
 	<!-- TODAY -->
 	<!-- Quick stats boxes -->
-	<div class="row">
-		<hr><hr>
-	</div>
 	<!-- /quick stats boxes -->
+</div>
 </div>
 
 @endsection
@@ -585,6 +687,28 @@
 <script src="{{asset('global_assets/js/demo_charts/echarts/light/lines/area_basic.js') }}"></script>
 <script src="{{asset('global_assets/js/demo_charts/echarts/light/pies/pie_basic.js') }}"></script>
 <!-- /theme JS files -->
+
+<script>
+	var day = new Date();
+	var hrs = day.getHours();
+
+	var greet = "";
+
+	if (hrs < 12){
+		greet = "Good Morning!";
+	}
+	else if (hrs >= 12 && hrs <= 17){
+		greet = "Good Afternoon!";
+	}
+	else if (hrs >= 18 && hrs <= 23){
+		greet = "Good Evening!";
+	}
+
+	// console.log(hrs);
+	// console.log(greet);
+	document.getElementById('greetings').innerHTML = greet;
+</script>
+
 @if (Auth::user()->role == 1)
 <script>
 	//pemasukan
