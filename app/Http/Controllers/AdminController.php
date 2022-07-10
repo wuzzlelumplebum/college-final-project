@@ -50,6 +50,9 @@ class AdminController extends Controller
 
         //pie
         $pie = array();
+        $pie2 = array();
+        $pie3 = array();
+        $pie4 = array();
 
         $chart[0] = array_fill(1, 12, 0);
         $chart2[0] = array_fill(1, 12, 0);
@@ -57,6 +60,21 @@ class AdminController extends Controller
         foreach(config("custom.jenis_proyek") as $key => $value)
         {
             $pie[$key] = 0;
+        }
+
+        foreach(config("custom.jenis_layanan") as $key => $value)
+        {
+            $pie2[$key] = 0;
+        }
+
+        foreach(config("custom.jenis_layanan") as $key => $value)
+        {
+            $pie3[$key] = 0;
+        }
+
+        foreach(config("custom.jenis_layanan") as $key => $value)
+        {
+            $pie4[$key] = 0;
         }
 
         $qry = Payment::selectRaw('month(tanggal) as bulan, sum(nominal) as total ')
@@ -87,11 +105,43 @@ class AdminController extends Controller
                 $pie[$pie1val['jenis_proyek']] += $pie1val['total'];
             }
         }
-        // dd($pie);
+
+        $qrypie2 = Proyek::selectRaw('jenis_layanan, count(*) as total')->where('jenis_proyek', '=', 1);
+
+        $qrypie2 = $qrypie2->groupBy('jenis_layanan')->whereNotNull('jenis_layanan')->get()->toArray();
+        // dd($qrypie2);
+
+        foreach ($qrypie2 as $pie2val) {
+            if($pie2val['total'] != 0){
+                $pie2[$pie2val['jenis_layanan']] += $pie2val['total'];
+            }
+        }
+
+        $qrypie3 = Proyek::selectRaw('jenis_layanan, count(*) as total')->where('jenis_proyek', '=', 3);
+
+        $qrypie3 = $qrypie3->groupBy('jenis_layanan')->whereNotNull('jenis_layanan')->get()->toArray();
+        // dd($qrypie3);
+
+        foreach ($qrypie3 as $pie3val) {
+            if($pie3val['total'] != 0){
+                $pie3[$pie3val['jenis_layanan']] += $pie3val['total'];
+            }
+        }
+
+        $qrypie4 = Proyek::selectRaw('jenis_layanan, count(*) as total')->where('jenis_proyek', '=', 4);
+
+        $qrypie4 = $qrypie4->groupBy('jenis_layanan')->whereNotNull('jenis_layanan')->get()->toArray();
+        // dd($qrypie4);
+
+        foreach ($qrypie4 as $pie4val) {
+            if($pie4val['total'] != 0){
+                $pie4[$pie4val['jenis_layanan']] += $pie4val['total'];
+            }
+        }
 
         return view("index", compact('new','ongoing','done','todaynew','todayongoing','todaydone','member','proyek','simple','prioritas','premium',
         'pengeluarans','pendapatans','memberlast','memberthis','proyekthis','proyeklast','pengeluaranthis','pengeluaranlast','pendapatanthis','pendapatanlast',
-        'pendapatanyear','pengeluaranyear','chart','chart2','pie'));
+        'pendapatanyear','pengeluaranyear','chart','chart2','pie','pie2','pie3','pie4'));
     }
 
     public function karyawan()
@@ -169,13 +219,8 @@ class AdminController extends Controller
         return view("client.layout",compact('new','ongoing','done','website','taskall','proyeks','tagihans','taskcounts','tasks','tagihanactives','tagihanhistories','highproyek','user'));
     }
 
-    // public function customer()
-    // {
-    //     $new = Task::where('status', '=', '1')->where('user_id',\Auth::user()->id)->get()->count();
-    //     $ongoing = Task::where('status', '=', '2')->where('user_id',\Auth::user()->id)->get()->count();
-    //     $done = Task::where('status', '=', '3')->where('user_id',\Auth::user()->id)->get()->count();
-    //     return view("client.layout", compact('new','ongoing','done'));
-    // }
-        
-    
+    public function user()
+    {
+        return view("user.index");
+    }
 }

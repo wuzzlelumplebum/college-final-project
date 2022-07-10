@@ -27,14 +27,20 @@ class LoginController extends Controller
 	    ){
 	    	if(\Auth::user()->role==1){
 	    		return redirect('/admin');
-	    	}elseif(\Auth::user()->role==10){
+	    	}
+			elseif(\Auth::user()->role==10){
 	    		return redirect('/karyawan');
-			}elseif(\Auth::user()->role==20){
+			}
+			elseif(\Auth::user()->role==20){
 				return redirect('/keuangan');
+			}
+			elseif(\Auth::user()->role==99){
+				return redirect('/user');
 			}
 			elseif(\Auth::user()->role>50){
 	    		return redirect('/customer');
-	    	} else {
+	    	} 
+			else {
 	    		return redirect('/login')->with('error', 'Invalid Username or Password');
 	    	}
 	        

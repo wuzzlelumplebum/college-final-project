@@ -103,7 +103,7 @@ Route::group(['middleware' => ['auth']], function() {
 	});
 
 	//customer
-	Route::group(['middleware' => ['role:80,90,99']], function() {
+	Route::group(['middleware' => ['role:95']], function() {
 		Route::get('/customer',  'AdminController@customer')->name('customer');
 		Route::get('/tagihanclient','client\TagihanClient@index');
 		Route::get('/tagihanaktif','client\TagihanClient@active');
@@ -118,5 +118,10 @@ Route::group(['middleware' => ['auth']], function() {
 		Route::get('/settinguser','client\SettingClient@changesetting');
 		Route::post('/settinguser/{id}','client\SettingClient@changesettingupdate')->name('settinguser');
 
+	});
+
+	// user
+	Route::group(['middleware' => ['role:99']], function() {
+		Route::get('/user', 'AdminController@user')->name('user');
 	});
 });

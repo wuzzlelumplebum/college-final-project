@@ -22,6 +22,7 @@ return [
         '10' => 'Karyawan',
         '20' => 'Keuangan',
         '95' => 'Klien',
+        '99' => 'User',
     ],
 
     'jenis_proyek' => [
