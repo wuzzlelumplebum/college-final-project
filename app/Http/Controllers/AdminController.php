@@ -182,8 +182,75 @@ class AdminController extends Controller
         $memberlast = User::where('role','>','20')->whereMonth('created_at','=',Carbon::now()->subMonth()->month)->get()->count();
         $proyekthis =  Proyek::whereMonth('created_at','=',Carbon::now()->today()->month)->get()->count();
         $proyeklast =  Proyek::whereMonth('created_at','=',Carbon::now()->subMonth()->month)->get()->count();
+
+        //yearly graph
+        $chart = array();
+        $chart2 = array();
+
+        //pie
+        $pie = array();
+        $pie2 = array();
+
+        foreach(config("custom.j_pemasukan") as $key => $value)
+        {
+            $pie[$key] = 0;
+        }
+
+        foreach(config("custom.kat_pengeluaran") as $key => $value)
+        {
+            $pie2[$key] = 0;
+        }
+
+        $chart[0] = array_fill(1, 12, 0);
+        $chart2[0] = array_fill(1, 12, 0);
+
+        $qry = Payment::selectRaw('month(tanggal) as bulan, sum(nominal) as total ')
+        ->whereYear('tanggal',Carbon::now()->year)->groupBy('bulan')->get()->toArray();
+
+        $qry2 = Pengeluaran::selectRaw('month(tanggal) as bulan, sum(nominal) as total ')
+        ->whereYear('tanggal',Carbon::now()->year)->groupBy('bulan')->get()->toArray();
+
+        foreach ($qry as $val) {
+            // $chart[$val['user_role']][$val['bulan']] = $val['total'];
+            $chart[0][$val['bulan']] += $val['total'];
+        }
+        // dd($val);
+
+        foreach ($qry2 as $val2) {
+            // $chart[$val['user_role']][$val['bulan']] = $val['total'];
+            $chart2[0][$val2['bulan']] += $val2['total'];
+        }
+        // dd($val2);
+
+        // pie pemasukan
+        $qrypie1 = Payment::selectRaw('jenis_pemasukan, sum(nominal) as total');
+
+        $qrypie1 = $qrypie1->whereYear('tanggal', Carbon::now()->year)->groupBy('jenis_pemasukan')->get()->toArray();
+        // dd($qrypie1);
+
+        foreach ($qrypie1 as $pie1val) {
+            if($pie1val['total'] != 0){
+                $pie[$pie1val['jenis_pemasukan']] += $pie1val['total'];
+            }
+        }
+        // dd($pie);
+
+        // pie pengeluaran
+        $qrypie2 = Pengeluaran::selectRaw('jenis_pengeluaran, sum(nominal) as total');
+
+        $qrypie2 = $qrypie2->whereYear('tanggal', Carbon::now()->year)->groupBy('jenis_pengeluaran')->get()->toArray();
+        // dd($qrypie2);
+
+        foreach ($qrypie2 as $pie2val) {
+            // dump($pie2val);
+            if($pie2val['total'] != 0){
+                $pie2[$pie2val['jenis_pengeluaran']] += $pie2val['total'];
+            }
+        }
+        // dd($pie2);
+
         return view("index", compact('new','ongoing','done','todaynew','todayongoing','todaydone','member','proyek','simple','prioritas','premium',
-        'memberlast','memberthis','proyekthis','proyeklast'));
+        'memberlast','memberthis','proyekthis','proyeklast','chart','chart2','pie','pie2'));
     }
 
     // public function customer()

@@ -69,6 +69,7 @@
 		</div>
 	</div>
 
+	{{-- admin --}}
 	@if(Auth::user()->role == 1)
 	<div class="row">
 		<div class="col-xl-7">
@@ -136,6 +137,50 @@
 				</div>
 			</div>
 		</div> --}}
+	@endif
+
+	{{-- keuangan --}}
+	@if (Auth::user()->role == 20)
+	<div class="row">
+		<div class="col-xl-12">
+			<div class="card" style="border-radius: 10px;">
+				<div class="card-header header-elements-inline">
+					<h5 class="font-weight-semibold">Laporan Tahunan</h5>
+				</div>
+		
+				<div class="card-body">
+		
+					<ul class="nav nav-tabs nav-tabs-solid bg-primary border-0 nav-tabs-component rounded">
+						<li class="nav-item"><a href="#tab1" class="nav-link active" data-toggle="tab"><i class="icon-download mr-2"></i> Pemasukan</a></li>
+						<li class="nav-item"><a href="#tab2" class="nav-link" data-toggle="tab"><i class="icon-upload mr-2"></i> Pengeluaran</a></li>
+					</ul>
+					<div class="tab-content">
+						<div class="tab-pane chart-container fade active show" id="tab1">
+							<div class="chart has-fixed-height" id="area_pemasukan"></div>
+						</div>
+						<div class="tab-pane chart-container fade" id="tab2">
+							<div class="chart has-fixed-height" id="area_pengeluaran"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-xl-12">
+			<div class="card" style="border-radius: 10px">
+				<div class="card-header header-elements-inline">
+					<h5 class="font-weight-semibold">Chart Jenis Layanan Proyek Klien</h5>
+				</div>
+				<div class="card-body">
+					<div class="chart-container">
+						<div class="d-flex align-items-center mb-3 mb-sm-0">
+							<div class="chart has-fixed-height" id="pie_pemasukan"></div>
+							<div class="chart has-fixed-height" id="pie_pengeluaran"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	@endif
 {{-- <div class="card" style="border-radius: 10px">
 	<div class="row">
@@ -751,7 +796,7 @@
 	document.getElementById('greetings').innerHTML = greet;
 </script>
 
-@if (Auth::user()->role == 1)
+@if (in_array(Auth::user()->role, [1,20]))
 <script>
 	// pemasukan
 	var EchartsAreaBasicLight = function() {
@@ -1089,7 +1134,9 @@
 		EchartsAreaBasicLight2.init();
 	});
 </script>
+@endif
 
+@if (in_array(Auth::user()->role, [1]))
 <script>
 	// pie jenis proyek
 	var EchartsPieBasicLight = function() {
@@ -1641,6 +1688,286 @@
 
 	document.addEventListener('DOMContentLoaded', function() {
 		EchartsPieBasicLight4.init();
+	});
+</script>
+@endif
+
+@if (in_array(Auth::user()->role, [20]))
+<script>
+	// pie pemasukan
+	var EchartsPieBasicLight = function() {
+
+		var _scatterPieBasicLightExample = function() {
+			if (typeof echarts == 'undefined') {
+				console.warn('Warning - echarts.min.js is not loaded.');
+				return;
+			}
+
+			// Define element
+			var pie_pemasukan_element = document.getElementById('pie_pemasukan');
+
+			if (pie_pemasukan_element) {
+
+				// Initialize chart
+				var pie_pemasukan = echarts.init(pie_pemasukan_element);
+
+				// Options
+				pie_pemasukan.setOption({
+
+					// Colors
+					color: [
+						'#2ec7c9','#b6a2de','#5ab1ef','#ffb980','#d87a80',
+						'#8d98b3','#e5cf0d','#97b552','#95706d','#dc69aa',
+						'#07a2a4','#9a7fd1','#588dd5','#f5994e','#c05050',
+						'#59678c','#c9ab00','#7eb00a','#6f5553','#c14089'
+					],
+
+					// Global text styles
+					textStyle: {
+						fontFamily: 'Roboto, Arial, Verdana, sans-serif',
+						fontSize: 13
+					},
+
+					// Add title
+					title: {
+						text: 'Persentase Pemasukan',
+						subtext: 'per Tahun',
+						left: 'center',
+						textStyle: {
+							fontSize: 17,
+							fontWeight: 500
+						},
+						subtextStyle: {
+							fontSize: 12
+						}
+					},
+
+					// Add tooltip
+					tooltip: {
+						trigger: 'item',
+						backgroundColor: 'rgba(0,0,0,0.75)',
+						padding: [10, 15],
+						textStyle: {
+							fontSize: 13,
+							fontFamily: 'Roboto, sans-serif'
+						},
+						formatter: "{a} {b}: {c} ({d}%)"
+					},
+
+					// Add legend
+					legend: {
+						orient: 'horizontal',
+						top: 'bottom',
+						left: 'center',
+						data: [@foreach($pie as $key => $val)
+						'{{config("custom.j_pemasukan.".$key)}}',
+						@endforeach],
+						itemHeight: 8,
+						itemWidth: 8
+					},
+
+					// Add series
+					series: [{
+						name: 'Total Pemasukan',
+						type: 'pie',
+						radius: '50%',
+						center: ['50%', '50%'],
+						itemStyle: {
+							normal: {
+								borderWidth: 1,
+								borderColor: '#fff'
+							}
+						},
+						data: [
+							@foreach($pie as $key => $val)
+							@if($val>0)
+							{value: {{$val}}, name: '{{config("custom.j_pemasukan.".$key)}}' },
+							@endif
+							@endforeach
+						]
+					}]
+				});
+			}
+
+
+			//
+			// Resize charts
+			//
+
+			// Resize function
+			var triggerChartResize = function() {
+				pie_pemasukan_element && pie_pemasukan.resize();
+			};
+
+			// On sidebar width change
+			var sidebarToggle = document.querySelector('.sidebar-control');
+			sidebarToggle && sidebarToggle.addEventListener('click', triggerChartResize);
+
+			// On window resize
+			var resizeCharts;
+			window.addEventListener('resize', function() {
+				clearTimeout(resizeCharts);
+				resizeCharts = setTimeout(function () {
+					triggerChartResize();
+				}, 200);
+			});
+		};
+
+
+		//
+		// Return objects assigned to module
+		//
+
+		return {
+			init: function() {
+				_scatterPieBasicLightExample();
+			}
+		}
+	}();
+
+	// Initialize module
+	// ------------------------------
+
+	document.addEventListener('DOMContentLoaded', function() {
+		EchartsPieBasicLight.init();
+	});
+
+	// pie pengeluaran
+	var EchartsPieBasicLight2 = function() {
+
+		var _scatterPieBasicLightExample = function() {
+			if (typeof echarts == 'undefined') {
+				console.warn('Warning - echarts.min.js is not loaded.');
+				return;
+			}
+
+			// Define element
+			var pie_pengeluaran_element = document.getElementById('pie_pengeluaran');
+
+			if (pie_pengeluaran_element) {
+
+				// Initialize chart
+				var pie_pengeluaran = echarts.init(pie_pengeluaran_element);
+
+				// Options
+				pie_pengeluaran.setOption({
+
+					// Colors
+					color: [
+						'#2ec7c9','#b6a2de','#5ab1ef','#ffb980','#d87a80',
+						'#8d98b3','#e5cf0d','#97b552','#95706d','#dc69aa',
+						'#07a2a4','#9a7fd1','#588dd5','#f5994e','#c05050',
+						'#59678c','#c9ab00','#7eb00a','#6f5553','#c14089'
+					],
+
+					// Global text styles
+					textStyle: {
+						fontFamily: 'Roboto, Arial, Verdana, sans-serif',
+						fontSize: 13
+					},
+
+					// Add title
+					title: {
+						text: 'Persentase Pengeluaran',
+						subtext: 'per Tahun',
+						left: 'center',
+						textStyle: {
+							fontSize: 17,
+							fontWeight: 500
+						},
+						subtextStyle: {
+							fontSize: 12
+						}
+					},
+
+					// Add tooltip
+					tooltip: {
+						trigger: 'item',
+						backgroundColor: 'rgba(0,0,0,0.75)',
+						padding: [10, 15],
+						textStyle: {
+							fontSize: 13,
+							fontFamily: 'Roboto, sans-serif'
+						},
+						formatter: "{a} {b}: {c} ({d}%)"
+					},
+
+					// Add legend
+					legend: {
+						orient: 'horizontal',
+						top: 'bottom',
+						left: 'center',
+						data: [@foreach($pie2 as $key => $val)
+						'{{config("custom.kat_pengeluaran.".$key)}}',
+						@endforeach],
+						itemHeight: 8,
+						itemWidth: 8
+					},
+
+					// Add series
+					series: [{
+						name: 'Total Pengeluaran',
+						type: 'pie',
+						radius: '50%',
+						center: ['50%', '50%'],
+						itemStyle: {
+							normal: {
+								borderWidth: 1,
+								borderColor: '#fff'
+							}
+						},
+						data: [
+							@foreach($pie2 as $key => $val)
+							@if($val>0)
+							{value: {{$val}}, name: '{{config("custom.kat_pengeluaran.".$key)}}' },
+							@endif
+							@endforeach
+						]
+					}]
+				});
+			}
+
+
+			//
+			// Resize charts
+			//
+
+			// Resize function
+			var triggerChartResize = function() {
+				pie_pengeluaran_element && pie_pengeluaran.resize();
+			};
+
+			// On sidebar width change
+			var sidebarToggle = document.querySelector('.sidebar-control');
+			sidebarToggle && sidebarToggle.addEventListener('click', triggerChartResize);
+
+			// On window resize
+			var resizeCharts;
+			window.addEventListener('resize', function() {
+				clearTimeout(resizeCharts);
+				resizeCharts = setTimeout(function () {
+					triggerChartResize();
+				}, 200);
+			});
+		};
+
+
+		//
+		// Return objects assigned to module
+		//
+
+		return {
+			init: function() {
+				_scatterPieBasicLightExample();
+			}
+		}
+	}();
+
+	// Initialize module
+	// ------------------------------
+
+	document.addEventListener('DOMContentLoaded', function() {
+		EchartsPieBasicLight2.init();
 	});
 </script>
 @endif

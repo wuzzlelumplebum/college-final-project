@@ -67,6 +67,11 @@ Route::group(['middleware' => ['auth']], function() {
 	Route::get('/getrekaptagihan/{id}',  'RekapTagihanController@getRekapTagihan');
 	Route::get('/detailrekaptagihan/{id}',  'RekapTagihanController@detailRekapTagihan');
 	Route::get('/getradbox',  'RekapTagihanController@getRadBox');
+	Route::resource('laporankeuangan', 'LaporanKeuanganController');
+	Route::match(['get', 'post'], '/laporankeuangan',  'LaporanKeuanganController@index');
+	Route::get('cetaklaporan/{filter}/{filterbulan}',  'LaporanKeuanganController@cetaklaporan')->name('cetaklaporan');
+	Route::get('exportlaporan/{filter}/{filterbulan}',  'LaporanKeuanganController@exportlaporan')->name('exportlaporan');
+
 	//admin
 	Route::group(['middleware' => ['role:1']], function() {
 		Route::get('/admin',  'AdminController@index')->name('admin');
@@ -86,14 +91,15 @@ Route::group(['middleware' => ['auth']], function() {
 		Route::get('/keuangan',  'AdminController@keuangan')->name('keuangan');
 	});
 
-	//admin && karyawan
-	Route::group(['middleware' => ['role:1,10']], function() {
-		Route::resource('laporankeuangan', 'LaporanKeuanganController');
-		Route::match(['get', 'post'], '/laporankeuangan',  'LaporanKeuanganController@index')->name('filterKeuangan');
-        Route::get('cetaklaporan/{filter}/{filterbulan}',  'LaporanKeuanganController@cetaklaporan')->name('cetaklaporan');
-        Route::get('exportlaporan/{filter}/{filterbulan}',  'LaporanKeuanganController@exportlaporan')->name('exportlaporan');
-		// Route::post('/laporankeuangan',  'LaporanKeuanganController@index')->name('filterbulan');
-	});
+	//admin && keuangan
+	// Route::group(['middleware' => ['role:1,20']], function() {
+	// 	Route::resource('laporankeuangan', 'LaporanKeuanganController');
+	// 	Route::match(['get', 'post'], '/laporankeuangan',  'LaporanKeuanganController@index');
+    //     Route::get('cetaklaporan/{filter}/{filterbulan}',  'LaporanKeuanganController@cetaklaporan')->name('cetaklaporan');
+    //     Route::get('exportlaporan/{filter}/{filterbulan}',  'LaporanKeuanganController@exportlaporan')->name('exportlaporan');
+	// 	// Route::post('/laporankeuangan',  'LaporanKeuanganController@index')->name('filterbulan');
+	// });
+
 	Route::group(['middleware' => ['role:1,10,20']], function() {
 		Route::get('createtagihan/{id}',  'TagihanController@createtagihan')->name('createtagihan');
 		Route::resource('users', 'UserController');

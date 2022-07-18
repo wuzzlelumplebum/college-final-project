@@ -140,7 +140,7 @@ ul{
 					</a>
 				</li>
 
-				<li class="nav-item nav-item-submenu">
+				{{-- <li class="nav-item nav-item-submenu">
 					<a href="#" class="nav-link"><i class="icon-users4"></i>
 						<span>Users &nbsp;
 							@if($expired>0)
@@ -149,14 +149,6 @@ ul{
 						</span>
 					</a>
 					<ul class="nav nav-group-sub" data-submenu-title="JSON forms" style="display: {{ (request()->is('users*','member')) ? 'block' : 'none' }};">
-						{{-- <li class="nav-item">
-							<a href="{{ url('/users') }}" class="nav-link {{ (request()->is('users')) ? 'active' : '' }}">
-								<i class="icon-briefcase"></i>
-								<span>
-									Karyawan
-								</span>
-							</a>
-						</li> --}}
 						<li class="nav-item">
 							<a href="{{ url('/members') }}" class="nav-link {{ (request()->is('members')) ? 'active' : '' }}">
 								<i class="icon-user-tie"></i>
@@ -169,7 +161,7 @@ ul{
 							</a>
 						</li>
 					</ul>
-				</li>
+				</li> --}}
 
 				@else
 				<li class="nav-item">
@@ -195,42 +187,118 @@ ul{
 
 				@endif
 
-				@if (Auth::user()->role==1||Auth::user()->role==10||Auth::user()->role==20)
-
+				@if (Auth::user()->role == 20)
+				<li class="nav-item">
+					<li class="nav-item nav-item-submenu">
+						<a href="#" class="nav-link {{ (request()->is('tagihans*','rekapdptagihans*', 'rekaptagihans*', 'historydp', 'historytagihan')) ? 'active' : '' }}">
+							<i class="icon-paste"></i>
+							<span>
+								Tagihan & Rekap
+							</span>
+						</a>
+						<ul class="nav nav-group-sub" style="display: {{ (request()->is('tagihans*','rekapdptagihans*', 'rekaptagihans*', 'historydp', 'historytagihan')) ? 'block' : 'none' }};">
+							<li class="nav-item">
+								<a href="{{ url('/tagihans') }}" class="nav-link {{ (request()->is('tagihans*')) ? 'active' : '' }}">
+									<i class="icon-file-text"></i>
+									<span>
+										Tagihan Client
+										{{-- @if ($admunpaid)
+										<br><span class="badge badge-pill bg-warning-400 ml-auto ml-md-0">{{$admunpaid}} Tagihan belum terbayar lunas</span>
+										@endif --}}
+									</span>
+								</a>
+							</li>
+							<li class="nav-item nav-item-submenu">
+								<a href="#" class="nav-link {{ (request()->is('rekapdptagihans*', 'rekaptagihans*', 'historydp', 'historytagihan')) ? 'active' : '' }}">
+									<i class="icon-file-check"></i>
+									<span>
+										Rekap & History
+									</span>
+								</a>
+								<ul class="nav nav-group-sub" style="display: {{ (request()->is('rekapdptagihans*', 'rekaptagihans*', 'historydp', 'historytagihan')) ? 'block' : 'none' }};">
+									<li class="nav-item">
+										<a href="{{ url('/rekapdptagihans') }}" class="nav-link {{ (request()->is('rekapdptagihans*')) ? 'active' : '' }}">
+											<i class="icon-clipboard"></i>
+											<span>
+												Rekap Uang Muka
+											</span>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a href="{{ url('/historydp') }}" class="nav-link {{ (request()->is('historydp')) ? 'active' : '' }}">
+											<i class="icon-clipboard icon-clipboard2"></i>
+											<span>
+												History Uang Muka
+											</span>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a href="{{ url('/rekaptagihans') }}" class="nav-link {{ (request()->is('rekaptagihans*')) ? 'active' : '' }}">
+											<i class="icon-clipboard"></i>
+											<span>
+												Rekap Tagihan
+											</span>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a href="{{ url('/historytagihan') }}" class="nav-link {{ (request()->is('historytagihan')) ? 'active' : '' }}">
+											<i class="icon-clipboard icon-clipboard2"></i>
+											<span>
+												History Tagihan
+											</span>
+										</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</li>
 				<li class="nav-item nav-item-submenu">
-					<a href="#" class="nav-link {{ (request()->is('task*','history','antrian')) ? 'active' : 'none' }}"><i class="icon-stack-text"></i><span>Pengoperasian</span></a>
-					<ul class="nav nav-group-sub" data-submenu-title="JSON forms" style="display: {{ (request()->is('task*','history','antrian')) ? 'block' : 'none' }};">
+					<a href="#" class="nav-link {{ (request()->is('payments*','pemasukans*')) ? 'active' : '' }}"><i class="icon-coins"></i>
+						<span>Pemasukan
+						</span>
+					</a>
+					<ul class="nav nav-group-sub" data-submenu-title="JSON forms" style="display: {{ (request()->is('payments*','pemasukans*')) ? 'block' : 'none' }};">
 						<li class="nav-item">
-							<a href="{{ url('/tasks') }}" class="nav-link {{ (request()->is('tasks*')) ? 'active' : '' }}">
-								<i class="icon-stack-text"></i>
+							<a href="{{ url('/payments') }}" class="nav-link {{ (request()->is('payments*')) ? 'active' : '' }}">
+								<i class="icon-coin-dollar"></i>
 								<span>
-									Task
+									Pembayaran Tagihan
 								</span>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="{{ url('/history') }}" class="nav-link {{ (request()->is('history')) ? 'active' : '' }}">
-								<i class="icon-history"></i>
+							<a href="{{ url('/pemasukans') }}" class="nav-link {{ (request()->is('pemasukans*')) ? 'active' : '' }}">
+								<i class="icon-cash"></i>
 								<span>
-									History Task
+									Pembayaran Lain - Lain
 								</span>
 							</a>
 						</li>
-						{{-- <li class="nav-item">
-							<a href="{{ url('/antrian') }}" class="nav-link {{ (request()->is('antrian')) ? 'active' : '' }}">
-								<i class="icon-list-ordered"></i>
-								<span>
-									Antrian
-								</span>
-							</a>
-						</li> --}}
 					</ul>
 				</li>
+				<li class="nav-item">
+					<a href="{{ url('/pengeluarans') }}" class="nav-link {{ (request()->is('pengeluarans*')) ? 'active' : '' }}">
+						<i class="icon-rotate-cw"></i>
+						<span>
+							Pengeluaran
+						</span>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a href="{{ url('/laporankeuangan') }}" class="nav-link {{ (request()->is('laporankeuangan')) ? 'active' : '' }}">
+						<i class="icon-balance"></i>
+						<span>
+							Laporan Keuangan
+						</span>
+					</a>
+				</li>
+				@endif
 
+				@if (in_array(Auth::user()->role, [1]))
 				<li class="nav-item nav-item-submenu">
 					<a href="#" class="nav-link {{ (request()->is('tagihans*','rekaptagihans*','rekapdptagihans*','payments*','pemasukans*','pengeluarans*','laporankeuangan', 'historydp', 'historytagihan','setting*')) ? 'active' : 'none' }}"><i class="icon-coin-dollar"></i><span>Keuangan</span></a>
 					<ul class="nav nav-group-sub" data-submenu-title="JSON forms" style="display: {{ (request()->is('tagihans*','rekaptagihans*','rekapdptagihans*','payments*','pemasukans*','pengeluarans*','laporankeuangan', 'historydp', 'historytagihan', 'setting*')) ? 'block' : 'none' }};">
-					@if (Auth::user()->role==1||Auth::user()->role==10||Auth::user()->role==20)
 					<li class="nav-item">
 						<li class="nav-item nav-item-submenu">
 							<a href="#" class="nav-link {{ (request()->is('tagihans*','rekapdptagihans*', 'rekaptagihans*', 'historydp', 'historytagihan')) ? 'active' : '' }}">
@@ -296,10 +364,10 @@ ul{
 							</ul>
 						</li>
 					</li>
-					@endif
 					<li class="nav-item nav-item-submenu">
 						<a href="#" class="nav-link {{ (request()->is('payments*','pemasukans*')) ? 'active' : '' }}"><i class="icon-coins"></i>
-							<span>Pembayaran
+							<span>
+								Pemasukan
 							</span>
 						</a>
 						<ul class="nav nav-group-sub" data-submenu-title="JSON forms" style="display: {{ (request()->is('payments*','pemasukans*')) ? 'block' : 'none' }};">
@@ -321,7 +389,6 @@ ul{
 							</li>
 						</ul>
 					</li>
-					@if(Auth::user()->role==1||Auth::user()->role==20)
 					<li class="nav-item">
 					<a href="{{ url('/pengeluarans') }}" class="nav-link {{ (request()->is('pengeluarans*')) ? 'active' : '' }}">
 						<i class="icon-rotate-cw"></i>
@@ -338,6 +405,27 @@ ul{
 						</span>
 					</a>
 				</li>
+				{{-- <li class="nav-item nav-item-submenu">
+					<a href="#" class="nav-link {{ (request()->is('task*','history','antrian')) ? 'active' : 'none' }}"><i class="icon-stack-text"></i><span>Pengoperasian</span></a>
+					<ul class="nav nav-group-sub" data-submenu-title="JSON forms" style="display: {{ (request()->is('task*','history','antrian')) ? 'block' : 'none' }};">
+						<li class="nav-item">
+							<a href="{{ url('/tasks') }}" class="nav-link {{ (request()->is('tasks*')) ? 'active' : '' }}">
+								<i class="icon-stack-text"></i>
+								<span>
+									Task
+								</span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="{{ url('/history') }}" class="nav-link {{ (request()->is('history')) ? 'active' : '' }}">
+								<i class="icon-history"></i>
+								<span>
+									History Task
+								</span>
+							</a>
+						</li>
+					</ul>
+				</li> --}}
 				<li class="nav-item">
 					<a href="{{ url('/setting') }}" class="nav-link {{ (request()->is('setting*')) ? 'active' : '' }}">
 						<i class="icon-gear"></i>
@@ -348,7 +436,6 @@ ul{
 				</li>
 					</ul>
 				</li>
-				@endif
 				@endif
 
 				@if (Auth::user()->role!=1 && Auth::user()->role!=10 && Auth::user()->role!=20)
@@ -412,7 +499,7 @@ ul{
 				</li> --}}
 				@endif
 
-				@if(Auth::user()->role==20)
+				{{-- @if(Auth::user()->role==20)
 				<li class="nav-item">
 					<a href="{{ url('/setting') }}" class="nav-link {{ (request()->is('setting*')) ? 'active' : '' }}">
 						<i class="icon-gear"></i>
@@ -421,7 +508,7 @@ ul{
 						</span>
 					</a>
 				</li>
-				@endif
+				@endif --}}
 
 				<!-- ALL ROLE -->
 

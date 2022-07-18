@@ -58,7 +58,7 @@
             </div>		
 		</div>
 		<div class="card-body">
-			<form action="{{route('filterKeuangan')}}" method="post">
+			<form action="{{url('laporankeuangan')}}" method="post">
 				@csrf
 				<div class="form-group row">
                     <div class="col-lg-3">
