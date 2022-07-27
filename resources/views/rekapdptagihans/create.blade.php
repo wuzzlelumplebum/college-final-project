@@ -22,7 +22,7 @@
 
     <!-- Content area -->
     <div class="content">
-        <div class="card">
+        <div class="card" style="border-radius: 10px">
             <div class="card-body">
                 <form method="GET">
                     @csrf
@@ -39,8 +39,8 @@
                     </div>
                 </form>
                 <div class="text-right">
-                    <a id="btn_reset" href="{{ route('rekapdptagihans.create') }}" class="btn bg-slate text-uppercase">Reset  <i class="icon-rotate-ccw2 ml-2"></i></a>
-                    <a id="btn_submit" href="{{ route('rekapdptagihans.create').'?c='.app('request')->input('c')}}" data-uri="{{ route('rekapdptagihans.create') }}" class="btn btn-success text-uppercase">Submit  <i class="icon-paperplane ml-2"></i></a>
+                    <a id="btn_reset" href="{{ route('rekapdptagihans.create') }}" class="btn bg-slate text-uppercase" style="border-radius: 10px">Reset  <i class="icon-rotate-ccw2 ml-2"></i></a>
+                    <a id="btn_submit" href="{{ route('rekapdptagihans.create').'?c='.app('request')->input('c')}}" data-uri="{{ route('rekapdptagihans.create') }}" class="btn btn-success text-uppercase" style="border-radius: 10px">Submit  <i class="icon-paperplane ml-2"></i></a>
                 </div>
             </div>
         </div>

@@ -8,6 +8,10 @@
 		    position: absolute; 
 		  }
 		}
+		.btn{
+		border-radius: 6px;
+		background: #6EBA93;
+	}
 	</style>
 @endsection
 
@@ -28,7 +32,7 @@
 	<div class="content">
 
 		<!-- Zoom option -->
-		<div class="card">
+		<div class="card" style="border-radius: 10px">
 			<div class="card-header header-elements-inline">
 				<h5 class="card-title">Pembayaran Pertahun</h5>
 			</div>
@@ -50,7 +54,7 @@
 								</select>
 							</div>
 							<div class="col-lg-3">
-								<button type="submit" class="btn btn-outline-primary active btnstat" style="bottom:0;">Pilih</button>
+								<button type="submit" class="btn btn-success rounded-rectangle" style="top:28px">Pilih</button>
 							</div>
 						</div>
 					</form>
@@ -66,7 +70,7 @@
 			<div class="col-xl-6">
 
 				<!-- Basic pie -->
-				<div class="card">
+				<div class="card" style="border-radius: 10px">
 					<div class="card-header header-elements-inline">
 						<h5 class="card-title">Pembayaran per layanan</h5>
 					</div>
@@ -84,7 +88,7 @@
 			<div class="col-xl-6">
 
 				<!-- Basic Table -->
-				<div class="card">
+				<div class="card" style="border-radius: 10px">
 					<div class="card-header header-elements-inline">
 						<h5 class="card-title">Pembayaran Terakhir</h5>
 					</div>
@@ -93,7 +97,7 @@
 						<div class="chart-container">
 							<table class="table datatable-basic table-hover">
 								<thead>
-									<tr>
+									<tr style="background:#F0FFF0">
 										<th>No</th>
 										<th>Pelanggan</th>
 										<th>Tanggal</th>
@@ -132,7 +136,7 @@
 			<div class="col-xl-6">
 
 				<!-- Basic pie -->
-				<div class="card">
+				<div class="card" style="border-radius: 10px">
 					<div class="card-header header-elements-inline">
 						<h5 class="card-title">Total Pembayaran per Perlanggan</h5>
 					</div>
@@ -141,7 +145,7 @@
 						<div class="chart-container">
 							<table class="table datatable-basic table-hover">
 								<thead>
-									<tr>
+									<tr style="background:#F0FFF0">
 										<th>No</th>
 										<th>Pelanggan</th>
 										<th>Jumlah</th>

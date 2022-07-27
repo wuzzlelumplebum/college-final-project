@@ -17,7 +17,7 @@
 	<div class="content">
 
 		<!-- Hover rows -->
-		<div class="card">
+		<div class="card" style="border-radius: 10px">
 			<div class="card-header header-elements-inline">
 			</div>
 			<div class="card-body">
@@ -29,13 +29,13 @@
 						<div class="form-group row">
 							<label class="col-form-label col-lg-2">Nama</label>
 							<div class="col-lg-10">
-								<input type="text" name="name" class="form-control border-teal border-1" placeholder="Nama">
+								<input style="border-radius: 10px" type="text" name="name" class="form-control border-teal border-1" placeholder="Nama">
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-form-label col-lg-2">Email</label>
 							<div class="col-lg-10">
-								<input type="text" name="email" class="form-control border-teal border-1" placeholder="Email">
+								<input style="border-radius: 10px" type="text" name="email" class="form-control border-teal border-1" placeholder="Email">
 								@error('email')
 									<div style="margin-top:1rem;" class="alert alert-danger">{{ $message }}</div>
 								@enderror
@@ -44,20 +44,20 @@
 						<div class="form-group row">
 							<label class="col-form-label col-lg-2">Telp</label>
 							<div class="col-lg-10">
-								<input type="text" name="phone" class="form-control border-teal border-1" placeholder="Telp/WA">
+								<input style="border-radius: 10px" type="text" name="phone" class="form-control border-teal border-1" placeholder="Telp/WA">
 								<span class="form-text text-muted">Contoh : 628123456678 (gunakan kode negara tanpa tanda + dan spasi)</span>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-form-label col-lg-2">Alamat</label>
 							<div class="col-lg-10">
-								<input type="text" name="address" class="form-control border-teal border-1" placeholder="Alamat">
+								<input style="border-radius: 10px" type="text" name="address" class="form-control border-teal border-1" placeholder="Alamat">
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-form-label col-lg-2">Username</label>
 							<div class="col-lg-10">
-								<input type="text" name="username" class="form-control border-teal border-1" placeholder="Username">
+								<input style="border-radius: 10px" type="text" name="username" class="form-control border-teal border-1" placeholder="Username">
 								@error('username')
 								<div style="margin-top:1rem;" class="alert alert-danger">{{ $message }}</div>
 								@enderror
@@ -66,13 +66,13 @@
 						<div class="form-group row">
 							<label class="col-form-label col-lg-2">Password</label>
 							<div class="col-lg-10">
-								<input type="password" name="password" class="form-control border-teal border-1" placeholder="Password">
+								<input style="border-radius: 10px" type="password" name="password" class="form-control border-teal border-1" placeholder="Password">
 							</div>
                         </div>
 						{{-- <div class="form-group row">
 							<label class="col-form-label col-lg-2">Role</label>
 							<div class="col-lg-10">
-								<select name="role" class="form-control bg-teal-400 border-teal-400">
+								<select style="border-radius: 10px" name="role" class="form-control bg-teal-400 border-teal-400">
 									<option value="80">Premium</option>
 									<option value="90">Prioritas</option>
 									<option value="95">Klien</option>
@@ -82,8 +82,8 @@
 						</div> --}}
 					</fieldset>
 					<div class="text-right">
-                        <a href="{{ url('/members') }}" class="btn bg-slate"><i class="icon-undo2 mr-2"></i>Kembali</a>
-						<button type="submit" class="btn btn-primary">Simpan <i class="icon-paperplane ml-2"></i></button>
+                        <a href="{{ url('/members') }}" class="btn bg-slate" style="border-radius: 10px"><i class="icon-undo2 mr-2"></i>Kembali</a>
+						<button type="submit" class="btn btn-primary" style="border-radius: 10px">Simpan <i class="icon-paperplane ml-2"></i></button>
 					</div>
 				</form>
 			</div>

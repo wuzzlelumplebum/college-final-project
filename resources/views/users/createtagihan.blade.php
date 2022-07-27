@@ -17,7 +17,7 @@
 <div class="content">
     
     <!-- Hover rows -->
-    <div class="card">
+    <div class="card" style="border-radius: 10px">
         <div class="card-header header-elements-inline">
         </div>
         <div class="card-body">
@@ -28,22 +28,22 @@
                     <div class="form-group row">
                         <label class="col-form-label col-lg-2 font-weight-bold">Nomor Invoice</label>
                         <div class="col-lg-1">
-                            <input type="text" id="noinv" name="noinv" class="form-control border-info border-1" value="INV" readonly>
+                            <input type="text" id="noinv" name="noinv" class="form-control border-info border-1" style="border-radius: 10px" value="INV" readonly>
                         </div>
                         <div class="col-lg-2">
                             @if ($lastno)
                             @if (isset($lastno->ninv))
-                            <input type="text" id="ninv" name="ninv" class="form-control border-info border-1" value="{{$lastno->ninv+1}}" required>
+                            <input type="text" id="ninv" name="ninv" class="form-control border-info border-1" style="border-radius: 10px" value="{{$lastno->ninv+1}}" required>
                             @endif
                             @else
                             <input type="text" id="ninv" name="ninv" class="form-control border-info border-1" value="1" required>
                             @endif
                         </div>
                         <div class="col-lg-2">
-                            <input type="text" id="noakhir" name="noakhir" class="form-control border-info border-1" value="{{date('Ymd')}}" readonly>
+                            <input type="text" id="noakhir" name="noakhir" class="form-control border-info border-1" style="border-radius: 10px" value="{{date('Ymd')}}" readonly>
                         </div>
                         <div class="col-lg-2">
-                            <input type="text" id="nouser" name="nouser" class="form-control border-info border-1" value="{{\Auth::user()->id}}" readonly>
+                            <input type="text" id="nouser" name="nouser" class="form-control border-info border-1" style="border-radius: 10px" value="{{\Auth::user()->id}}" readonly>
                         </div>
                     </div>
                     
@@ -59,7 +59,7 @@
                     <div class="form-group row">
                         <label class="col-form-label col-lg-2">Nama</label>
                         <div class="col-lg-10">
-                            <input type="text" id="nama" name="nama" class="form-control border-teal border-1" value="{{old('nama')?old('nama'):$fuser->nama}}">
+                            <input style="border-radius: 10px" type="text" id="nama" name="nama" class="form-control border-teal border-1" value="{{old('nama')?old('nama'):$fuser->nama}}">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -79,19 +79,19 @@
                     <div class="form-group row">
                         <label class="col-form-label col-lg-2">Langganan</label>
                         <div class="col-lg-10">
-                            <input type="number" min="0" name="langganan" class="form-control border-teal border-1" placeholder="Nominal" value="{{old('langganan')}}">
+                            <input style="border-radius: 10px" type="number" min="0" name="langganan" class="form-control border-teal border-1" placeholder="Nominal" value="{{old('langganan')}}">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-form-label col-lg-2">Ads</label>
                         <div class="col-lg-10">
-                            <input type="number" min="0" name="ads" class="form-control border-teal border-1" placeholder="Nominal" value="{{old('nominal')}}">
+                            <input style="border-radius: 10px" type="number" min="0" name="ads" class="form-control border-teal border-1" placeholder="Nominal" value="{{old('nominal')}}">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-form-label col-lg-2">Lainnya</label>
                         <div class="col-lg-10">
-                            <input type="number" min="0" name="lainnya" class="form-control border-teal border-1" placeholder="Nominal" value="{{old('lainnya')}}">
+                            <input style="border-radius: 10px" type="number" min="0" name="lainnya" class="form-control border-teal border-1" placeholder="Nominal" value="{{old('lainnya')}}">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -113,31 +113,31 @@
                     <div class="form-group row">
                         <label class="col-form-label col-lg-2">Nama Proyek</label>
                         <div class="col-lg-10">
-                            <input type="text" id="nama_proyek" name="nama_proyek" class="form-control border-teal border-1" placeholder="Nama Proyek" value="{{old('nama_proyek')?old('nama_proyek'):$fuser->website}}">
+                            <input style="border-radius: 10px" type="text" id="nama_proyek" name="nama_proyek" class="form-control border-teal border-1" placeholder="Nama Proyek" value="{{old('nama_proyek')?old('nama_proyek'):$fuser->website}}">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-form-label col-lg-2">Nama Penagih</label>
                         <div class="col-lg-10">
-                            <input type="text" id="penagih" name="penagih" class="form-control border-teal border-1" placeholder="Nama Penagih" value="{{$penagih->penagih}}">
+                            <input style="border-radius: 10px" type="text" id="penagih" name="penagih" class="form-control border-teal border-1" placeholder="Nama Penagih" value="{{$penagih->penagih}}">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-form-label col-lg-2">Posisi Penagih</label>
                         <div class="col-lg-10">
-                            <input type="text" id="pospenagih" name="pospenagih" class="form-control border-teal border-1" placeholder="Nama Penagih" value="{{$penagih->pospenagih}}">
+                            <input style="border-radius: 10px" type="text" id="pospenagih" name="pospenagih" class="form-control border-teal border-1" placeholder="Nama Penagih" value="{{$penagih->pospenagih}}">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-form-label col-lg-2">Keterangan</label>
                         <div class="col-lg-10">
 							<span class="form-text text-muted">Contoh: Pembayaran berlangganan proyek website klien Noer Prajitno</span>
-                            <textarea name="keterangan" id="" cols="30" rows="10" class="summernote form-control border-teal border-1">{{ old('keterangan') }}</textarea>
+                            <textarea style="border-radius: 10px" name="keterangan" id="" cols="30" rows="10" class="summernote form-control border-teal border-1">{{ old('keterangan') }}</textarea>
                         </div>
                     </div>
                 </fieldset>
                 <div class="text-right">
-                    <button type="submit" class="btn btn-primary">Simpan <i class="icon-paperplane ml-2"></i></button>
+                    <button style="border-radius: 10px" type="submit" class="btn btn-primary">Simpan <i class="icon-paperplane ml-2"></i></button>
                 </div>
             </form>
         </div>

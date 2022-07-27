@@ -25,18 +25,18 @@
 <div class="content">
 
 	<!-- Hover rows -->
-	<div class="card">
+	<div class="card" style="border-radius: 10px">
 		<div class="card-header header-elements-inline">
-			<a href="{{ route('payments.create')}}"><button type="button" class="btn btn-success rounded-round"><i class="icon-help mr-2"></i> Tambah</button></a>
+			<a href="{{ route('payments.create')}}"><button type="button" class="btn btn-success rounded-round" style="background: #6EBA93"><i class="fa fa-plus" style="font-size:12px"></i>&nbsp Tambah</button></a>
 			@if (Auth::user()->role==1)
-			<a href={{ url('export_excel')}} target="_blank"><button class="btn btn-success rounded-round"><i class="icon-file-excel mr-2"></i> Export Excel</button></a>
+			<a href={{ url('export_excel')}} target="_blank"><button class="btn btn-success rounded-round" style="background: #6EBA93"><i class="icon-file-excel mr-2"></i> Export Excel</button></a>
 			@endif
 
 		</div>
 
 		<table class="table datatable-basic table-hover">
 			<thead>
-				<tr>
+				<tr style="background:#F0FFF0">
 					<th style="width: 50px">No</th>
 					<th>Nama</th>
 					<th style="width: 200px">No. Receipt</th>

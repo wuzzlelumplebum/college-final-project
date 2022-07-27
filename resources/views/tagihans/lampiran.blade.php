@@ -24,7 +24,7 @@
     <!-- Content area -->
     <div class="content">
 
-        <div class="card">
+        <div class="card" style="border-radius: 10px">
             <div class="card-head">
                 <div class="card-header">
                     <h3>Upload Lampiran</h3>
@@ -36,19 +36,19 @@
                     <div class="form-group row">
                         <label class="col-form-label col-lg-2">Gambar</label>
                         <div class="col-lg-10">
-                            <input id="gambar" name="gambar" type="file" class="form-control" required>
+                            <input style="border-radius: 10px" id="gambar" name="gambar" type="file" class="form-control" required>
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label class="col-form-label col-lg-2">Keterangan</label>
                         <div class="col-lg-10">
-                            <input id="keterangan" name="keterangan" type="text" class="form-control" required>
+                            <input style="border-radius: 10px" id="keterangan" name="keterangan" type="text" class="form-control" required>
                         </div>
                     </div>
         
                     <div class="text-right">
-                        <button class="btn bg-success-400" type="submit">Submit</button>
+                        <button class="btn bg-success-400" type="submit" style="border-radius: 10px; background: #6EBA93">Submit</button>
                     </div>
                 </div>
                 
@@ -56,12 +56,12 @@
         </div>
         
         <!-- Hover rows -->
-        <div class="card">
+        <div class="card" style="border-radius: 10px">
             
             
             <table class="table datatable-basic table-hover">
                 <thead>
-                    <tr>
+                    <tr style="background:#F0FFF0">
                         <th>No</th>
                         <th class="text-center">Gambar</th>
                         <th class="text-center">Keterangan</th>

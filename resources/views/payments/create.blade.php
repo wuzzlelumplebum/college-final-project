@@ -17,7 +17,7 @@
 <div class="content">
 
 	<!-- Hover rows -->
-	<div class="card">
+	<div class="card" style="border-radius: 10px">
 		<div class="card-header header-elements-inline">
 		</div>
 		<div class="card-body">
@@ -30,7 +30,7 @@
 					<div class="form-group row">
 						<label class="col-form-label col-lg-2">User</label>
 						<div class="col-lg-10">
-							<select id="user_id" name="user_id" class="form-control select-search" data-fouc {{-- onchange="changeDate(this)" --}} required>
+							<select style="border-radius: 10px" id="user_id" name="user_id" class="form-control select-search" data-fouc {{-- onchange="changeDate(this)" --}} required>
 								<option value="">-- Pilih Pelanggan --</option>
 								@foreach($users as $user)
 								<option data-name="{{$user->nama}}" data-kadaluarsa="{{$user->kadaluarsa}}" data-role="{{$user->role}}" value="{{$user->id}}">{{$user->nama}}</option>
@@ -43,7 +43,7 @@
 					{{-- <div class="form-group row">
 						<label class="col-form-label col-lg-2">Nama</label>
 						<div class="col-lg-10">
-							<input id="nama" name="nama" type="text" class="form-control" placeholder="Nama User" required>
+							<input style="border-radius: 10px" id="nama" name="nama" type="text" class="form-control" placeholder="Nama User" required>
 						</div>
 					</div> --}}
 					@else
@@ -57,7 +57,7 @@
 					{{-- <div class="form-group row">
 						<label class="col-form-label col-lg-2">Nama</label>
 						<div class="col-lg-10">
-							<input id="nama" name="nama" type="text" class="form-control" placeholder="Nama User" required value="{{\Auth::user()->nama}}">
+							<input style="border-radius: 10px" id="nama" name="nama" type="text" class="form-control" placeholder="Nama User" required value="{{\Auth::user()->nama}}">
 						</div>
 					</div> --}}
 					@endif
@@ -80,7 +80,7 @@
 					<div class="form-group row">
 						<label class="col-form-label col-lg-2">Tagihan</label>
 						<div class="col-lg-10">
-							<select name="tagihan_id" id="tagihan_id" class="form-control select-search" data-fouc onchange="changeTagihan(this)" required>
+							<select style="border-radius: 10px" name="tagihan_id" id="tagihan_id" class="form-control select-search" data-fouc onchange="changeTagihan(this)" required>
 								<option value="">-- Pilih Tagihan --</option>
 							</select>
 						</div>
@@ -106,7 +106,7 @@
 					<div class="form-group row">
 						<label class="col-form-label col-lg-2">Total Tertagih</label>
 						<div class="col-lg-10">
-							<input type="text" id="total" class="form-control border-teal border-1 numeric" placeholder="Total tagihan user, contoh: 2.000.000" readonly>
+							<input style="border-radius: 10px" type="text" id="total" class="form-control border-teal border-1 numeric" placeholder="Total tagihan user, contoh: 2.000.000" readonly>
 							<input type="hidden" id="nomtotal" class="form-control border-teal border-1">
 							<span class="form-text text-muted">Total tagihan yang dimiliki user</span>
 						</div>
@@ -114,7 +114,7 @@
 					<div class="form-group row">
 						<label class="col-form-label col-lg-2">Total Terbayar</label>
 						<div class="col-lg-10">
-							<input type="text" id="bayar" class="form-control border-teal border-1 numeric" placeholder="Total pembayaran user, contoh: 2.000.000" readonly>
+							<input style="border-radius: 10px" type="text" id="bayar" class="form-control border-teal border-1 numeric" placeholder="Total pembayaran user, contoh: 2.000.000" readonly>
 							<input type="hidden" id="nombayar" class="form-control border-teal border-1">
 							<span class="form-text text-muted">Total pembayaran yang dilakukan user</span>
 						</div>
@@ -122,7 +122,7 @@
 					<div class="form-group row">
 						<label class="col-form-label col-lg-2">Sisa Tagihan</label>
 						<div class="col-lg-10">
-							<input type="text" id="sisa" class="form-control border-teal border-1 numeric" placeholder="Sisa tagihan user, contoh: 2.000.000" readonly>
+							<input style="border-radius: 10px" type="text" id="sisa" class="form-control border-teal border-1 numeric" placeholder="Sisa tagihan user, contoh: 2.000.000" readonly>
 							<input type="hidden" id="nomsisa" class="form-control border-teal border-1">
 							<span class="form-text text-muted">Sisa tagihan yang dimiliki user</span>
 						</div>
@@ -130,14 +130,14 @@
 					<div class="form-group row">
 						<label class="col-form-label col-lg-2">Total Bayar</label>
 						<div class="col-lg-8">
-							<input type="text" id="tertulis" name="tertulis" class="form-control border-teal border-1 numeric" placeholder="Contoh: 2.000.000" required>
+							<input style="border-radius: 10px" type="text" id="tertulis" name="tertulis" class="form-control border-teal border-1 numeric" placeholder="Contoh: 2.000.000" required>
 							<input type="hidden" id="nominal" name="nominal" class="form-control border-teal border-1">
 						</div>
 						<div class="col-lg-2">
 							{{-- <a href="" id="lunas" class="btn btn-success">Pelunasan<i class="icon-checkmark4 ml-2"></i></a> --}}
 							<div class="form-check">
 								<label class="form-check-label">
-									<input type="checkbox" class="form-check-input-styled pelunasan" data-fouc>
+									<input style="border-radius: 10px" type="checkbox" class="form-check-input-styled pelunasan" data-fouc>
 									Pelunasan
 								</label>
 							</div>
@@ -146,7 +146,7 @@
 					<div class="form-group row">
 						<label class="col-form-label col-lg-2">Tanggal Pembayaran</label>
 						<div class="col-lg-10">
-							<input name="tanggal" type="text" class="form-control pickadate-accessibility" placeholder="Contoh: 2022-04-16" value="{{  date('Y-m-d') }}" required>
+							<input style="border-radius: 10px" name="tanggal" type="text" class="form-control pickadate-accessibility" placeholder="Contoh: 2022-04-16" value="{{  date('Y-m-d') }}" required>
 							<span class="form-text text-muted">Ubah tanggal jika pembayaran tidak dilakukan HARI INI</span>
 						</div>
 					</div>
@@ -213,8 +213,8 @@
 					</div>
 				</fieldset>
 				<div class="text-right">
-                    <a href="{{ url('/payments') }}" class="btn bg-slate"><i class="icon-undo2 mr-2"></i>Kembali</a>
-					<button type="submit" class="btn btn-primary">Simpan <i class="icon-paperplane ml-2"></i></button>
+                    <a href="{{ url('/payments') }}" class="btn bg-slate" style="border-radius: 10px"><i class="icon-undo2 mr-2"></i>Kembali</a>
+					<button type="submit" class="btn btn-primary" style="border-radius: 10px">Simpan <i class="icon-paperplane ml-2"></i></button>
 				</div>
 			</form>
 		</div>

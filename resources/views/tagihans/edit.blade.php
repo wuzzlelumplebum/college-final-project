@@ -17,7 +17,7 @@
 <div class="content">
 
 	<!-- Hover rows -->
-	<div class="card">
+	<div class="card" style="border-radius: 10px">
 		<div class="card-header header-elements-inline">
 		</div>
 		<div class="card-body">
@@ -46,11 +46,11 @@
 						<label class="col-form-label col-lg-2">Proyek</label>
 						<div class="col-lg-10">
                             @if ($tagihan->nama_proyek == null)
-                                <select id="select_proyek" name="select_proyek" class="form-control select-search">
+                                <select style="border-radius: 10px" id="select_proyek" name="select_proyek" class="form-control select-search">
                                     <option value="">-- Pilih Proyek --</option>
                                 </select>
                             @else
-                                <select name="select_proyek" class="form-control select-search" required disabled>
+                                <select style="border-radius: 10px" name="select_proyek" class="form-control select-search" required disabled>
                                     <option value="">{{ $tagihan->nama_proyek }}</option>
                                 </select>
                             @endif
@@ -72,9 +72,9 @@
                         <label class="col-form-label col-lg-2">Masa Berlaku</label>
                         <div class="col-lg-10">
                         @if ($tagihan->id_proyek == null)
-                            <input id="masa_berlaku" name="masa_berlaku" type="text" class="form-control"  readonly value="{{old('masa_berlaku')}}" placeholder="Tanggal Masa Berlaku">
+                            <input style="border-radius: 10px" id="masa_berlaku" name="masa_berlaku" type="text" class="form-control"  readonly value="{{old('masa_berlaku')}}" placeholder="Tanggal Masa Berlaku">
                         @else
-                            <input type="text" name="masa_berlaku" class="form-control" placeholder="Tanggal Masa Berlaku" value="{{ $tagihan->masa_berlaku }}">
+                            <input style="border-radius: 10px" type="text" name="masa_berlaku" class="form-control" placeholder="Tanggal Masa Berlaku" value="{{ $tagihan->masa_berlaku }}">
                         @endif
                         </div>
                     </div>
@@ -85,7 +85,7 @@
                         <div id="new-masa" class="form-group row">
                             <label class="col-form-label col-lg-2">Update Masa Berlaku</label>
                             <div class="col-lg-10">
-                                <input id="new_mb" name="new_mb" type="text" class="form-control border-teal border-1 pickadate-accessibility" placeholder="Ubah jika ingin perpanjang masa berlaku">
+                                <input style="border-radius: 10px" id="new_mb" name="new_mb" type="text" class="form-control border-teal border-1 pickadate-accessibility" placeholder="Ubah jika ingin perpanjang masa berlaku">
                             </div>
                         </div>
                     @endif
@@ -94,26 +94,26 @@
 						<label class="col-form-label col-lg-2">Nominal</label>
 						<div class="col-lg-10">
 							<input id="datanominal" type="hidden" name="nominal" value="{{$tagihan->nominal}}" class="form-control border-teal border-1">
-							<input id="nilainominal" type="text" class="form-control border-teal border-1" placeholder="Nominal" onkeyup="ribuan()" value="{{number_format($tagihan->nominal)}}">
+							<input style="border-radius: 10px" id="nilainominal" type="text" class="form-control border-teal border-1" placeholder="Nominal" onkeyup="ribuan()" value="{{number_format($tagihan->nominal)}}">
 						</div>
 					</div>
 					<div class="form-group row">
 						<label class="col-form-label col-lg-2">Uang Muka</label>
 						<div class="col-lg-10">
 							<input id="datauang_muka" type="hidden" name="uang_muka" value="{{$tagihan->uang_muka}}" class="form-control border-teal border-1">
-							<input id="nilaiuang_muka" type="text" class="form-control border-teal border-1" placeholder="Uang Muka" onkeyup="ribuan()" value="{{number_format($tagihan->uang_muka)}}">
+							<input style="border-radius: 10px" id="nilaiuang_muka" type="text" class="form-control border-teal border-1" placeholder="Uang Muka" onkeyup="ribuan()" value="{{number_format($tagihan->uang_muka)}}">
 						</div>
 					</div>
                     <div class="form-group row">
 						<label class="col-form-label col-lg-2">Keterangan</label>
 						<div class="col-lg-10">
-							<textarea name="keterangan" id="" cols="30" rows="10" class="summernote form-control border-teal border-1">{{ $tagihan->keterangan }}</textarea>
+							<textarea style="border-radius: 10px" name="keterangan" id="" cols="30" rows="10" class="summernote form-control border-teal border-1">{{ $tagihan->keterangan }}</textarea>
 						</div>
 					</div>
 				</fieldset>
 				<div class="text-right">
-                    <a href="{{ url('/tagihans') }}" class="btn bg-slate"><i class="icon-undo2 mr-2"></i>Kembali</a>
-					<button type="submit" class="btn btn-primary">Simpan <i class="icon-paperplane ml-2"></i></button>
+                    <a href="{{ url('/tagihans') }}" class="btn bg-slate" style="border-radius: 10px"><i class="icon-undo2 mr-2"></i>Kembali</a>
+					<button type="submit" class="btn btn-primary" style="border-radius: 10px">Simpan <i class="icon-paperplane ml-2"></i></button>
 				</div>
 			</form>
 		</div>

@@ -8,7 +8,7 @@
 <div class="page-header page-header-light">
 	<div class="page-header-content header-elements-md-inline">
 		<div class="page-title d-flex">
-			<h4>Setting</h4>
+			<h4><span class="font-weight-semibold">Home</span> - Setting Print</h4>
 			<a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
 		</div>
 	</div>
@@ -19,7 +19,7 @@
 <div class="content">
 	
 	<!-- Hover rows -->
-	<div class="card">
+	<div class="card" style="border-radius: 10px">
 		<div class="card-header header-elements-inline">
 		</div>
 		<div class="card-body">
@@ -32,14 +32,14 @@
 						<label class="col-form-label col-lg-2">Logo</label>
 						<div class="col-lg-8">
 							<img class="card-img img-fluid" src="{{url($setting ? $setting->logo : "global_assets/images/image.png")}}" alt="" style="height:150px;width:150px;object-fit: contain;">
-							<input id="logo" name="logo" type="file" class="form-control border-teal border-1">
+							<input style="border-radius: 10px" id="logo" name="logo" type="file" class="form-control border-teal border-1">
 						</div>
 					</div>
 					<div class="form-group row">
 						<label class="col-form-label col-lg-2">Alamat</label>
 						
 						<div class="col-lg-8">
-							<textarea class="form-control click2edit border-teal border-1 p-2 mb-2 summernote" name="alamat" id="alamat" cols="30" rows="5" readonly>
+							<textarea style="border-radius: 10px" class="form-control click2edit border-teal border-1 p-2 mb-2 summernote" name="alamat" id="alamat" cols="30" rows="5" readonly>
 								{{$setting ? $setting->alamat : ""}}
 							</textarea>
 						</div>
@@ -47,7 +47,7 @@
 					<div class="form-group row">
 						<label class="col-form-label col-lg-2">Nomor Telpon</label>
 						<div class="col-lg-8">
-							<input type="text" id="no_telp" name="no_telp" class="form-control border-teal border-1" required
+							<input style="border-radius: 10px" type="text" id="no_telp" name="no_telp" class="form-control border-teal border-1" required
 							value="{{$setting ? $setting->no_telp : ""}}">
 							<label class="col-form-label">Gunakan format kode negara 62. Contoh: 6281335625529</label>
 						</div>
@@ -58,19 +58,19 @@
 					<div class="form-group row">
 						<label class="col-form-label col-lg-2">Penerima</label>
 						<div class="col-lg-8">
-							<input type="text" id="penerima" name="penerima" class="form-control border-teal border-1" required value="{{$setting ? $setting->penerima : ""}}">
+							<input style="border-radius: 10px" type="text" id="penerima" name="penerima" class="form-control border-teal border-1" required value="{{$setting ? $setting->penerima : ""}}">
 						</div>
 					</div>
 					<div class="form-group row">
 						<label class="col-form-label col-lg-2">Ttd Penerima</label>
 						<div class="col-lg-8">
-							<input type="text" class="form-control border-teal border-1" name="ttd_penerima" id="ttd_penerima" required value="{{$setting ? $setting->ttd_penerima : ""}}">
+							<input style="border-radius: 10px" type="text" class="form-control border-teal border-1" name="ttd_penerima" id="ttd_penerima" required value="{{$setting ? $setting->ttd_penerima : ""}}">
 						</div>
 					</div>
 					<div class="form-group row">
 						<label class="col-form-label col-lg-2">Jabatan Ttd Penerima</label>
 						<div class="col-lg-8">
-							<input type="text" class="form-control border-teal border-1" name="ttd_pospenerima" id="ttd_pospenerima" required value="{{$setting ? $setting->ttd_pospenerima : ""}}">
+							<input style="border-radius: 10px" type="text" class="form-control border-teal border-1" name="ttd_pospenerima" id="ttd_pospenerima" required value="{{$setting ? $setting->ttd_pospenerima : ""}}">
 						</div>
 					</div>
 					<br>
@@ -81,13 +81,13 @@
 					<div class="form-group row">
 						<label class="col-form-label col-lg-2">Penagih</label>
 						<div class="col-lg-8">
-							<input type="text" class="form-control border-teal border-1" name="penagih" id="penagih" required value="{{$setting ? $setting->penagih : ""}}">
+							<input style="border-radius: 10px" type="text" class="form-control border-teal border-1" name="penagih" id="penagih" required value="{{$setting ? $setting->penagih : ""}}">
 						</div>
 					</div>
 					<div class="form-group row">
 						<label class="col-form-label col-lg-2">Posisi Penagih</label>
 						<div class="col-lg-8">
-							<input type="text" class="form-control border-teal border-1" name="pospenagih" id="pospenagih" required value="{{$setting ? $setting->pospenagih : ""}}">
+							<input style="border-radius: 10px" type="text" class="form-control border-teal border-1" name="pospenagih" id="pospenagih" required value="{{$setting ? $setting->pospenagih : ""}}">
 						</div>
 					</div>
 					<div class="form-group row">
@@ -101,7 +101,7 @@
 					
 				</fieldset>
 				<div class="text-right">
-					<button type="submit" class="btn btn-success">Simpan<i
+					<button type="submit" class="btn btn-success" style="background: #6EBA93; border-radius: 10px">Simpan<i
 						class="icon-paperplane ml-2"></i></button>
 					</div>
 				</form>

@@ -17,7 +17,7 @@
 <div class="content">
     
     <!-- Hover rows -->
-    <div class="card">
+    <div class="card" style="border-radius: 10px">
         <div class="card-header header-elements-inline">
 		</div>
         <div class="card-body">
@@ -29,27 +29,27 @@
                     <div class="form-group row">
 						<label class="col-form-label col-lg-2">Tanggal Pembayaran</label>
 						<div class="col-lg-10">
-							<input name="tanggal" type="text" class="form-control pickadate-accessibility" placeholder="Contoh: 2022-04-16" value="{{  date('Y-m-d') }}" required>
+							<input style="border-radius: 10px" name="tanggal" type="text" class="form-control pickadate-accessibility" placeholder="Contoh: 2022-04-16" value="{{  date('Y-m-d') }}" required>
 							<span class="form-text text-muted">Ubah tanggal jika pembayaran tidak dilakukan HARI INI</span>
 						</div>
 					</div>
                     <div class="form-group row">
 						<label class="col-form-label col-lg-2">Nominal</label>
 						<div class="col-lg-10">
-							<input type="text" id="tertulis" name="tertulis" onkeyup="ribuan()" class="form-control border-teal border-1 numeric" placeholder="Contoh: 2.000.000" required>
+							<input style="border-radius: 10px" type="text" id="tertulis" name="tertulis" onkeyup="ribuan()" class="form-control border-teal border-1 numeric" placeholder="Contoh: 2.000.000" required>
 							<input type="hidden" id="nominal" name="nominal" class="form-control border-teal border-1">
 						</div>
 					</div>
                     <div class="form-group row">
 						<label class="col-form-label col-lg-2">Keterangan</label>
 						<div class="col-lg-10">
-							<textarea name="keterangan" id="" cols="30" rows="10" class="summernote form-control border-teal border-1"></textarea>
+							<textarea style="border-radius: 10px" name="keterangan" id="" cols="30" rows="10" class="summernote form-control border-teal border-1"></textarea>
 						</div>
 					</div>
                 </fieldset>
                 <div class="text-right">
-                    <a href="{{ url('/pemasukans') }}" class="btn bg-slate"><i class="icon-undo2 mr-2"></i>Kembali</a>
-					<button type="submit" class="btn btn-primary">Simpan <i class="icon-paperplane ml-2"></i></button>
+                    <a href="{{ url('/pemasukans') }}" class="btn bg-slate" style="border-radius: 10px"><i class="icon-undo2 mr-2"></i>Kembali</a>
+					<button type="submit" class="btn btn-primary" style="border-radius: 10px">Simpan <i class="icon-paperplane ml-2"></i></button>
 				</div>
             </form>
         </div>

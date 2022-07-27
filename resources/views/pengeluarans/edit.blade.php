@@ -17,7 +17,7 @@
 	<div class="content">
 
 		<!-- Hover rows -->
-		<div class="card">
+		<div class="card" style="border-radius: 10px">
 			<div class="card-header header-elements-inline">
 			</div>
 			<div class="card-body">
@@ -30,14 +30,14 @@
                         <div class="form-group row">
 							<label class="col-form-label col-lg-2">Tanggal</label>
 							<div class="col-lg-10">
-								<input name="tanggal" type="text" class="form-control pickadate-accessibility" value="{{ $epengeluaran->tanggal }}" placeholder="Tanggal Pengeluaran" required>
+								<input style="border-radius: 10px" name="tanggal" type="text" class="form-control pickadate-accessibility" value="{{ $epengeluaran->tanggal }}" placeholder="Tanggal Pengeluaran" required>
 							</div>
                         </div>
 
 						<div class="form-group row">
 							<label class="col-form-label col-lg-2">Penanggung Jawab</label>
 							<div class="col-lg-10">
-								<input type="hidden" name="nama_pj" value="{{ @$epengeluaran->user->nama }}">
+								<input style="border-radius: 10px" type="hidden" name="nama_pj" value="{{ @$epengeluaran->user->nama }}">
 								<select id="user_id" name="user_id" class="form-control select-search">
 									<option value="">-- Pilih Penanggung Jawab --</option>
 									@foreach ($users as $user)
@@ -75,7 +75,7 @@
 						<div class="form-group row">
 							<label class="col-form-label col-lg-2">Nominal</label>
 							<div class="col-lg-10">
-								<input id="tertulis" type="text" onkeyup="ribuan()" value="{{ number_format($epengeluaran->nominal) }}" class="form-control" placeholder="Nominal" required>
+								<input style="border-radius: 10px" id="tertulis" type="text" onkeyup="ribuan()" value="{{ number_format($epengeluaran->nominal) }}" class="form-control" placeholder="Nominal" required>
 								<input id="nominal" type="hidden" name="nominal" value="{{ $epengeluaran->nominal }}">
 								{{-- <input type="number" min="0" name="nominal" class="form-control border-teal border-1" value="{{ $epengeluaran->nominal }}" onkeyup="ribuan()" placeholder="Nominal" required> --}}
 							</div>
@@ -90,8 +90,8 @@
 						</div>
 					</fieldset>
 					<div class="text-right">
-						<a href="{{ url('/pengeluarans') }}" class="btn bg-slate">Kembali <i class="icon-undo2 ml-2"></i></a>
-						<button type="submit" class="btn btn-primary">Simpan <i class="icon-paperplane ml-2"></i></button>
+						<a href="{{ url('/pengeluarans') }}" class="btn bg-slate" style="border-radius: 10px">Kembali <i class="icon-undo2 ml-2"></i></a>
+						<button type="submit" class="btn btn-primary" style="border-radius: 10px">Simpan <i class="icon-paperplane ml-2"></i></button>
 					</div>
 				</form>
 			</div>

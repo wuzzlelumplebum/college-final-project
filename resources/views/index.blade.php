@@ -781,15 +781,15 @@
 
 	var greet = "";
 
-	if (hrs < 12){
-		greet = "Good Morning!";
-	}
-	else if (hrs >= 12 && hrs <= 17){
-		greet = "Good Afternoon!";
-	}
-	else if (hrs >= 18 && hrs <= 23){
-		greet = "Good Evening!";
-	}
+	// if (hrs < 12){
+	// 	greet = "Good Morning!";
+	// }
+	// else if (hrs >= 12 && hrs <= 17){
+	// 	greet = "Good Afternoon!";
+	// }
+	// else if (hrs >= 18 && hrs <= 23){
+	// 	greet = "Good Evening!";
+	// }
 
 	// console.log(hrs);
 	// console.log(greet);

@@ -26,14 +26,14 @@
 
 		<!-- Hover rows -->
 
-		<div class="card">
+		<div class="card" style="border-radius: 10px">
 			<div class="card-header header-elements-inline">
-				<a href="{{ route('members.create')}}"><button type="button" class="btn btn-success rounded-round"><i class="icon-help mr-2"></i> Tambah</button></a>
+				<a href="{{ route('members.create')}}"><button type="button" class="btn btn-success rounded-round" style="background: #6EBA93"><i class="fa fa-plus" style="font-size:12px"></i>&nbsp Tambah</button></a>
 			</div>
 
 			<table class="table datatable-basic table-hover">
 				<thead>
-					<tr>
+					<tr style="background:#F0FFF0">
 						<th>No</th>
 						<th>Nama</th>
 						<th>Username</th>

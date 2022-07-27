@@ -22,7 +22,7 @@
 
 <!-- Content area -->
 <div class="content">
-    <div class="card">
+    <div class="card" style="border-radius: 10px">
         {{--<div class="card-header header-elements-inline">
             <h5 class="card-title">Rekap Tagihan Klien</h5>
         </div>--}}
@@ -42,8 +42,8 @@
                 </div>
             </form>
             <div class="text-right">
-                <a id="btn_reset" href="{{ route('rekaptagihans.create') }}" class="btn bg-slate text-uppercase">Reset  <i class="icon-rotate-ccw2 ml-2"></i></a>
-                <a id="btn_submit" href="{{ route('rekaptagihans.create').'?c='.app('request')->input('c')}}" data-uri="{{ route('rekaptagihans.create') }}" class="btn btn-success text-uppercase">Submit  <i class="icon-paperplane ml-2"></i></a>
+                <a id="btn_reset" href="{{ route('rekaptagihans.create') }}" class="btn bg-slate text-uppercase" style="border-radius: 10px">Reset  <i class="icon-rotate-ccw2 ml-2"></i></a>
+                <a id="btn_submit" href="{{ route('rekaptagihans.create').'?c='.app('request')->input('c')}}" data-uri="{{ route('rekaptagihans.create') }}" class="btn btn-success text-uppercase" style="border-radius: 10px">Submit  <i class="icon-paperplane ml-2"></i></a>
             </div>
         </div>
     </div>
@@ -172,8 +172,8 @@
 					</div>
 
 					<div class="text-right">
-						<a href="{{ route('rekaptagihans.index') }}" class="btn bg-slate">Kembali <i class="icon-undo2 ml-2"></i></a>
-						<button type="submit" class="btn btn-success">Submit <i class="icon-paperplane ml-2"></i></button>
+						<a href="{{ route('rekaptagihans.index') }}" class="btn bg-slate" style="border-radius: 10px">Kembali <i class="icon-undo2 ml-2"></i></a>
+						<button type="submit" class="btn btn-success" style="border-radius: 10px">Submit <i class="icon-paperplane ml-2"></i></button>
 					</div>
 				@else
 

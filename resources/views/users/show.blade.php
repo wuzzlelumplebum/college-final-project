@@ -17,7 +17,7 @@
 <div class="content">
     
     <!-- Hover rows -->
-    <div class="card">
+    <div class="card" style="border-radius: 10px">
         <div class="card-header header-elements-inline">
         </div>
         <div class="card-body">
@@ -85,7 +85,7 @@
                 </fieldset>
                 <div class="text-right">
                     <a href="{{ route('users.index') }}">
-                        <button type="submit" class="btn bg-slate"><i class="icon-undo2 mr-2"></i> Kembali</button>
+                        <button type="submit" class="btn bg-slate" style="border-radius: 10px"><i class="icon-undo2 mr-2"></i> Kembali</button>
                     </a>
                 </div>
                 

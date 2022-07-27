@@ -19,7 +19,7 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">  
     <style>
         .bg-light {
-        background-color: #3EB772 !important;
+        background-color: #3EB772 !important; 
         }
 
         body{
