@@ -29,7 +29,7 @@ class PaymentController extends Controller
             $payments = Payment::where('user_id',\Auth::user()->id)->orderBy('created_at','desc')->get();
         } else {
             // $payments = Payment::orderByRaw('case when status = 0 then 0 else 1 end, status')->orderBy('created_at','desc')->get();
-            $payments = Payment::where('jenis_pemasukan','=',1)->orderBy('created_at','desc')->get();
+            $payments = Payment::where('jenis_pemasukan','=',1)->where('status','<',2)->orderBy('created_at','desc')->get();
 
         }
         return view('payments.index', compact('payments'));
@@ -65,7 +65,7 @@ class PaymentController extends Controller
         //]);
 
         $data = $request->except(['_token', '_method','tagihan_id']);
-        if (\Auth::user()->role < 20) {
+        if (\Auth::user()->role <= 20) {
             $data['status'] = 1;
         }
         $cust = User::find($request->get('user_id'));
@@ -208,7 +208,9 @@ class PaymentController extends Controller
         //     $notif->url = route('payments.edit',$payment->id);
         //     $notif->save();
         // }
-
+        if(\Auth::user()->role > 20){
+            return redirect('/tagihanuser')->with('success', 'Payment saved!');
+        }
         return redirect('/payments')->with('success', 'Payment saved!');
     }
 
@@ -423,17 +425,98 @@ class PaymentController extends Controller
         $payment = Payment::find($request->id);
         $payment->status = $request->status;
 
-        // tolak
-        if ($request->status == 2){
-            $tagihan = Tagihan::find($payment->tagihan_id);
-            $tagihan->jml_tagih += $payment->nominal;
-            $tagihan->jml_bayar -= $payment->nominal;
-            if($tagihan->jml_bayar==0){
-                $tagihan->status=0;
-            } else {
-                $tagihan->status=1;
+        // terima
+        if ($request->status == 1){
+            if($payment->rekap_tagihan_id != null){
+                $tagihan = RekapTagihan::find($payment->rekap_tagihan_id);
+                $tagihan->jml_terbayar += $payment->nominal;
+                if($tagihan->jml_terbayar==$tagihan->total){
+                    $tagihan->update([
+                        'status'=>4
+                    ]);
+                    // $tagihan->status=2;
+                } 
+                else {
+                    $tagihan->update([
+                        'status'=>3
+                    ]);
+                    // $tagihan->status=1;
+                }
+                // $tagihan->save();
             }
-            $tagihan->save();
+            else if($payment->rekap_dptagihan_id != null){
+                $tagihan = RekapDpTagihan::find($payment->rekap_dptagihan_id);
+                $tagihan->jml_terbayar += $payment->nominal;
+                if($tagihan->jml_terbayar==$tagihan->total){
+                    $tagihan->update([
+                        'status'=>4
+                    ]);
+                    // $tagihan->status=2;
+                } else {
+                    $tagihan->update([
+                        'status'=>3
+                    ]);
+                    // $tagihan->status=1;
+                }
+                // $tagihan->save();
+            }
+        }
+
+        // tolak
+        else if ($request->status == 2){
+            if($payment->rekap_tagihan_id != null){
+                $tagihan = RekapTagihan::find($payment->rekap_tagihan_id);
+                $tagihan->jml_terbayar += 0;
+                if($tagihan->jml_terbayar==$tagihan->total){
+                    $tagihan->update([
+                        'status'=>4
+                    ]);
+                    // $tagihan->status=2;
+                } 
+                else if($tagihan->jml_terbayar==0){
+                    $tagihan->update([
+                        'status'=>2
+                    ]);
+                }
+                else {
+                    $tagihan->update([
+                        'status'=>3
+                    ]);
+                    // $tagihan->status=1;
+                }
+                // $tagihan->save();
+            }
+            else if($payment->rekap_dptagihan_id != null){
+                $tagihan = RekapDpTagihan::find($payment->rekap_dptagihan_id);
+                $tagihan->jml_terbayar += 0;
+                if($tagihan->jml_terbayar==$tagihan->total){
+                    $tagihan->update([
+                        'status'=>4
+                    ]);
+                    // $tagihan->status=2;
+                } 
+                else if($tagihan->jml_terbayar==0){
+                    $tagihan->update([
+                        'status'=>2
+                    ]);
+                }
+                else {
+                    $tagihan->update([
+                        'status'=>3
+                    ]);
+                    // $tagihan->status=1;
+                }
+                // $tagihan->save();
+            }
+            // $tagihan = Tagihan::find($payment->tagihan_id);
+            // $tagihan->jml_tagih += $payment->nominal;
+            // $tagihan->jml_bayar -= $payment->nominal;
+            // if($tagihan->jml_bayar==0){
+            //     $tagihan->status=0;
+            // } else {
+            //     $tagihan->status=1;
+            // }
+            // $tagihan->save();
         }
 
         // print_r($task);

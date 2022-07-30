@@ -10,6 +10,7 @@ use App\Model\Nomor;
 use App\Model\Proyek;
 use App\Model\Lampiran_gambar;
 use App\Exports\TagihanExport; //plugin excel
+use App\Model\RekapTagihan;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\File;
 use PDF;
@@ -344,20 +345,23 @@ class TagihanController extends Controller
 
     public function tagihanuser()
     {
-        $tagihans = Tagihan::where('user_id',\Auth::user()->id)->get( );
+        $tagihans = RekapTagihan::where('user_id',\Auth::user()->id)->get();
+        $user = User::find(\Auth::user()->id);
+        // dd($user);
 
-        return view('tagihanuser', compact('tagihans'));
+        return view('klien.bills.index', compact('tagihans','user'));
     }
 
-    public function bayaruser($id)
+    public function bayaruser(Request $request, $id)
     {
-        $tagihanuser = Tagihan::where('user_id',\Auth::user()->id)->get( );
-        $users = User::where('role','>=',80)->get();
-        $tagihanuser2 = Tagihan::find($id);
+        $user = User::find(\Auth::user()->id);
+        $rekaptagihans = RekapTagihan::where('user_id',\Auth::user()->id)->get();
+        // $users = User::where('role','>=',80)->get();
+        $tagihan = RekapTagihan::find($id);
         // dd($tagihanuser2);
         // dd($tagihan);
         $setting = Setting::first();
-        return view('payments.create', compact('users', 'tagihanuser', 'tagihanuser2', 'setting'));
+        return view('klien.payments.create', compact('rekaptagihans', 'tagihan', 'setting', 'user'));
     }
 
     public function createrekaptagihan()

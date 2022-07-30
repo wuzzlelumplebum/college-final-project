@@ -69,8 +69,8 @@
 		</div>
 	</div>
 
-	{{-- admin --}}
 	@if(Auth::user()->role == 1)
+	<!-- Admin Dashboard -->
 	<div class="row">
 		<div class="col-xl-7">
 			<div class="card" style="border-radius: 10px;">
@@ -139,8 +139,8 @@
 		</div> --}}
 	@endif
 
-	{{-- keuangan --}}
 	@if (Auth::user()->role == 20)
+	<!-- Finance Dashboard -->
 	<div class="row">
 		<div class="col-xl-12">
 			<div class="card" style="border-radius: 10px;">

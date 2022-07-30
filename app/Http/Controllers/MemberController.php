@@ -140,12 +140,11 @@ class MemberController extends Controller
             ]);
 
             $user = User::find($id);
+            $data = $request->except(['_token', '_method','password']);
 
             if($request->get('password')!=''){
                 $data['password'] = bcrypt($request->get('password'));
             }
-
-            $data = $request->except(['_token', '_method','password']);
 
             $user->update($data);
 
@@ -164,5 +163,33 @@ class MemberController extends Controller
         $user->delete();
 
         return redirect('/members')->with('success', 'Member deleted!');
+    }
+
+    public function changePassKlien()
+    {
+        return view('klien.changepass');
+    }
+
+    public function changePassKlienSubmit(Request $request, $id)
+    {
+        $request->validate([
+            'old_pass'=>'required',
+            'new_pass'=>'required',
+            'con_pass'=>'required',
+        ]);
+
+        $user = User::find($id);
+        if($request->get('new_pass') != $request->get('con_pass')){
+            return redirect('/changepassklien')->with('error', 'Password baru tidak sama dengan konfirmasi password');
+        }
+
+        if(Hash::check($request->get('old_pass'), $user->password)){
+            $user->password = bcrypt($request->get('new_pass'));
+            $user->save();
+
+            return redirect('/changepassklien')->with('success', 'Password updated!');
+        } else {
+            return redirect('/changepassklien')->with('error', 'Password lama salah');
+        }
     }
 }

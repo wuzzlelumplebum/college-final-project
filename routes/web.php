@@ -53,7 +53,8 @@ Route::group(['middleware' => ['auth']], function() {
 	Route::get('cetakrekapdp/{id}',  'RekapDptagihanController@cetakrekap')->name('cetakrekapdp');
     Route::get('/historytagihan',  'RekapTagihanController@history')->name('historytagihan');
     Route::get('/historydp',  'RekapDptagihanController@history')->name('historydp');
-	Route::get('/bayaruser/{id}', 'TagihanController@bayaruser')->name('bayaruser');
+	Route::get('/bayaruser/{id}', 'klien\PaymentClientController@bayaruser')->name('bayaruser');
+	Route::get('/bayardpuser/{id}', 'klien\PaymentClientController@bayardpuser')->name('bayardpuser');
 	Route::resource('pengeluarans', 'PengeluaranController');
 	Route::get('export_excel_pengeluaran', 'PengeluaranController@export_excel_pengeluaran');
 	Route::get('/antrian',  'TaskController@antrian');
@@ -114,7 +115,9 @@ Route::group(['middleware' => ['auth']], function() {
 		Route::get('/tagihanclient','client\TagihanClient@index');
 		Route::get('/tagihanaktif','client\TagihanClient@active');
 		Route::get('/tagihanriwayat','client\TagihanClient@history');
-		Route::resource('/paymentclients', 'client\PaymentClient');
+		Route::resource('/paymentclients', 'klien\PaymentClientController');
+		Route::get('/tagihanuser', 'klien\TagihanClientController@index');
+		Route::get('/dptagihanuser', 'klien\DpTagihanClientController@index');
 		Route::get('/payment','client\PaymentClient@index');
 		Route::get('/purchase','client\PaymentClient@create');
 		Route::resource('/taskclients', 'client\TaskClient');
@@ -123,11 +126,8 @@ Route::group(['middleware' => ['auth']], function() {
 		Route::get('/antrian','client\AntrianClient@index');
 		Route::get('/settinguser','client\SettingClient@changesetting');
 		Route::post('/settinguser/{id}','client\SettingClient@changesettingupdate')->name('settinguser');
+		Route::get('/changepassklien',  'MemberController@changePassKlien');
+		Route::post('/changepassklien/{id}',  'MemberController@changePassKlienSubmit')->name('changepassklien');
 
-	});
-
-	// user
-	Route::group(['middleware' => ['role:99']], function() {
-		Route::get('/user', 'AdminController@user')->name('user');
 	});
 });
