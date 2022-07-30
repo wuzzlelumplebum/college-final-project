@@ -23,9 +23,9 @@
     <!-- Content area -->
     <div class="content">
         <!-- Hover rows -->
-		<div id="card-rekap" class="card">
+		<div id="card-rekap" class="card" style="border-radius: 10px">
             <div class="card-header header-elements-inline">
-				<a href="{{ route('rekapdptagihans.create') }}"><button type="button" class="btn btn-success rounded-round"><i class="icon-help mr-2"></i> Tambah</button></a>
+				<a href="{{ route('rekapdptagihans.create') }}"><button type="button" class="btn btn-success rounded-round" style="background: #6EBA93"><i class="fa fa-plus" style="font-size:12px"></i>&nbsp Tambah</button></a>
 			</div>
 
             <div class="card-body">
@@ -33,7 +33,7 @@
 
                     <table class="table datatable-basic table-hover">
                         <thead>
-                            <tr>
+                            <tr style="background:#F0FFF0">
                                 <th>No</th>
                                 {{-- <th><input type="checkbox" class="checked-all"></th> --}}
                                 <th>Nama</th>

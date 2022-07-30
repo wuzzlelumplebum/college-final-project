@@ -25,7 +25,7 @@
 <div class="content">
 
 	<!-- Hover rows -->
-	<div class="card">
+	<div class="card" style="border-radius: 10px">
 		<div class="card-header header-elements-inline">
 		</div>
 		<div class="card-body">
@@ -103,7 +103,7 @@
                     <div class="form-group row" id="div-masaberlaku">
 						<label class="col-form-label col-lg-2">Masa Berlaku</label>
 						<div class="col-lg-10">
-							<input id="masa_berlaku" name="masa_berlaku" type="text" class="form-control"  readonly value="{{!@$proyeks ? old('masa_berlaku') : $proyeks->masa_berlaku}}" placeholder="Tanggal Masa Berlaku">
+							<input style="border-radius: 10px" id="masa_berlaku" name="masa_berlaku" type="text" class="form-control"  readonly value="{{!@$proyeks ? old('masa_berlaku') : $proyeks->masa_berlaku}}" placeholder="Tanggal Masa Berlaku">
 							{{-- <input type="text" id="kadaluarsa" name="kadaluarsa" class="form-control border-teal border-1"> --}}
 						</div>
 						{{-- <span id="kadaluarsa" name="kadaluarsa" class="col-form-label col-lg-10 font-weight-bold">{{@$}}</span> --}}
@@ -115,7 +115,7 @@
                         <div id="new-masa" class="form-group row">
                             <label class="col-form-label col-lg-2">Update Masa Berlaku</label>
                             <div class="col-lg-10">
-                                <input id="new_mb" name="new_mb" type="text" class="form-control border-teal border-1 pickadate-accessibility" placeholder="Ubah jika ingin perpanjang masa berlaku">
+                                <input style="border-radius: 10px" id="new_mb" name="new_mb" type="text" class="form-control border-teal border-1 pickadate-accessibility" placeholder="Ubah jika ingin perpanjang masa berlaku">
                             </div>
                         </div>
                     @endif
@@ -124,14 +124,14 @@
 						<label class="col-form-label col-lg-2">Nominal</label>
 						<div class="col-lg-10">
 							<input id="datanominal" type="hidden" name="nominal" value="{{old('nominal')}}" class="form-control border-teal border-1">
-							<input id="nilainominal" type="text" class="form-control border-teal border-1" placeholder="Nominal" onkeyup="ribuan()" value="{{old('nominal')}}">
+							<input style="border-radius: 10px" id="nilainominal" type="text" class="form-control border-teal border-1" placeholder="Nominal" onkeyup="ribuan()" value="{{old('nominal')}}">
 						</div>
 					</div>
 					<div class="form-group row">
 						<label class="col-form-label col-lg-2">Uang Muka</label>
 						<div class="col-lg-10">
 							<input id="datauang_muka" type="hidden" name="uang_muka" value="{{old('uang_muka')}}" class="form-control border-teal border-1">
-							<input id="nilaiuang_muka" type="text" class="form-control border-teal border-1" placeholder="Uang Muka" onkeyup="ribuan()" value="{{old('uang_muka')}}">
+							<input style="border-radius: 10px" id="nilaiuang_muka" type="text" class="form-control border-teal border-1" placeholder="Uang Muka" onkeyup="ribuan()" value="{{old('uang_muka')}}">
 						</div>
 					</div>
 					{{-- <div class="form-group row">
@@ -180,13 +180,13 @@
 							{{-- <div class="summernote form-control border-teal border-1" name="keterangan" placeholder="Keterangan" value="{{old('keterangan')}}"></div> --}}
 							{{-- <input type="text" name="keterangan" class="summernote form-control border-teal border-1" placeholder="Keterangan" value="{{old('keterangan')}}"> --}}
 							<span class="form-text text-muted">Contoh: Pembayaran berlangganan proyek website klien Noer Prajitno</span>
-							<textarea name="keterangan" id="" cols="30" rows="10" class="summernote form-control border-teal border-1"></textarea>
+							<textarea style="border-radius: 10px" name="keterangan" id="" cols="30" rows="10" class="summernote form-control border-teal border-1"></textarea>
 						</div>
 					</div>
 				</fieldset>
 				<div class="text-right">
-                    <a href="{{ url('/tagihans') }}" class="btn bg-slate"><i class="icon-undo2 mr-2"></i>Kembali</a>
-					<button type="submit" class="btn btn-primary">Simpan <i class="icon-paperplane ml-2"></i></button>
+                    <a href="{{ url('/tagihans') }}" class="btn bg-slate" style="border-radius: 10px"><i class="icon-undo2 mr-2"></i>Kembali</a>
+					<button type="submit" class="btn btn-primary" style="border-radius: 10px">Simpan <i class="icon-paperplane ml-2"></i></button>
 				</div>
 			</form>
 		</div>

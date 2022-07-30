@@ -17,7 +17,7 @@
 <div class="content">
 
     <!-- Hover rows -->
-    <div class="card">
+    <div class="card" style="border-radius: 10px">
         <div class="card-header header-elements-inline">
         </div>
         <div class="card-body">
@@ -47,21 +47,21 @@
                     <div class="form-group row">
                         <label class="col-form-label col-lg-2">Nama Proyek</label>
                         <div class="col-lg-10">
-                            <input type="text" name="nama_proyek" class="form-control border-teal border-1" placeholder="Contoh : Pembuatan Website" value="{{$proyek->nama_proyek}}" >
+                            <input style="border-radius: 10px" type="text" name="nama_proyek" class="form-control border-teal border-1" placeholder="Contoh : Pembuatan Website" value="{{$proyek->nama_proyek}}" >
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label class="col-form-label col-lg-2">Website</label>
                         <div class="col-lg-10">
-                        <input type="text" id="website" name="website" class="form-control border-teal border-1" placeholder="Contoh : nore.web.id" value="{{$proyek->website}}" >
+                        <input style="border-radius: 10px" type="text" id="website" name="website" class="form-control border-teal border-1" placeholder="Contoh : nore.web.id" value="{{$proyek->website}}" >
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label class="col-form-label col-lg-2">Jenis Proyek</label>
                         <div class="col-lg-10">
-                            <select id="jenis_proyek" name="jenis_proyek" class="form-control select-search border-teal border-1" >
+                            <select id="jenis_proyek" name="jenis_proyek" class="form-control select-search border-teal border-1">
                                 @if ($proyek->jenis_proyek == null)
                                     <option value="">-- Pilih Jenis Proyek --</option>
                                 @endif
@@ -122,21 +122,21 @@
                     <div class="form-group row">
                         <label class="col-form-label col-lg-2">Jumlah Task</label>
                         <div class="col-lg-10">
-                            <input name="task_count" type="number" class="form-control border-teal border-1" value="{{$proyek->task_count}}" placeholder="Tentukan Jumlah Task">
+                            <input style="border-radius: 10px" name="task_count" type="number" class="form-control border-teal border-1" value="{{$proyek->task_count}}" placeholder="Tentukan Jumlah Task">
                         </div>
                     </div>
 
                     <div id="div-masa" class="form-group row">
                         <label class="col-form-label col-lg-2">Masa Berlaku</label>
                         <div class="col-lg-10">
-                            <input id="masa_berlaku" name="masa_berlaku" type="text" class="form-control" readonly value="{{$proyek->masa_berlaku}}">
+                            <input style="border-radius: 10px" id="masa_berlaku" name="masa_berlaku" type="text" class="form-control" readonly value="{{$proyek->masa_berlaku}}">
                         </div>
                     </div>
 
                     <div id="new-masa" class="form-group row" style="display:none">
                         <label class="col-form-label col-lg-2">Update Masa Berlaku</label>
                         <div class="col-lg-10">
-                            <input id="new_mb" name="new_mb" type="text" class="form-control border-teal border-1 pickadate-accessibility">
+                            <input style="border-radius: 10px" id="new_mb" name="new_mb" type="text" class="form-control border-teal border-1 pickadate-accessibility">
                         </div>
                     </div>
 
@@ -144,15 +144,15 @@
                         <label class="col-form-label col-lg-2">Keterangan</label>
                         <div class="col-lg-10">
                             <span class="form-text text-muted">Contoh: Website blogspot Noer Prajitno</span>
-                            <textarea class="summernote form-control border-teal" name="keterangan" id="keterangan" cols="30" rows="10">{{$proyek->keterangan}}</textarea>
+                            <textarea style="border-radius: 10px" class="summernote form-control border-teal" name="keterangan" id="keterangan" cols="30" rows="10">{{$proyek->keterangan}}</textarea>
                         </div>
                     </div>
 
 
                 </fieldset>
                 <div class="text-right">
-                    <a href="{{ url('/proyeks') }}" class="btn bg-slate"><i class="icon-undo2 mr-2"></i>Kembali</a>
-                    <button type="submit" class="btn btn-primary">Simpan <i class="icon-paperplane ml-2"></i></button>
+                    <a href="{{ url('/proyeks') }}" class="btn bg-slate" style="border-radius: 10px"><i class="icon-undo2 mr-2"></i>Kembali</a>
+                    <button type="submit" class="btn btn-primary" style="border-radius: 10px">Simpan <i class="icon-paperplane ml-2"></i></button>
                 </div>
             </form>
         </div>

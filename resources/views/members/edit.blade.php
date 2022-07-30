@@ -17,7 +17,7 @@
 	<div class="content">
 
 		<!-- Hover rows -->
-		<div class="card">
+		<div class="card" style="border-radius: 10px">
 			<div class="card-header header-elements-inline">
 			</div>
 			<div class="card-body">
@@ -30,45 +30,45 @@
 						<div class="form-group row">
 							<label class="col-form-label col-lg-2">Nama</label>
 							<div class="col-lg-10">
-								<input type="text" name="nama" class="form-control border-teal border-1" placeholder="Nama" required value="{{ $user->nama }}">
+								<input style="border-radius: 10px" type="text" name="nama" class="form-control border-teal border-1" placeholder="Nama" required value="{{ $user->nama }}">
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-form-label col-lg-2">Email</label>
 							<div class="col-lg-10">
-								<input type="email" name="email" class="form-control border-teal border-1" placeholder="Email" required value="{{ $user->email }}">
+								<input style="border-radius: 10px" type="email" name="email" class="form-control border-teal border-1" placeholder="Email" required value="{{ $user->email }}">
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-form-label col-lg-2">Telp</label>
 							<div class="col-lg-10">
-								<input type="text" name="telp" class="form-control border-teal border-1" placeholder="Telp/WA" required value="{{ $user->telp }}">
+								<input style="border-radius: 10px" type="text" name="telp" class="form-control border-teal border-1" placeholder="Telp/WA" required value="{{ $user->telp }}">
 								<span class="form-text text-muted">Contoh : 628123456678 (gunakan kode negara tanpa tanda + dan spasi)</span>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-form-label col-lg-2">Alamat</label>
 							<div class="col-lg-10">
-								<input type="text" name="alamat" class="form-control border-teal border-1" value="{{ $user->alamat }}" placeholder="Alamat">
+								<input style="border-radius: 10px" type="text" name="alamat" class="form-control border-teal border-1" value="{{ $user->alamat }}" placeholder="Alamat">
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-form-label col-lg-2">Username</label>
 							<div class="col-lg-10">
-								<input type="text" name="username" class="form-control border-teal border-1" placeholder="Username" required value="{{ $user->username }}" readonly>
+								<input style="border-radius: 10px" type="text" name="username" class="form-control border-teal border-1" placeholder="Username" required value="{{ $user->username }}" readonly>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-form-label col-lg-2">Password</label>
 							<div class="col-lg-10">
-								<input type="password" name="password" class="form-control border-teal border-1" placeholder="Password">
+								<input style="border-radius: 10px" type="password" name="password" class="form-control border-teal border-1" placeholder="Password">
 							</div>
 						</div>
 
 					</fieldset>
 					<div class="text-right">
-                        <a href="{{ url('/members') }}" class="btn bg-slate"><i class="icon-undo2 mr-2"></i>Kembali</a>
-						<button type="submit" class="btn btn-primary">Simpan <i class="icon-paperplane ml-2"></i></button>
+                        <a href="{{ url('/members') }}" class="btn bg-slate" style="border-radius: 10px"><i class="icon-undo2 mr-2"></i>Kembali</a>
+						<button type="submit" class="btn btn-primary" style="border-radius: 10px">Simpan <i class="icon-paperplane ml-2"></i></button>
 					</div>
 				</form>
 			</div>

@@ -41,7 +41,7 @@
 
     <!-- Content area -->
     <div class="content">
-        <div class="card">
+        <div class="card" style="border-radius: 10px">
             <div class="card-body">
                 <form action="{{ route('rekapdptagihans.update', $rekapdp->id) }}" method="post">
                     @method('PATCH')
@@ -148,7 +148,7 @@
                                 @if ($rekapdp->status == 4)
                                     <label class="col-form-label col-lg-10">{!! $rekapdp->keterangan !!}</label>
                                 @else
-                                    <textarea name="keterangan" id="" cols="30" rows="10" class="summernote form-control border-teal border-1">{!! $rekapdp->keterangan !!}</textarea>
+                                    <textarea style="border-radius: 10px" name="keterangan" id="" cols="30" rows="10" class="summernote form-control border-teal border-1">{!! $rekapdp->keterangan !!}</textarea>
                                 @endif
                             </div>
                         </div>
@@ -157,7 +157,7 @@
                             <div class="form-group row">
                                 <label class="col-form-label col-lg-2">Status</label>
                                 <div class="col-lg-10">
-                                    <select name="status" id="" class="form-control form-control-select2">
+                                    <select style="border-radius: 10px" name="status" id="" class="form-control form-control-select2">
                                         @foreach (config('custom.rekap_status') as $key => $value)
                                         @if (in_array($key, [1,2]))
                                             <option {{ $rekapdp->status == $key ? 'selected' : '' }} value="{{ $key }}">{{ $value }}</option>
@@ -171,10 +171,10 @@
 
                     <div class="text-right">
                         @if ($rekapdp->status == 4)
-                            <a href="{{ route('historydp') }}" class="btn bg-slate">Kembali <i class="icon-undo2 ml-2"></i></a>
+                            <a href="{{ route('historydp') }}" class="btn bg-slate" style="border-radius: 10px">Kembali <i class="icon-undo2 ml-2"></i></a>
                         @else
-                            <a href="{{ route('rekapdptagihans.index') }}" class="btn bg-slate">Kembali <i class="icon-undo2 ml-2"></i></a>
-                            <button type="submit" class="btn btn-success">Simpan <i class="icon-paperplane ml-2"></i></button>
+                            <a href="{{ route('rekapdptagihans.index') }}" class="btn bg-slate" style="border-radius: 10px">Kembali <i class="icon-undo2 ml-2"></i></a>
+                            <button type="submit" class="btn btn-success" style="border-radius: 10px">Simpan <i class="icon-paperplane ml-2"></i></button>
                         @endif
                     </div>
                 </form>

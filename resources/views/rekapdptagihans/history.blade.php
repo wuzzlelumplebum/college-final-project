@@ -13,7 +13,7 @@
 	<div class="page-header page-header-light">
 		<div class="page-header-content header-elements-md-inline">
 			<div class="page-title d-flex">
-				<h4><span class="font-weight-semibold">Home</span> - Rekap Uang Muka</h4>
+				<h4><span class="font-weight-semibold">Home</span> - History Rekap Uang Muka</h4>
 				<a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
 			</div>
 		</div>
@@ -23,7 +23,7 @@
     <!-- Content area -->
     <div class="content">
         <!-- Hover rows -->
-		<div id="card-rekap" class="card">
+		<div id="card-rekap" class="card" style="border-radius: 10px">
             {{-- <div class="card-header header-elements-inline">
 				<a href="{{ route('rekapdptagihans.create') }}"><button type="button" class="btn btn-success rounded-round"><i class="icon-help mr-2"></i> Tambah</button></a>
 			</div> --}}
@@ -33,7 +33,7 @@
 
                     <table class="table datatable-basic table-hover">
                         <thead>
-                            <tr>
+                            <tr style="background:#F0FFF0">
                                 <th>No</th>
                                 {{-- <th><input type="checkbox" class="checked-all"></th> --}}
                                 <th>Nama</th>

@@ -25,14 +25,14 @@
 	<div class="content">
 
 		<!-- Hover rows -->
-		<div class="card">
+		<div class="card" style="border-radius: 10px">
 			<div class="card-header header-elements-inline">
-				<a href="{{ route('users.create')}}"><button type="button" class="btn btn-success rounded-round"><i class="icon-help mr-2"></i> Tambah</button></a>
+				<a href="{{ route('users.create')}}"><button type="button" class="btn btn-success rounded-round" style="background: #6EBA93"><i class="fa fa-plus" style="font-size:12px"></i>&nbsp Tambah</button></a>
 			</div>
 
 			<table class="table datatable-basic table-hover">
 				<thead>
-					<tr>
+					<tr style="background:#F0FFF0">
 						<th>No</th>
 						<th>Nama</th>
 						<th>Username</th>
@@ -57,7 +57,7 @@
 									</a>
 
 									<div class="dropdown-menu dropdown-menu-right">
-										<a href="{{ route('users.show',$user->id)}}" class="dropdown-item"><i class="icon-search4"></i> Show</a>
+										<a href="{{ route('users.show',$user->id)}}" class="dropdown-item" ><i class="icon-search4"></i> Show</a>
 										<a href="https://wa.me/{{$user->telp}}" target="_blank" class="dropdown-item"><i class="fab fa-whatsapp"></i> Kontak User</a>
 										@if (Auth::user()->role==1)
 										<a href="{{ route('users.edit',$user->id)}}" class="dropdown-item"><i class="icon-pencil7"></i> Edit</a>
