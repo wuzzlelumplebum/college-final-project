@@ -17,7 +17,7 @@
 	<div class="content">
 
 		<!-- Hover rows -->
-		<div class="card">
+		<div class="card" style="border-radius: 10px">
 			<div class="card-header header-elements-inline">
 			</div>
 			<div class="card-body">
@@ -42,21 +42,21 @@
 							<label class="col-form-label col-lg-2">User</label>
 							<div class="col-lg-10">
 								<label class="col-form-label col-lg-2">{{\Auth::user()->username}}</label>
-								<input type="hidden" name="user_id" value="{{\Auth::user()->id}}">
+								<input style="border-radius: 10px" type="hidden" name="user_id" value="{{\Auth::user()->id}}">
 							</div>
 						</div>
 						@endif
 						<div class="form-group row">
 							<label class="col-form-label col-lg-2">Kebutuhan</label>
 							<div class="col-lg-10">
-								<textarea name="kebutuhan" rows="4" cols="3" class="form-control" placeholder="Kebutuhan User" required></textarea>
+								<textarea style="border-radius: 10px" name="kebutuhan" rows="4" cols="3" class="form-control" placeholder="Kebutuhan User" required></textarea>
 							</div>
 						</div>
 
 						<div class="form-group row">
 							<label class="col-lg-2 col-form-label font-weight-semibold">Attachment:</label>
 							<div class="col-lg-10">
-								<input type="file" name="file[]" class="file-input" multiple="multiple" data-fouc>
+								<input style="border-radius: 10px" type="file" name="file[]" class="file-input" multiple="multiple" data-fouc>
 								<span class="form-text text-muted">Jumlah max ukuran file : 32MB</span><hr>
 							</div>
 						</div>
@@ -96,7 +96,7 @@
 						@endif
 					</fieldset>
 					<div class="text-right">
-						<button type="submit" class="btn btn-primary">Simpan <i class="icon-paperplane ml-2"></i></button>
+						<button type="submit" class="btn btn-primary" style="border-radius: 10px">Simpan <i class="icon-paperplane ml-2"></i></button>
 					</div>
 				</form>
 			</div>

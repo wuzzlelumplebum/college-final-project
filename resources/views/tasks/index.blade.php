@@ -30,14 +30,14 @@
 	
 	<!-- Hover rows -->
 	{{-- Premium list table --}}
-	<div class="card">
+	<div class="card" style="border-radius: 10px">
 		<div class="card-header">
 				<h4 style="font-weight:bold;">Task Premium</h4>
-				<a href="{{ route('tasks.create')}}"><button type="button" class="btn btn-success rounded-round"><i class="icon-help mr-2"></i> Tambah</button></a>
+				<a href="{{ route('tasks.create')}}"><button type="button" class="btn btn-success rounded-round" style="background: #26a69a"><i class="fa fa-plus" style="font-size:12px"></i>&nbsp Tambah</button></a>
 		</div>
 		<table class="table datatable-basic table-hover">
 			<thead>
-				<tr>
+				<tr style="background:#F0FFF0">
 					<th>No</th>
 					<th>Tanggal</th>
 					<th>Username</th>
@@ -117,14 +117,14 @@
 		</table>
 	</div>
 	{{-- Prioritas and simple list table --}}
-	<div class="card">
+	<div class="card" style="border-radius: 10px">
 		<div class="card-header">
 				<h4 style="font-weight:bold;">Task Prioritas dan Simple</h4>
-				<a href="{{ route('tasks.create')}}"><button type="button" class="btn btn-success rounded-round"><i class="icon-help mr-2"></i> Tambah</button></a>
+				<a href="{{ route('tasks.create')}}"><button type="button" class="btn btn-success rounded-round"style="background: #26a69a"><i class="fa fa-plus" style="font-size:12px"></i>&nbsp Tambah</button></a>
 		</div>
 		<table class="table datatable-basic table-hover">
 			<thead>
-				<tr>
+				<tr style="background:#F0FFF0">
 					<th>No</th>
 					<th>Tanggal</th>
 					<th>Username</th>
