@@ -40,11 +40,11 @@
 		<div class="content-wrapper">
 
 			<!-- Content area -->
-			<div class="content d-flex justify-content-center align-items-center" style="background:#3EB772;">
+			<div class="content d-flex justify-content-center align-items-center" style="background:#26a69a;">
 				<!-- Login form -->
 				<form class="login-form form-validate-jquery" method="POST" action="{{ url('/login') }}">
 					{{ csrf_field() }}
-					<div class="card mb-0">
+					<div class="card mb-0" style="Border-radius: 10px">
 						<div class="card-body">
 							<div class="text-center mb-3">
 								{{-- <i class="icon-reading icon-2x text-slate-300 border-slate-300 border-3 rounded-round p-3 mb-3 mt-1"></i> --}}
@@ -64,21 +64,21 @@
 						    @endif
 
 							<div class="form-group form-group-feedback form-group-feedback-left">
-								<input type="text" name="username" class="form-control" placeholder="Username" required>
+								<input style="Border-radius: 10px" type="text" name="username" class="form-control" placeholder="Username" required>
 								<div class="form-control-feedback">
 									<i class="icon-user text-muted"></i>
 								</div>
 							</div>
 
 							<div class="form-group form-group-feedback form-group-feedback-left">
-								<input type="password" name="password" class="form-control" placeholder="Password" required>
+								<input style="Border-radius: 10px" type="password" name="password" class="form-control" placeholder="Password" required>
 								<div class="form-control-feedback">
 									<i class="icon-lock2 text-muted"></i>
 								</div>
 							</div>
 
 							<div class="form-group">
-								<button type="submit" class="btn btn-success btn-block">Masuk<i class="icon-circle-right2 ml-2"></i></button>
+								<button type="submit" class="btn btn-success btn-block" style="background: #26a69a; Border-radius: 10px">Masuk<i class="icon-circle-right2 ml-2"></i></button>
 							</div>
 
 							<!-- <div class="text-center">
