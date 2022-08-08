@@ -70,6 +70,22 @@
                         </span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ url('/taskclients') }}" class="nav-link {{ (request()->is('tasks*')) ? 'active' : '' }}">
+                        <i class="icon-stack-text"></i>
+                        <span>
+                            Task
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url('/history') }}" class="nav-link {{ (request()->is('history')) ? 'active' : '' }}">
+                        <i class="icon-history"></i>
+                        <span>
+                            History Task
+                        </span>
+                    </a>
+                </li>
                 <li class="nav-item nav-item-submenu">
                     <a href="#" class="nav-link {{ (request()->is('tagihanuser*','dptagihanuser*')) ? 'active' : '' }}"><i class="icon-users"></i>
 						<span>Tagihan & DP Tagihan
@@ -77,18 +93,18 @@
 					</a>
                     <ul class="nav nav-group-sub" data-submenu-title="JSON forms" style="display: {{ (request()->is('tagihanuser*','dptagihanuser*')) ? 'block' : 'none' }};">
                         <li class="nav-item">
-                            <a href="{{ url('/tagihanuser') }}" class="nav-link {{ (request()->is('tagihanuser*')) ? 'active' : '' }}">
-                                <i class="icon-home4"></i>
+                            <a href="{{ url('/dptagihanuser') }}" class="nav-link {{ (request()->is('dptagihanuser*')) ? 'active' : '' }}">
+                                <i class="icon-clipboard"></i>
                                 <span>
-                                    Tagihan
+                                    DP Tagihan
                                 </span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('/dptagihanuser') }}" class="nav-link {{ (request()->is('dptagihanuser*')) ? 'active' : '' }}">
-                                <i class="icon-home4"></i>
+                            <a href="{{ url('/tagihanuser') }}" class="nav-link {{ (request()->is('tagihanuser*')) ? 'active' : '' }}">
+                                <i class="icon-clipboard"></i>
                                 <span>
-                                    DP Tagihan
+                                    Tagihan
                                 </span>
                             </a>
                         </li>
@@ -96,7 +112,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ url('/paymentclients') }}" class="nav-link {{ (request()->is('paymentclients*')) ? 'active' : '' }}">
-                        <i class="icon-home4"></i>
+                        <i class="icon-cash"></i>
                         <span>
                             Pembayaran
                         </span>

@@ -21,20 +21,19 @@ class TaskController extends Controller
     public function index()
     {
 
-            $taskpremiums = Task::join('proyeks', 'proyeks.id', '=', 'tasks.id_proyek')
-                            ->where('proyeks.tipe','=','80')
-                            ->orderBy('tasks.status', 'DESC')
-                            ->orderBy('tasks.created_at','ASC')
-                            // ->select('tasks*')
-                            ->get(); //premium
+        $taskpremiums = Task::join('proyeks', 'proyeks.id', '=', 'tasks.id_proyek')
+                        ->where('proyeks.tipe','=','80')
+                        ->orderBy('tasks.status', 'DESC')
+                        ->orderBy('tasks.created_at','ASC')
+                        // ->select('tasks*')
+                        ->get(); //premium
 
-            $tasks = Task::join('proyeks', 'proyeks.id', '=', 'tasks.id_proyek')
-                    ->where('proyeks.tipe','!=','80')
-                    ->orderBy('tasks.status', 'DESC')
-                    ->orderBy('tasks.created_at','ASC')
-                    // ->select('tasks*')
-                    ->get(); //premium
-
+        $tasks = Task::join('proyeks', 'proyeks.id', '=', 'tasks.id_proyek')
+                ->where('proyeks.tipe','!=','80')
+                ->orderBy('tasks.status', 'DESC')
+                ->orderBy('tasks.created_at','ASC')
+                // ->select('tasks*')
+                ->get(); //premium
         
         return view('tasks.index', compact('tasks','taskpremiums'));
     }
