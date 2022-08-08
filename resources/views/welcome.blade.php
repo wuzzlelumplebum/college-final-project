@@ -22,7 +22,7 @@
         <!--========== HEADER ==========-->
         <header class="l-header" id="header">
             <nav class="nav bd-container">
-                <img src="{{ asset('assets/img/logo-nore.png') }}" alt="" class="logo-nore">
+                <a href="{{ url('/') }}"><img src="{{ asset('assets/img/logo-nore.png') }}" alt="" class="logo-nore"></a>
 
                 <div class="nav__menu" id="nav-menu">
                     <ul class="nav__list">
@@ -128,7 +128,7 @@
                     </div>
 
                     <div class="contact__button">
-                        <a href="#" class="button">Contact us now</a>
+                        <a href="https://api.whatsapp.com/send/?phone=628112772788&text=Hi%2C+saya+ingin+bertanya+tentang+Nore+Inovasi+Semarang&type=phone_number&app_absent=0" class="button">Contact us now</a>
                     </div>
                 </div>
             </section>
@@ -141,9 +141,9 @@
                     <a href="#" class="footer__logo">CV Nore Inovasi</a>
                     <span class="footer__description">IT Company</span>
                     <div>
-                        <a href="#" class="footer__social"><i class='bx bxl-facebook'></i></a>
-                        <a href="#" class="footer__social"><i class='bx bxl-instagram'></i></a>
-                        <a href="#" class="footer__social"><i class='bx bxl-whatsapp'></i></a>
+                        <a href="https://www.facebook.com/norewebid/" class="footer__social"><i class='bx bxl-facebook'></i></a>
+                        <a href="https://www.instagram.com/nore.web.id/" class="footer__social"><i class='bx bxl-instagram'></i></a>
+                        <a href="https://api.whatsapp.com/send?phone=628112772788" class="footer__social"><i class='bx bxl-whatsapp'></i></a>
                     </div>
                 </div>
 
@@ -160,7 +160,7 @@
                     <ul>
                         <li><a href="#services" class="footer__link">Services</a></li>
                         <li><a href="#contact" class="footer__link">Contact Us</a></li>
-                        <li><a href="#" class="footer__link">Privacy policy</a></li>
+                        <li><a href="{{ url('/privacy-policy') }}" class="footer__link">Privacy policy</a></li>
                         <li><a href="#" class="footer__link">Terms of services</a></li>
                     </ul>
                 </div>

@@ -14,6 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/privacy-policy', function () {
+    return view('privacypolicy');
+});
 
 //all
 Route::get('/login',  'LoginController@index')->name('login');
