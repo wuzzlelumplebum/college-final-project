@@ -25,7 +25,7 @@
 	<div class="content">
 
 		<!-- Hover rows -->
-		<div class="card">
+		<div class="card" style="border-radius: 10px">
 
 			<table class="table">
 				<tbody>

@@ -39,7 +39,7 @@
 				<div class="dropdown-menu dropdown-menu-right dropdown-content wmin-md-350">
 					<div class="dropdown-content-header">
 						<span class="font-weight-semibold">Notifikasi</span>
-						<a href="#" id="clearbutton" class="text-default" data-popup="tooltip" title="Tandai sudah dibaca semua"><i style="font-size: 20px;color: #229c59;" class="far fa-calendar-check d-block top-0"></i></a>
+						<a href="#" id="clearbutton" class="text-default" data-popup="tooltip" title="Tandai sudah dibaca semua"><i style="font-size: 20px;color: #26a69a;" class="far fa-calendar-check d-block top-0"></i></a>
 					</div>
 
 					<div class="dropdown-content-body dropdown-scrollable">

@@ -17,7 +17,7 @@
 	<div class="content">
 
 		<!-- Hover rows -->
-		<div class="card">
+		<div class="card" style="border-radius: 10px">
 			<div class="card-header header-elements-inline">
 			</div>
 			<div class="card-body">
@@ -30,27 +30,27 @@
 						<div class="form-group row">
 							<label class="col-form-label col-lg-3">Password Lama <span class="text-danger">*</span></label>
 							<div class="col-lg-9">
-								<input type="password" name="old_pass" id="old_pass" class="form-control" required placeholder="minimal 6 karakter">
+								<input style="border-radius: 10px" type="password" name="old_pass" id="old_pass" class="form-control" required placeholder="minimal 6 karakter">
 							</div>
 						</div>
 
 						<div class="form-group row">
 							<label class="col-form-label col-lg-3">Password Baru <span class="text-danger">*</span></label>
 							<div class="col-lg-9">
-								<input type="password" name="new_pass" id="new_pass" class="form-control" required placeholder="minimal 6 karakter">
+								<input style="border-radius: 10px" type="password" name="new_pass" id="new_pass" class="form-control" required placeholder="minimal 6 karakter">
 							</div>
 						</div>
 
 						<div class="form-group row">
 							<label class="col-form-label col-lg-3">Konfirmasi Password <span class="text-danger">*</span></label>
 							<div class="col-lg-9">
-								<input type="password" name="con_pass" id="con_pass" class="form-control" required placeholder="password tidak sama">
+								<input style="border-radius: 10px" type="password" name="con_pass" id="con_pass" class="form-control" required placeholder="password tidak sama">
 							</div>
 						</div>
 
 					</fieldset>
 					<div class="text-right">
-						<button type="submit" class="btn btn-primary">Submit <i class="icon-paperplane ml-2"></i></button>
+						<button type="submit" class="btn btn-primary" style="border-radius: 10px">Submit <i class="icon-paperplane ml-2"></i></button>
 					</div>
 				</form>
 			</div>
