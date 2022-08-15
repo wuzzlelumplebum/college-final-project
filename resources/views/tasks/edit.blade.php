@@ -33,7 +33,7 @@
 									<div class="col-lg-10">
 										<select name="user_id" class="form-control select-search" data-fouc>
 											@foreach($users as $user)
-												<option value="{{$user->id}}" {{ $task->user_id == $user->id ? 'selected' : '' }}>{{$user->username}}</option>
+												<option value="{{$user->id}}" {{ $task->user_id == $user->id ? 'selected' : '' }}>{{$user->nama}}</option>
 						    				@endforeach
 										</select>
 									</div>
@@ -41,7 +41,7 @@
 								<div class="form-group row">
 									<label class="col-form-label col-lg-2">Kebutuhan</label>
 									<div class="col-lg-10">
-										<textarea name="kebutuhan" rows="4" cols="3" class="form-control" placeholder="Kebutuhan User" required>{{ $task->kebutuhan }}</textarea>
+										<textarea style="border-radius: 10px" name="kebutuhan" id="" cols="30" rows="10" class="summernote form-control border-teal border-1" required>{{ $task->kebutuhan }}</textarea>
 									</div>
 								</div>
 								<div class="form-group row">
@@ -61,7 +61,7 @@
 								<div class="form-group row">
 									<label class="col-form-label col-lg-2">User</label>
 									<div class="col-lg-10">
-										<label class="col-form-label col-lg-2">{{$task->user->username}}</label>
+										<label class="col-form-label col-lg-2">{{$task->user->nama}}</label>
 									</div>
 								</div>
 								<div class="form-group row">
@@ -85,7 +85,7 @@
 								<div class="form-group row">
 									<label class="col-form-label col-lg-2">User</label>
 									<div class="col-lg-10">
-										<label class="col-form-label col-lg-2">{{\Auth::user()->username}}</label>
+										<label class="col-form-label col-lg-2">{{\Auth::user()->nama}}</label>
 										<input type="hidden" name="user_id" value="{{\Auth::user()->id}}">
 									</div>
 								</div>
@@ -127,7 +127,7 @@
 										<select name="handler" class="form-control select-search" data-fouc>
 		                                    <option value="">-- Pilih User --</option>
 											@foreach($handlers as $handler)
-												<option value="{{$handler->id}}" {{ $task->handler == $handler->id ? 'selected' : '' }}>{{$handler->username}}</option>
+												<option value="{{$handler->id}}" {{ $task->handler == $handler->id ? 'selected' : '' }}>{{$handler->nama}}</option>
 						    				@endforeach
 										</select>
 									</div>
@@ -184,7 +184,7 @@
 							<div class="form-group row">
 								<label class="col-form-label col-lg-2">User</label>
 								<div class="col-lg-10">
-									<label class="col-form-label col-lg-2">{{$task->user->username}}</label>
+									<label class="col-form-label col-lg-2">{{$task->user->nama}}</label>
 								</div>
 							</div>
 							<div class="form-group row">
@@ -262,10 +262,12 @@
 	<script src="{{asset('global_assets/js/plugins/uploaders/fileinput/plugins/purify.min.js')}}"></script>
 	<script src="{{asset('global_assets/js/plugins/uploaders/fileinput/plugins/sortable.min.js')}}"></script>
 	<script src="{{asset('global_assets/js/plugins/uploaders/fileinput/fileinput.min.js')}}"></script>
+	<script src="{{ asset('global_assets/js/plugins/editors/summernote/summernote.min.js') }}"></script>
 
 	<script src="{{asset('assets/js/app.js')}}"></script>
 	<script src="{{asset('global_assets/js/demo_pages/form_inputs.js')}}"></script>
 	<script src="{{asset('global_assets/js/demo_pages/form_select2.js')}}"></script>
+	<script src="{{ asset('global_assets/js/demo_pages/editor_summernote.js') }}"></script>
 	<script>
 		//modal delete
 		$(document).on("click", ".delbutton", function () {
@@ -295,6 +297,34 @@
 		});
 	</script>
 	<script type="text/javascript">
+
+		// Summernote
+		var Summernote = function() {
+			var _componentSummernote = function() {
+				if (!$().summernote) {
+					console.warn('Warning - summernote.min.js is not loaded');
+					return;
+				}
+		
+				// Default initialization
+				$('.summernote').summernote({
+					toolbar: false,
+					height: 100,
+				});
+			};
+
+			// Return objects assigned to module
+			return{
+				init: function() {
+					_componentSummernote();
+				}
+			}
+		}();
+
+		// Initialize module
+		document.addEventListener('DOMContentLoaded', function() {
+			Summernote.init();
+		});
 				
 		var FormValidation = function() {
 

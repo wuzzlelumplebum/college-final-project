@@ -20,22 +20,9 @@ class TaskController extends Controller
      */
     public function index()
     {
-
-        $taskpremiums = Task::join('proyeks', 'proyeks.id', '=', 'tasks.id_proyek')
-                        ->where('proyeks.tipe','=','80')
-                        ->orderBy('tasks.status', 'DESC')
-                        ->orderBy('tasks.created_at','ASC')
-                        // ->select('tasks*')
-                        ->get(); //premium
-
-        $tasks = Task::join('proyeks', 'proyeks.id', '=', 'tasks.id_proyek')
-                ->where('proyeks.tipe','!=','80')
-                ->orderBy('tasks.status', 'DESC')
-                ->orderBy('tasks.created_at','ASC')
-                // ->select('tasks*')
-                ->get(); //premium
+        $tasks = Task::select()->orderBy('status', 'desc')->orderBy('created_at', 'asc')->get();
         
-        return view('tasks.index', compact('tasks','taskpremiums'));
+        return view('tasks.index', compact('tasks'));
     }
 
     /**
@@ -139,13 +126,13 @@ class TaskController extends Controller
      */
     public function edit($id)
     {
+        $task = Task::find($id);
         $users = User::where('role','>','20')->get(); //role customer
         $handlers = User::where('role','10')->get(); //role karyawan
         $finances = User::where('role','20')->get(); //role keuangan
         // $handlersname = Task::find($id)->value('handler');
         // dd($handlersname);
         $attachment = Attachment::where('task_id', '=', $id)->get();
-        $task = Task::find($id);
         // dd($handlersname);
         if (\Auth::user()->role>20 && $task->user_id != \Auth::user()->id) {
             return redirect('/tasks')->with('error', 'Akses tidak diperbolehkan');
