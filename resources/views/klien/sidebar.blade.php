@@ -72,7 +72,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ url('/taskclients') }}" class="nav-link {{ (request()->is('tasks*')) ? 'active' : '' }}">
-                        <i class="icon-stack-text"></i>
+                        <i class="icon-stack-text" style="color: #000000"></i>
                         <span>
                         <font color="#000000">Task</font>
                         </span>
