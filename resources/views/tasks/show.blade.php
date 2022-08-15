@@ -17,7 +17,7 @@
 	<div class="content">
 
 		<!-- Hover rows -->
-		<div class="card">
+		<div class="card" style="border-radius: 10px">
 			<div class="card-header header-elements-inline">
 			</div>
 			<div class="card-body">

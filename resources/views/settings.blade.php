@@ -101,7 +101,7 @@
 					
 				</fieldset>
 				<div class="text-right">
-					<button type="submit" class="btn btn-success" style="background: #6EBA93; border-radius: 10px">Simpan<i
+					<button type="submit" class="btn btn-success" style="background: #26a69a; border-radius: 10px">Simpan<i
 						class="icon-paperplane ml-2"></i></button>
 					</div>
 				</form>

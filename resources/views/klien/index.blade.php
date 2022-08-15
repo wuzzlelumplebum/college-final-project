@@ -10,7 +10,7 @@
             position: static;
             width: 70px;
             height: 6px;
-            background: #6EBA93;
+            background: #008080;
             border-radius: 5px;
             margin-top: -5px;
         }

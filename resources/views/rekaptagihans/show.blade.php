@@ -171,7 +171,7 @@
                     </fieldset>
                     <div class="text-right">
                         @if ($rekaptagihan->status == 4)
-                            <a href="{{ route('historytagihan') }}" class="btn bg-slate">Kembali <i class="icon-undo2 ml-2"></i></a>
+                            <a href="{{ route('historytagihan') }}" class="btn bg-slate" style="border-radius: 10px">Kembali <i class="icon-undo2 ml-2"></i></a>
                         @else
                             <a href="{{ route('rekaptagihans.index') }}" class="btn bg-slate" style="border-radius: 10px">Kembali <i class="icon-undo2 ml-2"></i></a>
                             <button type="submit" class="btn btn-success" style="border-radius: 10px">Submit <i class="icon-paperplane ml-2"></i></button>

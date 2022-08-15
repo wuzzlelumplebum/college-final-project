@@ -10,7 +10,7 @@
 		}
 		.btn{
 		border-radius: 6px;
-		background: #6EBA93;
+		background: #26a69a;
 	}
 	</style>
 @endsection

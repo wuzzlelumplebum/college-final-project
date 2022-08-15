@@ -25,11 +25,11 @@
 	<div class="content">
 
 		<!-- Hover rows -->
-		<div class="card">
+		<div class="card" style="border-radius: 10px">
 
 			<table class="table datatable-basic table-hover">
 				<thead>
-					<tr>
+					<tr style="background:#F0FFF0">
 						<th>Username</th>
 						<th>Kebutuhan</th>
 						<th>Handler</th>

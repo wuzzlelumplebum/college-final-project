@@ -13,7 +13,7 @@
 	}
 	.btn{
 		border-radius: 6px;
-		background: #6EBA93;
+		background: #26a69a;
 	}
 	.font{
 		
@@ -1806,7 +1806,7 @@ if (columns_basic_elementy4) {
 				// Options
 				pie_basic.setOption({
 					// Colors
-					color: ['#39b772','#26a69a','#dde833','#ffb980','#d87a80'],
+					color: ['#335c67','#9e2a2b','#97b552','#95706d','#dc69aa'],
 					// Global text styles
 					textStyle: {
 						fontFamily: 'Roboto, Arial, Verdana, sans-serif',
@@ -1932,7 +1932,7 @@ if (columns_basic_elementy4) {
 				// Options
 				pie_basic2.setOption({
 					// Colors
-					color: ['#39b772','#26a69a','#dde833','#ffb980','#d87a80'],
+					color: ['#283618','#606c38','#dda15e','#bc6c25','#dc69aa'],
 					// Global text styles
 					textStyle: {
 						fontFamily: 'Roboto, Arial, Verdana, sans-serif',

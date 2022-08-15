@@ -7,7 +7,7 @@
 </style>
     
     
-<div class="sidebar sidebar-dark sidebar-main sidebar-expand-md" style="background-color: #6EBA93">
+<div class="sidebar sidebar-dark sidebar-main sidebar-expand-md" style="background-color: #ffffff">
 
     <!-- Sidebar mobile toggler -->
     <div class="sidebar-mobile-toggler text-center">
@@ -35,14 +35,14 @@
                     </div>
 
                     <div class="media-body">
-                        <div class="media-title font-weight-semibold">{{\Auth::user()->nama}}</div>
-                        <div class="font-size-xs opacity-50">
+                        <div class="media-title font-weight-semibold" style="color: #000000">{{\Auth::user()->nama}}</div>
+                        <div class="font-size-xs opacity-50" style="color: #000000">
                             <i class="icon-pin font-size-sm"></i> &nbsp;{{\Auth::user()->alamat}}
                         </div>
                     </div>
 
                     <div class="ml-3 align-self-center dropdown">
-                        <a href="#" class="text-white" data-toggle="dropdown"><i class="icon-cog3"></i></a>
+                        <a href="#" class="text-white" data-toggle="dropdown"><i class="icon-cog3" style="color: #000000"></i></a>
                         <div class="dropdown-menu">
                             <!-- <a href="#" class="dropdown-item"><i class="icon-user-plus"></i> My profile</a> -->
                             <a href="{{ url('/changepassklien') }}" class="dropdown-item"><i class="icon-cog5"></i> Ganti Password</a>
@@ -64,47 +64,49 @@
 
                 <li class="nav-item">
                     <a href="{{ url('/customer') }}" class="nav-link {{ (request()->is('customer*')) ? 'active' : '' }}">
-                        <i class="icon-home4"></i>
+                        <i class="icon-home4" style="color: #000000"></i>
                         <span>
-                            Dashboard
+                            <font color="#000000">Dashboard</font>
                         </span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url('/taskclients') }}" class="nav-link {{ (request()->is('taskclients*')) ? 'active' : '' }}">
+                    <a href="{{ url('/taskclients') }}" class="nav-link {{ (request()->is('tasks*')) ? 'active' : '' }}">
                         <i class="icon-stack-text"></i>
                         <span>
-                            Task
+                        <font color="#000000">Task</font>
                         </span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ url('/history') }}" class="nav-link {{ (request()->is('history')) ? 'active' : '' }}">
-                        <i class="icon-history"></i>
+                        <i class="icon-history" style="color: #000000"></i>
                         <span>
-                            History Task
+                        <font color="#000000">History Task</font>
                         </span>
                     </a>
                 </li>
                 <li class="nav-item nav-item-submenu">
-                    <a href="#" class="nav-link {{ (request()->is('tagihanuser*','dptagihanuser*')) ? 'active' : '' }}"><i class="icon-users"></i>
-						<span>Tagihan & DP Tagihan
+                    <a href="#" class="nav-link {{ (request()->is('tagihanuser*','dptagihanuser*')) ? 'active' : '' }}">
+                        <i class="icon-users" style="color: #000000"></i>
+						<span>
+                        <font color="#000000">Tagihan & DP Tagihan</font>
 						</span>
 					</a>
                     <ul class="nav nav-group-sub" data-submenu-title="JSON forms" style="display: {{ (request()->is('tagihanuser*','dptagihanuser*')) ? 'block' : 'none' }};">
                         <li class="nav-item">
                             <a href="{{ url('/dptagihanuser') }}" class="nav-link {{ (request()->is('dptagihanuser*')) ? 'active' : '' }}">
-                                <i class="icon-clipboard"></i>
+                                <i class="icon-clipboard" style="color: #000000"></i>
                                 <span>
-                                    DP Tagihan
+                                <font color="#000000">DP Tagihan</font>
                                 </span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ url('/tagihanuser') }}" class="nav-link {{ (request()->is('tagihanuser*')) ? 'active' : '' }}">
-                                <i class="icon-clipboard"></i>
+                                <i class="icon-clipboard" style="color: #000000"></i>
                                 <span>
-                                    Tagihan
+                                <font color="#000000">Tagihan</font>
                                 </span>
                             </a>
                         </li>
@@ -112,9 +114,9 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ url('/paymentclients') }}" class="nav-link {{ (request()->is('paymentclients*')) ? 'active' : '' }}">
-                        <i class="icon-cash"></i>
+                        <i class="icon-cash" style="color: #000000"></i>
                         <span>
-                            Pembayaran
+                        <font color="#000000">Pembayaran</font>
                         </span>
                     </a>
                 </li>

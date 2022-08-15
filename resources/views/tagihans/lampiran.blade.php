@@ -48,7 +48,7 @@
                     </div>
         
                     <div class="text-right">
-                        <button class="btn bg-success-400" type="submit" style="border-radius: 10px; background: #6EBA93">Submit</button>
+                        <button class="btn bg-success-400" type="submit" style="border-radius: 10px; background: #26a69a">Submit</button>
                     </div>
                 </div>
                 

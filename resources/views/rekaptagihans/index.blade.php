@@ -26,7 +26,7 @@
         <!-- Hover rows -->
 		<div id="card-rekap" class="card" style="display:none; border-radius: 10px">
             <div class="card-header header-elements-inline">
-				<a href="{{ route('rekaptagihans.create') }}"><button type="button" class="btn btn-success rounded-round" style="background: #6EBA93"><i class="fa fa-plus" style="font-size:12px"></i>&nbsp Tambah</button></a>
+				<a href="{{ route('rekaptagihans.create') }}"><button type="button" class="btn btn-success rounded-round" style="background: #26a69a"><i class="fa fa-plus" style="font-size:12px"></i>&nbsp Tambah</button></a>
 			</div>
 
             <div class="card-body">
