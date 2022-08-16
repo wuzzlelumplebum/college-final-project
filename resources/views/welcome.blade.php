@@ -29,6 +29,7 @@
                         <li class="nav__item"><a href="#home" class="nav__link active-link">Home</a></li>
                         <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
                         <li class="nav__item"><a href="#services" class="nav__link">Services</a></li>
+                        <li class="nav__item"><a href="#fortfolio" class="nav__link">Portfolio</a></li>
                         <li class="nav__item"><a href="#contact" class="nav__link">Contact us</a></li>
                         @if (!Auth::check())
                             <li class="nav__item"><a href="{{ url('/login') }}" class="nav__link">Log in</a></li>
@@ -55,12 +56,17 @@
         </header>
 
         <main class="l-main">
+            <div class="video-container">
+                <center>
+				<video controls width="900" height="700" src="assets/videos/video.mp4" muted autoplay loop></video>
+                </center>
+			</div>
             <!--========== HOME ==========-->
             <section class="home" id="home">
                 <div class="home__container bd-container bd-grid">
                     <div class="home__data">
                         <h1 class="home__title">NORE WEBSITE</h1>
-                        <h2 class="home__subtitle">Tim Nore menyediakan layanan pembuatan website beserta pemeliharaannya yang ditangani langsung oleh staf IT berpengalaman. Dengan biaya berlangganan yang terjangkau, Anda bisa mendapatkan layanan konsultasi, pembuatan website, pengubahan tampilan, pengelolaan konten, dan pemeliharaan server.</h2>
+                        <h2 class="home__subtitle">Nore team provides website creation and maintenance services which are handled directly by experienced IT staff. With an affordable subscription fee, you can get consulting services, website creation, retouching, content management, and server maintenance.</h2>
                     </div>
     
                     <img src="{{ asset('assets/img/home.png') }}" alt="" class="home__img">
@@ -73,16 +79,16 @@
                     <div class="about__data">
                         <span class="section-subtitle about__initial">About us</span>
                         <h2 class="section-title about__initial">CV. Nore Inovasi</h2>
-                        <p class="about__description">CV Nore Inovasi merupakan perusahaan yang aktif bergerak dalam bidang pengembangan teknologi informasi. Perusahaan IT ini dirintis oleh Noer Prajitno, M.Sc (Founder) bersama dengan Daniel Ismanto, ST (Co-founder) pada Oktober 2019. Berawal dari menyediakan layanan pembuatan website, NORE mengembangkan layanannya ke pembuatan mobile apps, sistem informasi, dan digital marketing (SEM).<br><br>
-                            Sesuai dengan nama perusahaan NORE yang merupakan akronim “no repot”, CV Nore Inovasi berkomitmen untuk memberikan solusi berkualitas untuk pembuatan website, sistem informasi, dan segala bentuk permasalahan teknologi informasi yang praktis “No Repot, No Rempong” untuk berbagai kalangan. Dengan biaya berlangganan yang terjangkau, pelanggan bisa mendapatkan layanan konsultasi, pembuatan website, pengubahan tampilan, pengelolaan konten, dan pemeliharaan server.<br><br>
-                            CV Nore Inovasi berkantor di Gedung Semarang Town Square menyediakan solusi IT dengan kualitas premium kepada pelanggan. Layanan kami termasuk, tapi tidak terbatas pada:<br><br>
-                            ◌ Website Profil Perusahaan<br>
-                            ◌ Toko Online<br>
-                            ◌ Blog Pribadi<br>
-                            ◌ Sistem Informasi<br>
-                            ◌ Pengembangan Aplikasi Mobile<br>
-                            ◌ Layanan Digital Marketing<br>
-                            ◌ Dan Pengembangan Aplikasi Perangkat Lunak Lainnya</p>
+                        <p class="about__description">CV Nore Inovasi is a company that is actively engaged in the development of information technology. This IT company was started by Noer Prajitno, M.Sc (Founder) together with Daniel Ismanto, ST (Co-founder) in October 2019. Starting from providing website creation services, NORE developed its services to create mobile apps, information systems, and digital marketing (SEM).<br><br>
+                            In accordance with the company name NORE which is an acronym for "no repot", CV Nore Inovasi is committed to providing quality solutions for website creation, information systems, and all forms of practical information technology problems "No Repot, No Rempong" for various groups. With an affordable subscription fee, customers can get consulting services, website creation, retouching, content management, and server maintenance.<br><br>
+                            CV Nore Inovasi is based in Semarang Town Square Building, providing IT solutions with premium quality to customers. Our services include, but are not limited to:<br><br>
+                            • Company Profile Website<br>
+                            • Online Shop<br>
+                            • Personal Blog<br>
+                            • Information System<br>
+                            • Mobile Application Development<br>
+                            • Digital Marketing Services<br>
+                            • And Other Software Application Development</p>
                     </div>
 
                     <img src="{{ asset('assets/img/about.png') }}" alt="" class="about__img">
@@ -98,25 +104,28 @@
                     <div class="services__content">
                         <img src="{{ asset('assets/img/mini.png') }}" alt="" class="mini__img">
                         <h3 class="services__title">Mini</h3>
-                        <p class="services__description">Website berlangganan tanpa pengoperasian.</p><br>
-                        <span class="section-subtitle"><b>Mulai dari Rp 600rb/thn <br> 1,2juta untuk tahun pertama</b></span>
+                        <p class="services__description">Subscription website without operation.</p><br>
+                        <span class="section-subtitle"><b>Starting from IDR 600k/year <br> 1.2 million for the first year</b></span>
                     </div>
 
                     <div class="services__content">
                         <img src="{{ asset('assets/img/nore.png') }}" alt="" class="nore__img">
                         <h3 class="services__title">NORE</h3>
-                        <p class="services__description">Website berlangganan dengan pengoperasian tim NORE (No Repot, No Rempong)</p><br>
-                        <span class="section-subtitle"><b>Mulai dari Rp 2juta/thn</b></span>
+                        <p class="services__description">Subscription website with the operation of the NORE team (No Repot, No Rempong)</p><br>
+                        <span class="section-subtitle"><b>Starting from IDR 2 million/year</b></span>
                     </div>
 
                     <div class="services__content">
                         <img src="{{ asset('assets/img/lepas.png') }}" alt="" class="lepas__img">
                         <h3 class="services__title">Lepas</h3>
-                        <p class="services__description">Pembelian website dari NORE tanpa berlangganan</p><br>
-                        <span class="section-subtitle"><b>Mulai dari Rp 2,5juta</b></span>
+                        <p class="services__description">Purchase the website from NORE without subscribing</p><br>
+                        <span class="section-subtitle"><b>Starting from IDR 2.5 million</b></span>
                     </div>
                 </div>
             </section>
+
+            <!--========== PORTFOLIO ==========-->
+        
 
             <!--========== CONTACT US ==========-->
             <section class="contact section bd-container" id="contact">
@@ -148,7 +157,7 @@
                 </div>
 
                 <div class="footer__content">
-                    <h3 class="footer__title">Mulai</h3>
+                    <h3 class="footer__title">Begin</h3>
                     <ul>
                         <li><a href="#home" class="footer__link">Home</a></li>
                         <li><a href="#about" class="footer__link">About</a></li>
@@ -159,14 +168,13 @@
                     <h3 class="footer__title">Information</h3>
                     <ul>
                         <li><a href="#services" class="footer__link">Services</a></li>
+                        <li><a href="#portfolio" class="footer__link">Portfolio</a></li>
                         <li><a href="#contact" class="footer__link">Contact Us</a></li>
-                        <li><a href="{{ url('/privacy-policy') }}" class="footer__link">Privacy policy</a></li>
-                        <li><a href="#" class="footer__link">Terms of services</a></li>
                     </ul>
                 </div>
 
                 <div class="footer__content">
-                    <h3 class="footer__title">Hubungi Kami</h3>
+                    <h3 class="footer__title">Contact Us</h3>
                     <ul>
                         <li>☎ +62 811 2772 788</li>
                         <li>✉ cs@nore.web.id</li>

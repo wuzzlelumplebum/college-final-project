@@ -423,6 +423,135 @@ img{
   justify-self: center;
 }
 
+/*========== PORTFOLIO ==========*/
+.portfolio {
+  margin-top: 20rem;
+}
+
+.portfolio__head {
+  position: relative;
+  margin: auto;
+}
+
+.portfolio__quote {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-height: 11rem;
+  width: auto;
+}
+
+.portfolio__title {
+  font-size: 3.6rem;
+  max-width: 45rem;
+}
+
+.portfolio__body {
+  margin: 8rem auto 4rem;
+  width: 100%;
+  overflow: hidden;
+  padding: 2rem 0;
+  position: relative;
+}
+
+.portfolio__body::before, .portfolio__body::after {
+  position: absolute;
+  content: '';
+  top: 0;
+  width: 10%;
+  background-color: #ffffff;
+  opacity: .5;
+  height: 100%;
+  z-index: 1;
+}
+
+.portfolio__body::before {
+  left: 0;
+  filter: drop-shadow(5rem 0 4rem #ffffff);
+}
+
+.portfolio__body::after {
+  right: 0;
+  filter: drop-shadow(-5rem 0 4rem #ffffff);
+}
+
+.portfolio__list {
+  display: flex;
+  grid-gap: 2.5rem;
+  position: relative;
+}
+
+.portfolio__card {
+  flex-shrink: 0;
+  width: 33%;
+  padding: 2.5rem;
+  background-color: #ffffff;
+  filter: drop-shadow(0 0 0.75rem rgba(27, 31, 35, 0.15));
+  transition: transform .3s ease;
+}
+
+.portfolio:hover {
+  transform: scale(1.1);
+  z-index: 1;
+}
+
+.portfolio__profile {
+  display: flex;
+  grid-gap: 2.5rem;
+  align-items: center;
+  font-size: 1.8rem;
+}
+
+.portfolio__img {
+  filter: drop-shadow(0 0 0.5rem #66BB6A);
+  width: 7.2rem;
+  height: 7.2rem;
+}
+
+.portfolio__img img {
+  width: initial;
+  max-width: initial;
+}
+
+.portfolio__name {
+  color: #66BB6A;
+}
+
+.portfolio__title {
+  color: #263238;
+}
+
+.portfolio__description {
+  margin-top: 5rem;
+  font-size: 1.8rem;
+  color: #324148;
+}
+
+.portfolio__footer {
+  margin: auto;
+}
+
+.portfolio__directions {
+  display: flex;
+  grid-gap: 1.5rem;
+}
+
+.btn__portfolio {
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 1.5rem;
+  outline: none;
+  border: none;
+  background-color: #66BB6A;
+  color: #ffffff;
+  box-shadow: 1px 10px 30px -10px #66bb6a;
+}
+
+.btn__portfolio.disable {
+  background-color: #ffffff;
+  color: #263238;
+}
+
 /*========== CONTACT ==========*/
 .contact__container{
   text-align: center;
