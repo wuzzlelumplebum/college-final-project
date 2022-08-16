@@ -59,7 +59,7 @@
 <!-- Content area -->
 <div class="content pt-0">
 	
-	<!-- Greetings message -->
+	{{-- <!-- Greetings message -->
 	<h2 id="greetings" style="text-align: center"></h2>
 
 	<!-- Quick stats boxes -->
@@ -67,7 +67,7 @@
 		<h4><span class="font-weight-semibold">Info Penting</span></h4>
 		<div class="rectangle">
 		</div>
-	</div>
+	</div> --}}
 
 	@if(Auth::user()->role == 1)
 	<!-- Admin Dashboard -->
@@ -1218,8 +1218,13 @@
 						center: ['50%', '50%'],
 						itemStyle: {
 							normal: {
-								borderWidth: 1,
-								borderColor: '#fff'
+								label : {
+									show: true, position: 'outside',
+									formatter : '{d}%',
+								},
+								labelLine : {
+									show : true
+								}
 							}
 						},
 						data: [
@@ -1356,8 +1361,13 @@
 						center: ['50%', '50%'],
 						itemStyle: {
 							normal: {
-								borderWidth: 1,
-								borderColor: '#fff'
+								label : {
+									show: true, position: 'outside',
+									formatter : '{d}%',
+								},
+								labelLine : {
+									show : true
+								}
 							}
 						},
 						data: [
@@ -1494,8 +1504,13 @@
 						center: ['50%', '50%'],
 						itemStyle: {
 							normal: {
-								borderWidth: 1,
-								borderColor: '#fff'
+								label : {
+									show: true, position: 'outside',
+									formatter : '{d}%',
+								},
+								labelLine : {
+									show : true
+								}
 							}
 						},
 						data: [
@@ -1632,8 +1647,13 @@
 						center: ['50%', '50%'],
 						itemStyle: {
 							normal: {
-								borderWidth: 1,
-								borderColor: '#fff'
+								label : {
+									show: true, position: 'outside',
+									formatter : '{d}%',
+								},
+								labelLine : {
+									show : true
+								}
 							}
 						},
 						data: [
@@ -1774,8 +1794,13 @@
 						center: ['50%', '50%'],
 						itemStyle: {
 							normal: {
-								borderWidth: 1,
-								borderColor: '#fff'
+								label : {
+									show: true, position: 'outside',
+									formatter : '{d}%',
+								},
+								labelLine : {
+									show : true
+								}
 							}
 						},
 						data: [
@@ -1912,8 +1937,13 @@
 						center: ['50%', '50%'],
 						itemStyle: {
 							normal: {
-								borderWidth: 1,
-								borderColor: '#fff'
+								label : {
+									show: true, position: 'outside',
+									formatter : '{d}%',
+								},
+								labelLine : {
+									show : true
+								}
 							}
 						},
 						data: [

@@ -58,7 +58,7 @@
         <main class="l-main">
             <div class="video-container">
                 <center>
-				<video controls width="900" height="700" src="assets/videos/video.mp4" muted autoplay loop></video>
+				<video width="100%" height="auto" src="assets/videos/video.mp4" muted autoplay loop></video>
                 </center>
 			</div>
             <!--========== HOME ==========-->

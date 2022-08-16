@@ -60,10 +60,37 @@
         <input id="user" type="hidden" name="" value="{{ $user->nama }}">
         <div id="greetings" align="center"></div>
 
-        <!-- Quick stats boxes -->
+        {{-- <!-- Quick stats boxes -->
         <div class="title" style="padding-bottom: 20px">
             <h4><span class="font-weight-semibold">Info Penting</span></h4>
             <div class="rectangle">
+            </div>
+        </div> --}}
+
+        <div class="card" style="border-radius: 10px;">
+            <div class="row">
+                <div class="contents">
+                    <h5><span class="font-weight-semibold">Info Tagihan {{ \Auth::user()->nama }}</span></h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="contents">
+                        <div class="bg-600" style="background: linear-gradient(to right, #4169E1, #00CED1)">
+                            <blockquote class="blockquote d-flex py-2 mb-0">
+                                <div class="mr-4" style="padding-left: 1.875rem;">
+                                    <i class="icon-users icon-4x"></i>
+                                </div>
+
+                                <div>
+                                    <div class="d-flex">
+                                        <h3 class="font-weight-semibold mb-0"></h3>
+                                    </div>
+                                </div>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
