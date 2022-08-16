@@ -42,33 +42,6 @@ ul{
 						</span>
 					</a>
 				</li>
-				<li class="nav-item nav-item-submenu">
-					<a href="#" class="nav-link {{ (request()->is('tasks*','history*')) ? 'active' : '' }}">
-						<i class="icon-stack-text"></i>
-						<span>
-							Pengoperasian
-						</span>
-					</a>
-					<ul class="nav nav-group-sub" data-submenu-title="JSON forms" style="display: {{ (request()->is('tasks*','history*')) ? 'block' : 'none' }};">
-						<li class="nav-item">
-							<a href="{{ url('/tasks') }}" class="nav-link {{ (request()->is('tasks*')) ? 'active' : '' }}">
-								<i class="icon-stack-text"></i>
-								<span>
-									Task
-								</span>
-							</a>
-						</li>
-		
-						<li class="nav-item">
-							<a href="{{ url('/history') }}" class="nav-link {{ (request()->is('history')) ? 'active' : '' }}">
-								<i class="icon-history"></i>
-								<span>
-									History Task
-								</span>
-							</a>
-						</li>
-					</ul>
-				</li>
 
 				<li class="nav-item nav-item-submenu">
 					<a href="#" class="nav-link {{ (request()->is('users*','members*','proyeks*')) ? 'active' : '' }}"><i class="icon-users"></i>
@@ -105,6 +78,33 @@ ul{
 									</span>
 								</a></li>
 							</ul>
+						</li>
+					</ul>
+				</li>
+				<li class="nav-item nav-item-submenu">
+					<a href="#" class="nav-link {{ (request()->is('tasks*','history*')) ? 'active' : '' }}">
+						<i class="icon-stack-text"></i>
+						<span>
+							Pengoperasian
+						</span>
+					</a>
+					<ul class="nav nav-group-sub" data-submenu-title="JSON forms" style="display: {{ (request()->is('tasks*','history*')) ? 'block' : 'none' }};">
+						<li class="nav-item">
+							<a href="{{ url('/tasks') }}" class="nav-link {{ (request()->is('tasks*')) ? 'active' : '' }}">
+								<i class="icon-stack-text"></i>
+								<span>
+									Task
+								</span>
+							</a>
+						</li>
+		
+						<li class="nav-item">
+							<a href="{{ url('/history') }}" class="nav-link {{ (request()->is('history')) ? 'active' : '' }}">
+								<i class="icon-history"></i>
+								<span>
+									History Task
+								</span>
+							</a>
 						</li>
 					</ul>
 				</li>

@@ -29,17 +29,27 @@
 <div class="content">
 	
 	<!-- Hover rows -->
+<<<<<<< HEAD
+	<div class="card">
+		<div class="card-header">
+				<h4 style="font-weight:bold;">Task Klien</h4>
+				<a href="{{ route('tasks.create')}}"><button type="button" class="btn btn-success rounded-round"><i class="icon-help mr-2"></i> Tambah</button></a>
+=======
 	{{-- Premium list table --}}
 	<div class="card" style="border-radius: 10px">
 		<div class="card-header">
 				<h4 style="font-weight:bold;">Task Premium</h4>
 				<a href="{{ route('tasks.create')}}"><button type="button" class="btn btn-success rounded-round" style="background: #26a69a"><i class="fa fa-plus" style="font-size:12px"></i>&nbsp Tambah</button></a>
+>>>>>>> 6168ad9b9e33fb9da705c787eb58ad775af93763
 		</div>
 		<table class="table datatable-basic table-hover">
 			<thead>
 				<tr style="background:#F0FFF0">
 					<th>No</th>
 					<th>Tanggal</th>
+<<<<<<< HEAD
+					<th>Klien</th>
+=======
 					<th>Username</th>
 					<th>Kebutuhan</th>
 					<th>Severity</th>
@@ -128,6 +138,7 @@
 					<th>No</th>
 					<th>Tanggal</th>
 					<th>Username</th>
+>>>>>>> 6168ad9b9e33fb9da705c787eb58ad775af93763
 					<th>Kebutuhan</th>
 					<th>Severity</th>
 					<th>Handler</th>
@@ -143,8 +154,8 @@
 				<tr>
 					<td>{{$i}}</td>
 					<td><div class="datatable-column-width">{{date("Y-m-d", strtotime($task->created_at))}}</div></td>
-					<td><div class="datatable-column-width">{{$task->user->username}}</div></td>
-					<td><div class="datatable-column-width">{{$task->kebutuhan}}</div></td>
+					<td><div class="datatable-column-width">{{$task->user->nama}}</div></td>
+					<td><div class="datatable-column-width">{!! $task->kebutuhan !!}</div></td>
 					<td><div class="datatable-column-width">{{config('custom.severity.'.$task->severity)}}</div></td>
 					<td><div class="datatable-column-width form-check">
 						<label class="form-check-label">
@@ -160,10 +171,11 @@
 						</div>
 					</td>
 					
-					<td align="center">@if($task->status == 2 )
+					<td align="center">
+						@if($task->status == 2 )
 						<span style="font-size:100%;" class="badge badge-pill bg-orange-400 ml-auto ml-md-0">{{config('custom.status.'.$task->status)}}</span>
 						@else
-						{{config('custom.status.'.$task->status)}}
+						<span style="font-size: 100%;" class="badge badge-pill badge-info ml-auto ml-md-0">{{ config('custom.status.'.$task->status) }}</span>
 						@endif
 					</td>
 

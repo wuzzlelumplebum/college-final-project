@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\Task;
 use App\Model\User;
+use App\Model\Proyek;
+use App\Model\Attachment;
 
 class TaskClientController extends Controller
 {
@@ -17,7 +19,7 @@ class TaskClientController extends Controller
     public function index()
     {
         $tasks = Task::where('user_id', \Auth::user()->id)->orderBy('created_at', 'desc')->get();
-        // dd($tasks);
+        // dd($proyeks);
 
         return view('klien.tasks.index', compact('tasks'));
     }
@@ -29,7 +31,8 @@ class TaskClientController extends Controller
      */
     public function create()
     {
-        //
+        $proyeks = Proyek::where('user_id', \Auth::user()->id)->orderBy('created_at', 'desc')->get();
+        return view('klien.tasks.create', compact('proyeks'));
     }
 
     /**
@@ -40,7 +43,49 @@ class TaskClientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $task = new Task([
+            'user_id' => $request->get('user_id'),
+            'id_proyek' => $request->get('id_proyek'),
+            'kebutuhan' => $request->get('kebutuhan'),
+            'severity' => $request->get('severity'),
+            'status' => 1,
+        ]);
+
+        // dd($task);
+        
+        $task->save();
+        
+        // if($request->hasfile('file'))
+        // {
+        //     foreach($request->file('file') as $file)
+        //     {
+        //         $name=$file->getClientOriginalName();
+        //         $file->storeAs('/attachment/', $task->id.$name); 
+        //         // $data[] = $name;  
+
+        //         $attach= new Attachment();
+        //         $attach->task_id=$task->id;
+        //         $attach->file= $task->id.$name;
+        //         $attach->save();
+        //     }
+        // }
+
+        $id_proyek = $request->get('id_proyek');
+        $user_id = $request->get('user_id');
+
+        if($id_proyek != null){
+            $proyek = Proyek::find($id_proyek);
+            $proyek->task_count += 1;
+            $proyek->update();
+        }
+
+        if($user_id != null){
+            $user = User::find($user_id);
+            $user->task_count += 1;
+            $user->update();
+        }
+
+        return redirect('/taskclients')->with('success', 'Task saved!');
     }
 
     /**
@@ -51,7 +96,9 @@ class TaskClientController extends Controller
      */
     public function show($id)
     {
-        //
+        $task = Task::find($id);
+
+        return view('klien.tasks.show', compact('task'));
     }
 
     /**
