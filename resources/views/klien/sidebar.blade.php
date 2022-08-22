@@ -71,6 +71,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ url('/proyekclients') }}" class="nav-link {{ (request()->is('proyekclients*')) ? 'active' : '' }}">
+                        <i class="icon-traffic-cone" style="color: #000000"></i>
+                        <span>
+                            <font color="#000000">Proyek</font>
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ url('/taskclients') }}" class="nav-link {{ (request()->is('tasks*')) ? 'active' : '' }}">
                         <i class="icon-stack-text" style="color: #000000"></i>
                         <span>
