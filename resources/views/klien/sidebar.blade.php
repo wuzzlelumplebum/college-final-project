@@ -79,7 +79,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url('/taskclients') }}" class="nav-link {{ (request()->is('tasks*')) ? 'active' : '' }}">
+                    <a href="{{ url('/taskclients') }}" class="nav-link {{ (request()->is('taskclients*','createtask*')) ? 'active' : '' }}">
                         <i class="icon-stack-text" style="color: #000000"></i>
                         <span>
                         <font color="#000000">Task</font>
@@ -96,7 +96,7 @@
                 </li>
                 <li class="nav-item nav-item-submenu">
                     <a href="#" class="nav-link {{ (request()->is('tagihanuser*','dptagihanuser*')) ? 'active' : '' }}">
-                        <i class="icon-users" style="color: #000000"></i>
+                        <i class="icon-paste" style="color: #000000"></i>
 						<span>
                         <font color="#000000">Tagihan & DP Tagihan</font>
 						</span>

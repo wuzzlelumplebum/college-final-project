@@ -54,7 +54,7 @@
     <!-- /page header -->
 
     <!-- Content area -->
-    <div class="content pt-0">
+    <div class="content pt-0 mt-2">
 
         <!-- Greetings message -->
         <input id="user" type="hidden" name="" value="{{ $user->nama }}">
@@ -66,11 +66,10 @@
             <div class="rectangle">
             </div>
         </div> --}}
-
         <div class="card" style="border-radius: 10px;">
             <div class="row">
                 <div class="contents">
-                    <h5><span class="font-weight-semibold">Info Tagihan {{ \Auth::user()->nama }}</span></h5>
+                    <h5><span class="font-weight-semibold">Sisa Tagihan {{ \Auth::user()->nama }}</span></h5>
                 </div>
             </div>
             <div class="row">
@@ -79,12 +78,195 @@
                         <div class="bg-600" style="background: linear-gradient(to right, #4169E1, #00CED1)">
                             <blockquote class="blockquote d-flex py-2 mb-0">
                                 <div class="mr-4" style="padding-left: 1.875rem;">
-                                    <i class="icon-users icon-4x"></i>
+                                    <i class="icon-coins icon-4x"></i>
                                 </div>
 
                                 <div>
+                                    <div style="font-size: 18px;">
+                                        Sisa DP Tagihan
+                                    </div>
                                     <div class="d-flex">
-                                        <h3 class="font-weight-semibold mb-0"></h3>
+                                        <h3 class="font-weight-semibold mb-0">{{ $dptagihanclient }}</h3>
+                                    </div>
+                                </div>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="contents">
+                        <div class="bg-600" style="background: linear-gradient(to right, #4169E1, #00CED1)">
+                            <blockquote class="blockquote d-flex py-2 mb-0">
+                                <div class="mr-4" style="padding-left: 1.875rem;">
+                                    <i class="icon-coins icon-4x"></i>
+                                </div>
+
+                                <div>
+                                    <div style="font-size: 18px;">
+                                        Sisa Tagihan
+                                    </div>
+                                    <div class="d-flex">
+                                        <h3 class="font-weight-semibold mb-0">{{ $tagihanclient }}</h3>
+                                    </div>
+                                </div>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="contents">
+                        <div class="bg-600" style="background: linear-gradient(to right, #4169E1, #00CED1)">
+                            <blockquote class="blockquote d-flex py-2 mb-0">
+                                <div class="mr-4" style="padding-left: 1.875rem;">
+                                    <i class="icon-coins icon-4x"></i>
+                                </div>
+
+                                <div>
+                                    <div style="font-size: 18px;">
+                                        Total Sisa DP dan Tagihan
+                                    </div>
+                                    <div class="d-flex">
+                                        <h3 class="font-weight-semibold mb-0">{{ ($dptagihanclient) + ($tagihanclient) }}</h3>
+                                    </div>
+                                </div>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="row">
+                <div class="contents">
+                    <h5><span class="font-weight-semibold">Total Proyek {{ \Auth::user()->nama }}</span></h5>
+                </div>
+            </div>
+            <div class="row">
+                <table class="table datatable-basic table-hover">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Proyek</th>
+                            <th>Progress</th>
+                            <th>Tenggat Waktu</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @php($i = 1)
+                        @foreach ($proyekclients as $proyek)
+                            
+                        @endforeach
+                        <tr>
+                            <td>{{ $i }}</td>
+                            <td><div class="datatable-column-width">{{ $proyek->nama_proyek }}</div></td>
+                            <td><div class="datatable-column-width"></div></td>
+                            <td><div class="datatable-column-width">{{ date('Y-m-d', strtotime($proyek->task->tenggat)) }}</div></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card" style="border-radius: 10px;">
+            <div class="row">
+                <div class="contents">
+                    <h5><span class="font-weight-semibold">Total Proyek {{ \Auth::user()->nama }}</span></h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="contents">
+                        <div class="bg-600" style="background: linear-gradient(to right, #4169E1, #00CED1)">
+                            <blockquote class="blockquote d-flex py-2 mb-0">
+                                <div class="mr-4" style="padding-left: 1.875rem;">
+                                    <i class="icon-display icon-4x"></i>
+                                </div>
+
+                                <div>
+                                    <div style="font-size: 16px;">
+                                        Proyek Website
+                                    </div>
+                                    <div class="d-flex">
+                                        <h4 class="font-weight-semibold mb-0">{{ $websiteclient }}</h4>
+                                    </div>
+                                </div>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="contents">
+                        <div class="bg-600" style="background: linear-gradient(to right, #4169E1, #00CED1)">
+                            <blockquote class="blockquote d-flex py-2 mb-0">
+                                <div class="mr-4" style="padding-left: 1.875rem;">
+                                    <i class="icon-display icon-4x"></i>
+                                </div>
+
+                                <div>
+                                    <div style="font-size: 16px;">
+                                        Proyek Iklan/Ads
+                                    </div>
+                                    <div class="d-flex">
+                                        <h4 class="font-weight-semibold mb-0">{{ $adsclient }}</h4>
+                                    </div>
+                                </div>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="contents">
+                        <div class="bg-600" style="background: linear-gradient(to right, #4169E1, #00CED1)">
+                            <blockquote class="blockquote d-flex py-2 mb-0">
+                                <div class="mr-4" style="padding-left: 1.875rem;">
+                                    <i class="icon-display icon-4x"></i>
+                                </div>
+
+                                <div>
+                                    <div style="font-size: 16px;">
+                                        Proyek Sistem Informasi
+                                    </div>
+                                    <div class="d-flex">
+                                        <h4 class="font-weight-semibold mb-0">{{ $siclient }}</h4>
+                                    </div>
+                                </div>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="contents">
+                        <div class="bg-600" style="background: linear-gradient(to right, #4169E1, #00CED1)">
+                            <blockquote class="blockquote d-flex py-2 mb-0">
+                                <div class="mr-4" style="padding-left: 1.875rem;">
+                                    <i class="icon-display icon-4x"></i>
+                                </div>
+
+                                <div>
+                                    <div style="font-size: 16px;">
+                                        Proyek Mobile App
+                                    </div>
+                                    <div class="d-flex">
+                                        <h4 class="font-weight-semibold mb-0">{{ $mobileclient }}</h4>
+                                    </div>
+                                </div>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="contents">
+                        <div class="bg-600" style="background: linear-gradient(to right, #4169E1, #00CED1)">
+                            <blockquote class="blockquote d-flex py-2 mb-0">
+                                <div class="mr-4" style="padding-left: 1.875rem;">
+                                    <i class="icon-display icon-4x"></i>
+                                </div>
+
+                                <div>
+                                    <div style="font-size: 16px;">
+                                        Proyek Custom/Lainnya
+                                    </div>
+                                    <div class="d-flex">
+                                        <h4 class="font-weight-semibold mb-0">{{ $customclient }}</h4>
                                     </div>
                                 </div>
                             </blockquote>

@@ -52,6 +52,12 @@
                             </div>
                         </div>
                         <div class="form-group row">
+                            <label class="col-form-label col-lg-2">Tenggat Waktu</label>
+                            <div class="col-lg-10">
+                                <input style="border-radius: 10px" name="tenggat" type="text" class="form-control pickadate-accessibility" placeholder="Contoh: 2022-04-16" value="{{ date('Y-m-d') }}" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label class="col-form-label col-lg-2">Kebutuhan</label>
                             <div class="col-lg-10">
                                 <textarea style="border-radius: 10px" name="kebutuhan" id="" cols="30" rows="10" class="summernote form-control border-teal border-1" required></textarea>

@@ -121,6 +121,7 @@ Route::group(['middleware' => ['auth']], function() {
 		Route::resource('/taskclients', 'klien\TaskClientController');
 		Route::resource('/paymentclients', 'klien\PaymentClientController');
 		Route::resource('/proyekclients', 'klien\ProyekClientController');
+		Route::get('/createtask/{id}', 'klien\TaskClientController@createtaskproyek');
 		Route::get('/tagihanuser', 'klien\TagihanClientController@index');
 		Route::get('/dptagihanuser', 'klien\DpTagihanClientController@index');
 		Route::get('/payment','client\PaymentClient@index');

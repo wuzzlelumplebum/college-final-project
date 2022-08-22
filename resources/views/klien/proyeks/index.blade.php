@@ -58,7 +58,7 @@
                                         </a>
 
                                         <div class="dropdown-menu dropdown-menu-right">
-                                            <a href="#" class="dropdown-item"><i class="icon-stack-text"></i> Create Task</a>
+                                            <a href="{{ url('/createtask', $proyek->id) }}" class="dropdown-item"><i class="icon-stack-text"></i> Create Task</a>
                                             <a href="{{ route('proyekclients.show', $proyek->id) }}" class="dropdown-item"><i class="icon-images3"></i> Show</a>
                                         </div>
                                     </div>

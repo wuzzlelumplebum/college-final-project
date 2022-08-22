@@ -47,6 +47,7 @@ class TaskClientController extends Controller
             'user_id' => $request->get('user_id'),
             'id_proyek' => $request->get('id_proyek'),
             'kebutuhan' => $request->get('kebutuhan'),
+            'tenggat' => $request->get('tenggat'),
             'severity' => $request->get('severity'),
             'status' => 1,
         ]);
@@ -133,5 +134,14 @@ class TaskClientController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function createtaskproyek(Request $request, $id)
+    {
+        $user = User::find(\Auth::user()->id);
+        $proyek = Proyek::find($id);
+        // dd($proyek);
+
+        return view('klien.proyeks.createtask', compact('user','proyek'));
     }
 }

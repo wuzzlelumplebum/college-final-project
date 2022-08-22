@@ -9,6 +9,8 @@ use App\Model\Payment;
 use App\Model\Proyek;
 use App\Model\User;
 use App\Model\Pengeluaran;
+use App\Model\RekapDptagihan;
+use App\Model\RekapTagihan;
 use Carbon\Carbon;
 
 class AdminController extends Controller
@@ -267,6 +269,15 @@ class AdminController extends Controller
 
     //test view costumer()
     public function customer(){
+
+        $proyekclients = Proyek::where('user_id', \Auth::user()->id)->get();
+        $dptagihanclient = RekapDptagihan::where('user_id', \Auth::user()->id)->where('status','<',4)->get()->sum('total');
+        $tagihanclient = RekapTagihan::where('user_id', \Auth::user()->id)->where('status','<',4)->get()->sum('total');
+        $websiteclient = Proyek::where('user_id', \Auth::user()->id)->where('jenis_proyek','=',1)->get()->count();
+        $adsclient = Proyek::where('user_id', \Auth::user()->id)->where('jenis_proyek','=',2)->get()->count();
+        $siclient = Proyek::where('user_id', \Auth::user()->id)->where('jenis_proyek','=',3)->get()->count();
+        $mobileclient = Proyek::where('user_id', \Auth::user()->id)->where('jenis_proyek','=',4)->get()->count();
+        $customclient = Proyek::where('user_id', \Auth::user()->id)->where('jenis_proyek','=',5)->get()->count();
         
         $new = Task::where('status', '=', '1')->where('user_id',\Auth::user()->id)->get()->count();
         $ongoing = Task::where('status', '=', '2')->where('user_id',\Auth::user()->id)->get()->count();
@@ -282,7 +293,12 @@ class AdminController extends Controller
         $tagihanhistories = Tagihan::where('user_id',\Auth::user()->id)->where('status','=','2')->get();
         $taskactives = Task::where('user_id',\Auth::user()->id)->where('status','!=','3')->get()->count();
         $user = User::where('id',\Auth::user()->id)->first();
+
+        // dd($proyekclients);
         
-        return view("klien.index",compact('new','ongoing','done','website','taskall','proyeks','tagihans','taskcounts','tasks','tagihanactives','tagihanhistories','highproyek','user'));
+        return view("klien.index",compact(
+            'new','ongoing','done','website','taskall','proyeks','tagihans','taskcounts','tasks',
+            'tagihanactives','tagihanhistories','highproyek','user',
+            'dptagihanclient','tagihanclient','websiteclient','adsclient','siclient','mobileclient','customclient','proyekclients'));
     }
 }
