@@ -29,14 +29,12 @@
 <div class="content">
 	
 	<!-- Hover rows -->
-<<<<<<< HEAD
-	<div class="card">
+	{{-- <div class="card">
 		<div class="card-header">
 				<h4 style="font-weight:bold;">Task Klien</h4>
-				<a href="{{ route('tasks.create')}}"><button type="button" class="btn btn-success rounded-round"><i class="icon-help mr-2"></i> Tambah</button></a>
-=======
+				<a href="{{ route('tasks.create')}}"><button type="button" class="btn btn-success rounded-round"><i class="icon-help mr-2"></i> Tambah</button></a> --}}
 	{{-- Premium list table --}}
-	<div class="card" style="border-radius: 10px">
+	{{-- <div class="card" style="border-radius: 10px">
 		<div class="card-header">
 				<h4 style="font-weight:bold;">Task Premium</h4>
 				<a href="{{ route('tasks.create')}}"><button type="button" class="btn btn-success rounded-round" style="background: #26a69a"><i class="fa fa-plus" style="font-size:12px"></i>&nbsp Tambah</button></a>
@@ -125,7 +123,7 @@
 				@endif
 			</tbody>
 		</table>
-	</div>
+	</div> --}}
 	{{-- Prioritas and simple list table --}}
 	<div class="card" style="border-radius: 10px">
 		<div class="card-header">
@@ -138,7 +136,6 @@
 					<th>No</th>
 					<th>Tanggal</th>
 					<th>Username</th>
->>>>>>> 6168ad9b9e33fb9da705c787eb58ad775af93763
 					<th>Kebutuhan</th>
 					<th>Severity</th>
 					<th>Handler</th>

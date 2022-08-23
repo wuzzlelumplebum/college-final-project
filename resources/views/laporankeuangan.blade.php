@@ -227,7 +227,7 @@
 								@foreach($tblbruto as $bruto)
 								<tr>
 									<td>{{$i}}</td>
-									<td><div class="datatable-column-width">{{@$bruto->user->username}}</div></td>
+									<td><div class="datatable-column-width">{{@$bruto->user->nama}}</div></td>
 									<td><div class="datatable-column-width">{{$bruto->tanggal}}
 									</div></td>
 									<td><div class="datatable-column-width">Rp {{number_format($bruto->nominal,0,',','.')}}
@@ -1838,9 +1838,9 @@ if (columns_basic_elementy4) {
 
 					// Add legend
 					legend: {
-						orient: 'vertical',
-						top: 'center',
-						left: 0,
+						orient: 'horizontal',
+						top: 'bottom',
+						left: 'center',
 						data: [
 						@foreach($pie as $key => $val)
 						'{{config("custom.j_pemasukan.".$key)}}',
@@ -1854,12 +1854,12 @@ if (columns_basic_elementy4) {
 						name: 'Jumlah Pembayaran',
 						type: 'pie',
 						radius: '70%',
-						center: ['50%', '57.5%'],
+						center: ['50%', '50%'],
 						itemStyle: {
 							normal : {
 								label : {
-									show: true, position: 'inside',
-									formatter : '{b}\n{d}%',
+									show: true, position: 'outside',
+									formatter : '{d}%',
 								},
 								labelLine : {
 									show : true
@@ -1962,9 +1962,9 @@ if (columns_basic_elementy4) {
 						formatter: "{a} <br/>{b}: {c} ({d}%)"
 					},
 					legend: {
-						orient: 'vertical',
-						top: 'center',
-						left: 0,
+						orient: 'horizontal',
+						top: 'bottom',
+						left: 'center',
 						data: [
 						@foreach($pie2 as $key => $val)
 						'{{config("custom.kat_pengeluaran.".$key)}}',
@@ -1977,12 +1977,12 @@ if (columns_basic_elementy4) {
 						name: 'Jumlah Pengeluaran',
 						type: 'pie',
 						radius: '70%',
-						center: ['50%', '57.5%'],
+						center: ['50%', '50%'],
 						itemStyle: {
 							normal : {
 								label : {
-									show: true, position: 'inside',
-									formatter : '{b}\n{d}%',
+									show: true, position: 'outside',
+									formatter : '{d}%',
 								},
 								labelLine : {
 									show : true
