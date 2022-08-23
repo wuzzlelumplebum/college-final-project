@@ -29,7 +29,6 @@
                         <li class="nav__item"><a href="#home" class="nav__link active-link">Home</a></li>
                         <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
                         <li class="nav__item"><a href="#services" class="nav__link">Services</a></li>
-                        <li class="nav__item"><a href="#fortfolio" class="nav__link">Portfolio</a></li>
                         <li class="nav__item"><a href="#contact" class="nav__link">Contact us</a></li>
                         @if (!Auth::check())
                             <li class="nav__item"><a href="{{ url('/login') }}" class="nav__link">Log in</a></li>
@@ -123,10 +122,7 @@
                     </div>
                 </div>
             </section>
-
-            <!--========== PORTFOLIO ==========-->
         
-
             <!--========== CONTACT US ==========-->
             <section class="contact section bd-container" id="contact">
                 <div class="contact__container bd-grid">
