@@ -21,9 +21,6 @@
 <!-- Content Area -->
 <div class="content">
     <div class="card" style="border-radius: 10px">
-        <div class="card-header header-elements-inline">
-            <a href="{{ route('taskclients.create') }}"><button type="button" class="btn btn-success rounded-round" style="background: #6EBA93"><i class="fa fa-plus" style="font-size:12px"></i>&nbsp Tambah</button></a>
-        </div>
 
         <div class="card-body">
             <table class="table datatable-basic table-hover">
@@ -48,21 +45,19 @@
                             <td><div class="datatable-column-width">{!! $task->kebutuhan !!}</div></td>
                             <td><div class="datatable-column-width">{{ config('custom.severity.'.$task->severity) }}</div></td>
                             <td>
-                                <div class="datatable-column-width form-check-label">
-                                    <label class="form-check-label">
-                                        @if (@$task->assign->nama == NULL)
-                                            <p style="color:red;">Belum ada handler</p>
-                                        @else
-                                            {{ @$task->assign->nama }}
-                                        @endif    
-                                    </label>
-                                </div>
+                                @if (@$task->assign->nama == NULL)
+                                    <div class="datatable-column-width" style="color: #ff0f0f">Belum ada handler</div>
+                                @else
+                                    <div class="datatable-column-width">{{ @$task->assign->nama }}</div>
+                                @endif
                             </td>
                             <td>
-                                @if ($task->status == 2)
-                                    <span style="font-size: 100%" class="badge badge-pill bg-orange-400 ml-auto ml-md-0">{{ config('custom.status.'.$task->status) }}</span>
+                                @if($task->status == 2)
+                                <span style="font-size:100%;" class="badge badge-pill bg-orange-400 ml-auto ml-md-0">{{config('custom.status.'.$task->status)}}</span>
+                                @elseif($task->status == 3)
+                                <span style="font-size: 100%;" class="badge badge-pill badge-success">{{ config('custom.status.' .$task->status) }}</span>
                                 @else
-                                    <span style="font-size: 100%;" class="badge badge-pill badge-info ml-auto ml-md-0">{{ config('custom.status.'.$task->status) }}</span>
+                                <span style="font-size: 100%;" class="badge badge-pill badge-info ml-auto ml-md-0">{{ config('custom.status.'.$task->status) }}</span>
                                 @endif
                             </td>
                             <td align="center">
@@ -73,9 +68,10 @@
                                         </a>
     
                                         <div class="dropdown-menu dropdown-menu-right">
+                                            @if ($task->status > 2)
                                             <a href="{{ route('taskclients.edit', $task->id) }}" class="dropdown-item"><i class="icon-pencil7"></i> Edit</a>
+                                            @endif
                                             <a href="{{ route('taskclients.show', $task->id) }}" class="dropdown-item"><i class="icon-images3"></i> Show</a>
-                                            <a class="dropdown-item delbutton" data-toggle="modal" data-target="#modal_theme_danger" data-uri="{{ route('taskclients.destroy', $task->id)}}"><i class="icon-x"></i> Delete</a>
                                         </div>
                                     </div>
                                 </div>
@@ -93,30 +89,6 @@
 </div>
 <!-- /content area -->
 
-<!-- Danger Modal -->
-<div id="modal_theme_danger" class="modal fade" tabindex="-1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header bg-danger" align="center">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-
-            <form action="" method="post" id="delform">
-                @csrf
-                @method('DELETE')
-                <div class="modal-body" align="center">
-                    <h2> Hapus Data? </h2>
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-link" data-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn bg-danger">Hapus</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<!-- /danger modal -->
 @endsection
 
 @section('js')

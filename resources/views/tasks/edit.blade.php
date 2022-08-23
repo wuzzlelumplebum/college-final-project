@@ -26,195 +26,68 @@
 					@csrf
 					<fieldset class="mb-3">
 						<legend class="text-uppercase font-size-sm font-weight-bold">Data Task</legend>
-						@if($task->status==1 || \Auth::user()->role<20)
-							@if(\Auth::user()->role==1)
-								<div class="form-group row">
-									<label class="col-form-label col-lg-2">User</label>
-									<div class="col-lg-10">
-										<select name="user_id" class="form-control select-search" data-fouc>
-											@foreach($users as $user)
-												<option value="{{$user->id}}" {{ $task->user_id == $user->id ? 'selected' : '' }}>{{$user->nama}}</option>
-						    				@endforeach
-										</select>
-									</div>
-								</div>
-								<div class="form-group row">
-									<label class="col-form-label col-lg-2">Kebutuhan</label>
-									<div class="col-lg-10">
-										<textarea style="border-radius: 10px" name="kebutuhan" id="" cols="30" rows="10" class="summernote form-control border-teal border-1" required>{{ $task->kebutuhan }}</textarea>
-									</div>
-								</div>
-								<div class="form-group row">
-									<label class="col-lg-2 col-form-label font-weight-semibold">Attachment:</label>
-									<div class="col-lg-10">
-										<input type="file" name="file[]" class="file-input" multiple="multiple" data-fouc>
-										<span class="form-text text-muted">Jumlah max ukuran file : 32MB</span><hr>
-										<div id="attachdiv">
-											@foreach($attachment as $attach)
-												<span class="form-text text-muted"><a href="{{ asset('storage/attachment/'.$attach->file)}}">{{$attach->file}}</a> <a class="dropdown-item delbutton" data-toggle="modal" data-target="#modal_theme_danger" data-uri="{{ route('attachments.destroy', $attach->id)}}" style="display: inline;"><i class="icon-x"></i></a></span>
-											@endforeach
-										</div>
-									</div>
-								</div>
+						<div class="form-group row">
+                            <label class="col-form-label col-lg-2">Klien</label>
+                            <div class="col-lg-10">
+                                <input type="hidden" name="user_id" value="{{ $task->user->id }}">
+                                <input type="text" name="nama" class="form-control border-teal border-1" value="{{ $task->user->nama }}" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-form-label col-lg-2">Proyek</label>
+                            <div class="col-lg-10">
+                                <input type="hidden" name="id_proyek" value="{{ $task->proyek->id }}">
+								<input type="text" name="nama" class="form-control border-teal border-1" value="{{ $task->proyek->nama_proyek }}" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-form-label col-lg-2">Tanggal Pembuatan</label>
+                            <div class="col-lg-10">
+                                <input style="border-radius: 10px" name="tanggal" type="text" class="form-control pickadate-accessibility" placeholder="Contoh: 2022-04-16" value="{{ date('Y-m-d', strtotime($task->created_at)) }}" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-form-label col-lg-2">Tenggat Waktu</label>
+                            <div class="col-lg-10">
+                                <input style="border-radius: 10px" name="tenggat" type="text" class="form-control pickadate-accessibility" placeholder="Contoh: 2022-04-16" value="{{ date('Y-m-d', strtotime($task->tenggat)) }}">
+								<span class="form-text text-muted">Ubah tanggal jika tenggat waktu diperpanjang/dipersingkat</span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-form-label col-lg-2">Kebutuhan</label>
+                            <div class="col-lg-10">
+                                <input class="form-control border-teal border-1" type="text" name="kebutuhan" id="" value="{{ $task->kebutuhan }}" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-form-label col-lg-2">Severity</label>
+                            <div class="col-lg-10">
+                                <select name="severity" class="form-control select-search" id="" data-fuoc>
+                                    <option value="">-- Pilih Severity --</option>
+                                    @foreach (config('custom.severity') as $key => $value)
+                                        <option {{ $task->severity == $key ? 'selected' : '' }} value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+						<legend class="text-uppercase font-size-sm font-weight-bold">Tambah Handler</legend>
+						<div class="form-group row">
+                            <label class="col-form-label col-lg-2">Handler</label>
+                            <div class="col-lg-10">
+                                <select name="handler" class="form-control select-search" id="" data-fuoc>
+                                    <option value="">-- Pilih Handler --</option>
+                                    @foreach ($handlers as $handler)
+                                        <option value="{{ $handler->id }}">{{ $handler->nama }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+					</fieldset>
+					<div class="text-right">
+						<a href="{{ route('tasks.index')}}"><button type="button" class="btn bg-slate">Kembali <i class="icon-undo2 ml-2"></i></button></a>
+						<button type="submit" class="btn btn-primary">Simpan <i class="icon-paperplane ml-2"></i></button>
+					</div>
 
-							@elseif(\Auth::user()->role==10)
-								<div class="form-group row">
-									<label class="col-form-label col-lg-2">User</label>
-									<div class="col-lg-10">
-										<label class="col-form-label col-lg-2">{{$task->user->nama}}</label>
-									</div>
-								</div>
-								<div class="form-group row">
-									<label class="col-form-label col-lg-2">Kebutuhan</label>
-									<div class="col-lg-10">
-										<label class="col-form-label col-lg-2">{{$task->kebutuhan}}</label>
-									</div>
-								</div>
-								<div class="form-group row">
-									<label class="col-lg-2 col-form-label font-weight-semibold">Attachment:</label>
-									<div class="col-lg-10">
-										<div id="attachdiv">
-											@foreach($attachment as $attach)
-												<span class="form-text text-muted"><a href="{{ asset('storage/attachment/'.$attach->file)}}">{{$attach->file}}</a> </span>
-											@endforeach
-										</div>
-									</div>
-								</div>
-							
-							@else
-								<div class="form-group row">
-									<label class="col-form-label col-lg-2">User</label>
-									<div class="col-lg-10">
-										<label class="col-form-label col-lg-2">{{\Auth::user()->nama}}</label>
-										<input type="hidden" name="user_id" value="{{\Auth::user()->id}}">
-									</div>
-								</div>
-								<div class="form-group row">
-									<label class="col-form-label col-lg-2">Kebutuhan</label>
-									<div class="col-lg-10">
-										<textarea name="kebutuhan" rows="4" cols="3" class="form-control" placeholder="Kebutuhan User" required>{{ $task->kebutuhan }}</textarea>
-									</div>
-								</div>
-								<div class="form-group row">
-									<label class="col-lg-2 col-form-label font-weight-semibold">Attachment:</label>
-									<div class="col-lg-10">
-										<input type="file" name="file[]" class="file-input" multiple="multiple" data-fouc>
-										<span class="form-text text-muted">Jumlah max ukuran file : 32MB</span><hr>
-										<div id="attachdiv">
-											@foreach($attachment as $attach)
-												<span class="form-text text-muted"><a href="{{ asset('storage/attachment/'.$attach->file)}}">{{$attach->file}}</a> <a class="dropdown-item delbutton" data-toggle="modal" data-target="#modal_theme_danger" data-uri="{{ route('attachments.destroy', $attach->id)}}" style="display: inline;"><i class="icon-x"></i></a></span>
-											@endforeach
-										</div>
-									</div>
-								</div>
-							@endif
-
-							@if(\Auth::user()->role==1)
-								<div class="form-group row">
-									<label class="col-form-label col-lg-2">Severity</label>
-									<div class="col-lg-10">
-										<select name="handler" class="form-control select-search" data-fouc>
-											<option value="">-- Pilih Severity --</option>
-											@foreach(config('custom.severity') as $key => $value)
-												<option value="{{$key}}" {{ $task->severity == $key ? 'selected' : '' }}>{{$value}}</option>
-											@endforeach
-										</select>
-									</div>
-								</div>
-								<div class="form-group row">
-									<label class="col-form-label col-lg-2">Assign</label>
-									<div class="col-lg-10">
-										<select name="handler" class="form-control select-search" data-fouc>
-		                                    <option value="">-- Pilih User --</option>
-											@foreach($handlers as $handler)
-												<option value="{{$handler->id}}" {{ $task->handler == $handler->id ? 'selected' : '' }}>{{$handler->nama}}</option>
-						    				@endforeach
-										</select>
-									</div>
-								</div>
-								<div class="form-group row">
-									<label class="col-form-label col-lg-2">Status</label>
-									<div class="col-lg-10">
-										<select name="status" class="form-control">
-		                                    <option value="1" {{ $task->status == '1' ? 'selected' : '' }}>Baru</option>
-		                                    <option value="2"{{ $task->status == '2' ? 'selected' : '' }}>Sedang Dikerjakan</option>
-		                                    <option value="3"{{ $task->status == '3' ? 'selected' : '' }}>Selesai</option>
-		                                </select>
-									</div>
-								</div>
-							@elseif(\Auth::user()->role==10)
-								<div class="form-group row">
-									<label class="col-form-label col-lg-2">Severity</label>
-									<div class="col-lg-10">
-										<select name="handler" class="form-control select-search" data-fouc>
-											<option value="">-- Pilih Severity --</option>
-											@foreach(config('custom.severity') as $key => $value)
-												<option value="{{$key}}" {{ $task->severity == $key ? 'selected' : '' }}>{{$value}}</option>
-											@endforeach
-										</select>
-									</div>
-								</div>
-								<div class="form-group row">
-									<label class="col-form-label col-lg-2">Assign</label>
-									<div class="col-lg-10">
-										@if ($task->handler)
-											@if (isset($task->assign->nama))
-											<label class="col-form-label col-lg-2">{{$task->assign->nama}}</label>
-											@else
-											<label class="col-form-label col-lg-2">-</label>
-											@endif
-										@else
-										<label class="col-form-label col-lg-2">-</label>
-										@endif
-									</div>
-								</div>
-								<div class="form-group row">
-									<label class="col-form-label col-lg-2">Status</label>
-									<div class="col-lg-10">
-										<label class="col-form-label col-lg-2">{{config('custom.status.'.$task->status)}}</label>
-									</div>
-								</div>
-							@endif
-							</fieldset>
-							<div class="text-right">
-								<button type="submit" class="btn btn-primary">Simpan <i class="icon-paperplane ml-2"></i></button>
-							</div>
-
-						@else
-							<div class="form-group row">
-								<label class="col-form-label col-lg-2">User</label>
-								<div class="col-lg-10">
-									<label class="col-form-label col-lg-2">{{$task->user->nama}}</label>
-								</div>
-							</div>
-							<div class="form-group row">
-								<label class="col-form-label col-lg-2">Kebutuhan</label>
-								<div class="col-lg-10">
-									<label class="col-form-label col-lg-2">{{$task->kebutuhan}}</label>
-								</div>
-							</div>
-							<div class="form-group row">
-								<label class="col-lg-2 col-form-label font-weight-semibold">Attachment:</label>
-								<div class="col-lg-10">
-									<div id="attachdiv">
-										@foreach($attachment as $attach)
-											<span class="form-text text-muted"><a href="{{ asset('storage/attachment/'.$attach->file)}}">{{$attach->file}}</a></span>
-										@endforeach
-									</div>
-								</div>
-							</div>
-							<div class="form-group row">
-								<label class="col-form-label col-lg-2">Status</label>
-								<div class="col-lg-10">
-									<label class="col-form-label col-lg-2">{{config('custom.status.'.$task->status)}}</label>
-								</div>
-							</div>
-							</fieldset>
-							<div class="text-right">
-								<a href="{{ route('tasks.index')}}"><button type="button" class="btn btn-primary">Kembali <i class="icon-undo2 ml-2"></i></button></a>
-							</div>
-
-						@endif
 				</form>
 			</div>
 

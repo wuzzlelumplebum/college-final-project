@@ -119,6 +119,7 @@ Route::group(['middleware' => ['auth']], function() {
 		Route::get('/tagihanaktif','client\TagihanClient@active');
 		Route::get('/tagihanriwayat','client\TagihanClient@history');
 		Route::resource('/taskclients', 'klien\TaskClientController');
+		Route::get('/historytaskclients',  'klien\TaskClientController@history')->name('historytaskclient');
 		Route::resource('/paymentclients', 'klien\PaymentClientController');
 		Route::resource('/proyekclients', 'klien\ProyekClientController');
 		Route::get('/createtask/{id}', 'klien\TaskClientController@createtaskproyek');
@@ -126,9 +127,6 @@ Route::group(['middleware' => ['auth']], function() {
 		Route::get('/dptagihanuser', 'klien\DpTagihanClientController@index');
 		Route::get('/payment','client\PaymentClient@index');
 		Route::get('/purchase','client\PaymentClient@create');
-		// Route::resource('/taskclients', 'client\TaskClient');
-		// Route::get('/taskclient','client\TaskClient@index');
-		// Route::get('/taskcreate','client\TaskClient@create');
 		Route::get('/antrian','client\AntrianClient@index');
 		Route::get('/settinguser','client\SettingClient@changesetting');
 		Route::post('/settinguser/{id}','client\SettingClient@changesettingupdate')->name('settinguser');

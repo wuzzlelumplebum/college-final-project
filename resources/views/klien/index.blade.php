@@ -153,15 +153,22 @@
                     </thead>
                     <tbody>
                         @php($i = 1)
-                        @foreach ($proyekclients as $proyek)
-                            
+                        @foreach ($taskclients as $task)
+                            <tr>
+                                <td>{{ $i++ }}</td>
+                                <td><div class="datatable-column-width">{{ $task->nama_proyek }}</div></td>
+                                <td>
+                                    <div class="datatable-column-width">
+                                        <div class="progress rounded-round">
+                                            <div class="progress-bar bg-warning" style="width: {{ $progress }}%">
+                                                <span>{{ $progress }}%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><div class="datatable-column-width"></div>{{ date('d-m-Y', strtotime(@$task->tenggat)) }}</td>
+                            </tr>
                         @endforeach
-                        <tr>
-                            <td>{{ $i }}</td>
-                            <td><div class="datatable-column-width">{{ $proyek->nama_proyek }}</div></td>
-                            <td><div class="datatable-column-width"></div></td>
-                            <td><div class="datatable-column-width">{{ date('Y-m-d', strtotime($proyek->task->tenggat)) }}</div></td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -281,18 +288,13 @@
 @section('js')
 
     <!-- Theme JS files -->
-    <script src="{{asset('global_assets/js/plugins/visualization/d3/d3.min.js') }}"></script>
-    <script src="{{asset('global_assets/js/plugins/visualization/d3/d3_tooltip.js') }}"></script>
     <script src="{{asset('global_assets/js/plugins/forms/styling/switchery.min.js') }}"></script>
-    <script src="{{asset('global_assets/js/plugins/forms/selects/bootstrap_multiselect.js') }}"></script>
-    <script src="{{asset('global_assets/js/plugins/ui/moment/moment.min.js') }}"></script>
     <script src="{{asset('global_assets/js/plugins/pickers/daterangepicker.js') }}"></script>
-    <script src="{{ asset('global_assets\js\plugins\visualization\echarts\echarts.min.js') }}"></script>
+    <script src="{{ asset('global_assets/js/plugins/loaders/progressbar.min.js') }}"></script>
 
     <script src="{{asset('assets/js/app.js') }}"></script>
     <script src="{{asset('global_assets/js/demo_pages/dashboard.js') }}"></script>
-    <script src="{{asset('global_assets/js/demo_charts/echarts/light/lines/area_basic.js') }}"></script>
-    <script src="{{asset('global_assets/js/demo_charts/echarts/light/pies/pie_basic.js') }}"></script>
+    <script src="{{ asset('global_assets/js/demo_pages/components_progress.js') }}"></script>
     <!-- /theme JS files -->
 
     <script>
@@ -318,5 +320,42 @@
         // console.log(greet);
         document.getElementById('greetings').innerHTML += 
         '<h2>' + greet + ', ' + name + '!' + '</h2>';
+
+        // Progress bar
+        var Progress = function(){
+            // setup module components
+            var _componentProgress = function(){
+                if (!$().progressbar) {
+                    console.warn('Warning - progressbar.min.js is not loaded.');
+                    return;
+                }
+
+                // Basic progress bar
+
+                // Start
+                $('#h-default-basic-start').on('click', function() {
+                    var $pb = $('#h-default-basic .progress-bar');
+                    $pb.attr('data-transitiongoal', $pb.attr('data-transitiongoal-backup'));
+                    $pb.progressbar();
+                });
+
+                // Reset
+                $('#h-default-basic-reset').on('click', function() {
+                    $('#h-default-basic .progress-bar').attr('data-transitiongoal', 0).progressbar();
+                });
+            };
+
+            // Return objects
+            return {
+                init: function(){
+                    _componentProgress();
+                }
+            }
+        }();
+
+        // Initialize module
+        document.addEventListener('DOMContentLoaded', function() {
+            Progress.init();
+        });
     </script>
 @endsection

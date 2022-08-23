@@ -71,14 +71,17 @@
                             <label class="col-form-label col-lg-2">Status</label>
                             <div class="col-lg-10">
                                 <select name="severity" class="form-control select-search" id="" data-fuoc disabled>
-                                    <option value="">-- Pilih Severity --</option>
-                                    @foreach (config('custom.severity') as $key => $value)
+                                    <option value="">-- Pilih Status --</option>
+                                    @foreach (config('custom.status') as $key => $value)
                                         <option {{ $task->status == $key ? 'selected' : '' }} value="{{ $key }}">{{ $value }}</option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
                     </fieldset>
+                    <div class="text-right">
+                        <a href="{{ route('proyekclients.index') }}" class="btn bg-slate" style="border-radius: 10px">Kembali <i class="icon-undo2 ml-2"></i></a>
+                    </div>
                 </form>
             </div>
         </div>

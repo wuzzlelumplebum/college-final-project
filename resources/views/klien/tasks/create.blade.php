@@ -60,16 +60,9 @@
                         <div class="form-group row">
                             <label class="col-form-label col-lg-2">Kebutuhan</label>
                             <div class="col-lg-10">
-                                <textarea style="border-radius: 10px" name="kebutuhan" id="" cols="30" rows="10" class="summernote form-control border-teal border-1" required></textarea>
+                                <input class="form-control border-teal border-1" type="text" name="kebutuhan" id="" required>
                             </div>
                         </div>
-                        <div class="form-group row">
-							<label class="col-lg-2 col-form-label font-weight-semibold">Attachment:</label>
-							<div class="col-lg-10">
-								<input type="file" name="file[]" class="file-input" multiple="multiple" data-fouc>
-								<span class="form-text text-muted">Jumlah max ukuran file : 32MB</span><hr>
-							</div>
-						</div>
                         <div class="form-group row">
                             <label class="col-form-label col-lg-2">Severity</label>
                             <div class="col-lg-10">

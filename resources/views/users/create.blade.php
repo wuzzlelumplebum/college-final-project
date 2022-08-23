@@ -81,7 +81,7 @@
 							<div class="col-lg-10">
 								<select style="border-radius: 10px" name="role" class="form-control form-control-select2 border-teal-1 border-teal">
 									@foreach (config("custom.role") as $key => $value)
-										@if (in_array($key, [1,10,20,99]))
+										@if (in_array($key, [1,10,20]))
 											<option value="{{ $key }}">{{ $value }}</option>
 										@endif
 									@endforeach

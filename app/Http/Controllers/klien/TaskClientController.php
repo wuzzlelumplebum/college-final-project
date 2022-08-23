@@ -55,21 +55,6 @@ class TaskClientController extends Controller
         // dd($task);
         
         $task->save();
-        
-        // if($request->hasfile('file'))
-        // {
-        //     foreach($request->file('file') as $file)
-        //     {
-        //         $name=$file->getClientOriginalName();
-        //         $file->storeAs('/attachment/', $task->id.$name); 
-        //         // $data[] = $name;  
-
-        //         $attach= new Attachment();
-        //         $attach->task_id=$task->id;
-        //         $attach->file= $task->id.$name;
-        //         $attach->save();
-        //     }
-        // }
 
         $id_proyek = $request->get('id_proyek');
         $user_id = $request->get('user_id');
@@ -143,5 +128,13 @@ class TaskClientController extends Controller
         // dd($proyek);
 
         return view('klien.proyeks.createtask', compact('user','proyek'));
+    }
+
+    public function history()
+    {
+        $tasks = Task::where('status','=',3)->get();
+
+        // dd($tasks);
+        return view('klien.tasks.history', compact('tasks'));
     }
 }

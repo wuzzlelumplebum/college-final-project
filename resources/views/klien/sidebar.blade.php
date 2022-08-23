@@ -87,7 +87,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url('/history') }}" class="nav-link {{ (request()->is('history')) ? 'active' : '' }}">
+                    <a href="{{ url('/historytaskclients') }}" class="nav-link {{ (request()->is('historytaskclients')) ? 'active' : '' }}">
                         <i class="icon-history" style="color: #000000"></i>
                         <span>
                         <font color="#000000">History Task</font>

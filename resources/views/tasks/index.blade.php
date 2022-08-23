@@ -134,9 +134,9 @@
 			<thead>
 				<tr style="background:#F0FFF0">
 					<th>No</th>
-					<th>Tanggal</th>
-					<th>Username</th>
+					<th>Klien</th>
 					<th>Kebutuhan</th>
+					<th>Tenggat</th>
 					<th>Severity</th>
 					<th>Handler</th>
 					<th class="text-center">Status</th>
@@ -150,27 +150,34 @@
 				
 				<tr>
 					<td>{{$i}}</td>
-					<td><div class="datatable-column-width">{{date("Y-m-d", strtotime($task->created_at))}}</div></td>
 					<td><div class="datatable-column-width">{{$task->user->nama}}</div></td>
 					<td><div class="datatable-column-width">{!! $task->kebutuhan !!}</div></td>
+					<td><div class="datatable-column-width">{{date("Y-m-d", strtotime($task->tenggat))}}</div></td>
 					<td><div class="datatable-column-width">{{config('custom.severity.'.$task->severity)}}</div></td>
-					<td><div class="datatable-column-width form-check">
-						<label class="form-check-label">
+					<td>
+						@if (@$task->assign->nama == NULL)
+							<div class="datatable-column-width" style="color: #ff0f0f">Belum ada handler</div>
+						@else
+							<div class="datatable-column-width">{{ @$task->assign->nama }}</div>
+						@endif
+						{{-- <label class="form-check-label">
 							@if (\Auth::user()->role == 10)
 							<input data-id="{{$task->id}}" class="form-check-input-styled-success toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="InActive" {{ $task->handler == \Auth::user()->id ? 'checked' : '' }}>
 							@endif
 							@if (@$task->assign->nama == NULL)
-								<p style="color:#ff0f0f;">Belum ada handler</p>
+								<div class="datatable-column-width" style="color:#ff0f0f;">Belum ada handler</div>
 							@else
 								{{@$task->assign->nama}}
 							@endif
 						</label>
-						</div>
+						</div> --}}
 					</td>
 					
 					<td align="center">
-						@if($task->status == 2 )
+						@if($task->status == 2)
 						<span style="font-size:100%;" class="badge badge-pill bg-orange-400 ml-auto ml-md-0">{{config('custom.status.'.$task->status)}}</span>
+						@elseif($task->status == 3)
+						<span style="font-size: 100%;" class="badge badge-pill badge-success">{{ config('custom.status.' .$task->status) }}</span>
 						@else
 						<span style="font-size: 100%;" class="badge badge-pill badge-info ml-auto ml-md-0">{{ config('custom.status.'.$task->status) }}</span>
 						@endif
@@ -184,20 +191,12 @@
 								</a>
 								
 								<div class="dropdown-menu dropdown-menu-right">
-									@if(\Auth::user()->role<=20)
-									<a href="https://wa.me/{{$task->user->telp}}" target="_blank" class="dropdown-item"><i class="fab fa-whatsapp"></i> Kontak User</a>
-									@endif
-									@if (\Auth::user()->role==1 )
+									@if ($task->status < 2)
 									<a href="{{ route('tasks.edit',$task->id)}}" class="dropdown-item"><i class="icon-pencil7"></i> Edit</a>
-									@elseif (\Auth::user()->role==10 || \Auth::user()->id == $task->handler )
-									<a href="{{ route('tasks.edit',$task->id)}}" class="dropdown-item"><i class="icon-search4"></i> Lihat Detail</a>
-									@endif
-									@if (\Auth::user()->role==1 || \Auth::user()->id == $task->user_id )
-									<button type="button" class="btn dropdown-item open-modal-task" id="statusbtn" data-id=" {{ $task->id }} " data-toggle="modal" data-target="#modal_task"><i class="icon-check"></i> Selesai</button>
-									@endif
-									
-									@if($task->status==1 || \Auth::user()->role==1)
 									<a class="dropdown-item delbutton" data-toggle="modal" data-target="#modal_theme_danger" data-uri="{{ route('tasks.destroy', $task->id)}}"><i class="icon-x"></i> Delete</a>
+									@endif
+									@if ($task->status == 2 )
+									<button type="button" class="btn dropdown-item open-modal-task" id="statusbtn" data-id=" {{ $task->id }} " data-toggle="modal" data-target="#modal_task"><i class="icon-check"></i> Selesai</button>
 									@endif
 								</div>
 							</div>
@@ -214,9 +213,8 @@
 		
 	</div>
 	<!-- /hover rows -->
-	{{-- <button type="button" class="btn btn-info open-modal" >Show </button> --}}
-	
 </div>
+
 <div id="modal_task" class="modal fade" tabindex="-1">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -262,8 +260,6 @@
 	</div>
 </div>
 <!-- /default modal -->
-
-
 @endsection
 
 @section('js')
@@ -318,7 +314,7 @@
 				columnDefs: [{ 
 					orderable: false,
 					// width: 100,
-					targets: [ 0, 1, 2, 3, 4, 5, 6 ]
+					targets: [ 2, 5, 7 ]
 				}],
 				dom: '<"datatable-header"fl><"datatable-scroll"t><"datatable-footer"ip>',
 				language: {
