@@ -23,10 +23,10 @@
 <div class="content">
 
 	<!-- Hover rows -->
-	<div class="card">
+	<div class="card" style="border-radius: 10px">
 		<table class="table datatable-basic table-hover">
 			<thead>
-				<tr>
+				<tr style="background:#F0FFF0">
 					<th style="width: 50px">No</th>
 					<th style="width: 200px">No. Receipt</th>
 					<th style="width: 200px">Nominal (Rp)</th>

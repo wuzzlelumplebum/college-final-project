@@ -28,7 +28,7 @@
 		
 		<table class="table datatable-basic table-hover">
 			<thead>
-				<tr>
+				<tr style="background:#F0FFF0">
 					<th>No</th>
 					<th>Invoice</th>
 					<th>Tagihan</th>
