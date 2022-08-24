@@ -46,6 +46,7 @@ class TaskClientController extends Controller
         $task = new Task([
             'user_id' => $request->get('user_id'),
             'id_proyek' => $request->get('id_proyek'),
+            'nama_proyek' => $request->get('nama_proyek'),
             'kebutuhan' => $request->get('kebutuhan'),
             'tenggat' => $request->get('tenggat'),
             'severity' => $request->get('severity'),

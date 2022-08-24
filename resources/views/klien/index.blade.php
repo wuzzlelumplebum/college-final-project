@@ -161,7 +161,7 @@
                                 <td align="center">
                                     <div class="datatable-column-width">
                                         <div class="progress rounded-round">
-                                            <div class="progress-bar bg-warning" style="width: {{ $progress }}%">
+                                            <div class="progress-bar bg-warning" style="width: {{ $progress }}%;">
                                                 <span>{{ $progress }}% Complete</span>
                                             </div>
                                         </div>
