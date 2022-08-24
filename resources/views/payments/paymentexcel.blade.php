@@ -7,7 +7,6 @@
             <th align="center" style="font-weight: bold;">Nominal</th>
             <th align="center" style="font-weight: bold;">Tanggal Bayar</th>
             <th align="center" style="font-weight: bold;">Keterangan</th>
-            <th align="center" style="font-weight: bold;">ID Tagihan - Invoice</th>
         </tr>
     </thead>
     <tbody>
@@ -20,7 +19,6 @@
             <td> Rp @angka($payment->nominal) </td>
             <td> {{$payment->tanggal}} </td>
             <td> {!! $payment->keterangan !!} </td>
-            <td> {{$payment->tagihan_id}} - {{@$payment->tagihan->invoice }} </td>
         </tr>
         @php ($i++)
         @endforeach

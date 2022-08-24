@@ -29,7 +29,7 @@
 		<div class="card-header header-elements-inline">
 			<a href="{{ route('payments.create')}}"><button type="button" class="btn btn-success rounded-round" style="background: #26a69a"><i class="fa fa-plus" style="font-size:12px"></i>&nbsp Tambah</button></a>
 			{{-- @if (Auth::user()->role==1) --}}
-			<a href="{{ url('export_excel')}}"><button type="button" class="btn btn-success rounded-round" style="background: #26a69a"><i class="icon-file-excel mr-2"></i> Export Excel</button></a>
+			{{-- <a href={{ url('export_excel')}} target="_blank"><button class="btn btn-success rounded-round" style="background: #26a69a"><i class="icon-file-excel mr-2"></i> Export Excel</button></a> --}}
 			{{-- @endif --}}
 
 		</div>
@@ -85,9 +85,7 @@
 									@if(\Auth::user()->role<=20)
 									<a href="https://wa.me/{{@$payment->user->telp}}" target="_blank" class="dropdown-item"><i class="fab fa-whatsapp"></i> Kontak User</a>
 									@endif
-									{{-- <a href="{{ route('payments.edit',$payment->id)}}" class="dropdown-item"><i class="icon-pencil7"></i> Edit</a> --}}
-									{{-- <a href="{{url('/payments/cetak/'.$payment->id)}}" class="dropdown-item" target="_blank"><i class="icon-printer2"></i> Print</a> --}}
-									@if(Auth::user()->role==1)
+									@if(Auth::user()->role<=20)
 									<a class="dropdown-item delbutton" data-toggle="modal" data-target="#modal_theme_danger" data-uri="{{ route('payments.destroy', $payment->id)}}"><i class="icon-x"></i> Delete</a>
 									@endif
 								</div>

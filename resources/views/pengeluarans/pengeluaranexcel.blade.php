@@ -1,15 +1,12 @@
 <table>
     <thead>
         <tr>
-            <th>No</th>
-            <th>Tanggal</th>
-            <th>Pengeluaran</th>
-            <th>Jenis Pengeluaran</th>
-            <th>Nominal</th>
-            <th>Keterangan</th>
-            <th>Created At</th>
-            <th>Updated At</th>
-            
+            <th align="center" style="font-weight: bold;">No</th>
+            <th align="center" style="font-weight: bold;">Tanggal</th>
+            <th align="center" style="font-weight: bold;">Nama Penanggung Jawab</th>
+            <th align="center" style="font-weight: bold;">Jenis Pengeluaran</th>
+            <th align="center" style="font-weight: bold;">Nominal</th>
+            <th align="center" style="font-weight: bold;">Keterangan</th>
         </tr>
     </thead>
     <tbody>
@@ -18,12 +15,10 @@
         <tr>
             <td> {{$i}} </td>
             <td> {{$pengeluaran->tanggal}} </td>
-            <td> {{$pengeluaran->pengeluaran}} </td>
-            <td> {{config('custom.pengeluaran.'.$pengeluaran->jenis_pengeluaran)}} </td>
+            <td> {{$pengeluaran->nama_pj}} </td>
+            <td> {{config('custom.kat_pengeluaran.'.$pengeluaran->jenis_pengeluaran)}} </td>
             <td> Rp @angka($pengeluaran->nominal) </td>
-            <td> {{$pengeluaran->keterangan}} </td>
-            <td> {{$pengeluaran->created_at}} </td>
-            <td> {{$pengeluaran->updated_at}} </td>
+            <td> {!! $pengeluaran->keterangan !!} </td>
         </tr>
         @php ($i++)
         @endforeach
