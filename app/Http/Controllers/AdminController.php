@@ -12,6 +12,7 @@ use App\Model\Pengeluaran;
 use App\Model\RekapDptagihan;
 use App\Model\RekapTagihan;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
 
 class AdminController extends Controller
 {
@@ -255,22 +256,11 @@ class AdminController extends Controller
         'memberlast','memberthis','proyekthis','proyeklast','chart','chart2','pie','pie2'));
     }
 
-    // public function customer()
-    // {
-    //     $new = Task::where('status', '=', '1')->where('user_id',\Auth::user()->id)->get()->count();
-    //     $ongoing = Task::where('status', '=', '2')->where('user_id',\Auth::user()->id)->get()->count();
-    //     $done = Task::where('status', '=', '3')->where('user_id',\Auth::user()->id)->get()->count();
-    //     $tagihan = Tagihan::where('user_id',\Auth::user()->id)->where('status','!=','2')->get();
-    //     $totalbayar = Tagihan::where('user_id',\Auth::user()->id)->where('status','!=','2')->sum('jml_bayar');
-    //     $lastpayment = Payment::where('user_id',\Auth::user()->id)->where('status',1)->orderBy('tgl_bayar','desc')->get()->first();
-    //     dd($tagihan);
-    //     return view("index", compact('new','ongoing','done','tagihan','lastpayment','totalbayar'));
-    // }
-
     //test view costumer()
     public function customer(){
 
-        $taskclients = Task::where('user_id', \Auth::user()->id)->get();
+        $user = User::where('id', \Auth::user()->id)->first();
+        // $taskproyek = Task::where('id_proyek', $proyekclients->id)->get();
         $dptagihanclient = RekapDptagihan::where('user_id', \Auth::user()->id)->where('status','<',4)->get()->sum('total');
         $tagihanclient = RekapTagihan::where('user_id', \Auth::user()->id)->where('status','<',4)->get()->sum('total');
         $websiteclient = Proyek::where('user_id', \Auth::user()->id)->where('jenis_proyek','=',1)->get()->count();
@@ -278,38 +268,19 @@ class AdminController extends Controller
         $siclient = Proyek::where('user_id', \Auth::user()->id)->where('jenis_proyek','=',3)->get()->count();
         $mobileclient = Proyek::where('user_id', \Auth::user()->id)->where('jenis_proyek','=',4)->get()->count();
         $customclient = Proyek::where('user_id', \Auth::user()->id)->where('jenis_proyek','=',5)->get()->count();
-        
+
         // progress proyek
+        $proyekclients = Proyek::join('tasks','tasks.id_proyek','=','proyeks.id')
+        ->where('proyeks.user_id','=', \Auth::user()->id)
+        ->get();
+        // dd($proyekclients);
+        
         $progress = 0;
+        // $progress = $ttask > 0 ? ($dtask/$ttask) * 100 : 0;
+        // $progress = $progress > 0 ? number_format($progress,2) : $progress;
+        // dump($progress);
 
-        foreach ($taskclients as $task){
-            $total = Task::where('id_proyek', $task->id_proyek)->count();
-            $done = Task::where('id_proyek', $task->id_proyek)->where('status','=',3)->count();
-        }
-
-        $progress = $total > 0 ? ($done / $total) * 100 : 0;
-        $progress = $progress > 0 ? number_format($progress,2) : $progress;
-        // dd($progress);
-        
-        
-        $new = Task::where('status', '=', '1')->where('user_id',\Auth::user()->id)->get()->count();
-        $ongoing = Task::where('status', '=', '2')->where('user_id',\Auth::user()->id)->get()->count();
-        $done = Task::where('user_id',\Auth::user()->id)->where('status', '=', '3')->get()->count();
-        $website = Proyek::where('user_id',\Auth::user()->id)->get()->count();
-        $taskall = User::where('id',\Auth::user()->id)->value('task_count');
-        $tagihans = Tagihan::where('user_id',\Auth::user()->id)->orderBy('created_at')->orderBy('status','desc')->get();
-        $proyeks = Proyek::where('user_id',\Auth::user()->id)->orderBy('masa_berlaku','asc')->get();
-        $highproyek = Proyek::where('user_id',\Auth::user()->id)->orderBy('tipe','asc')->first();
-        $taskcounts = Task::where('user_id',\Auth::user()->id)->get()->count();
-        $tasks = Task::where('user_id',\Auth::user()->id)->get();
-        $tagihanactives = Tagihan::where('user_id',\Auth::user()->id)->where('status','!=','2')->get()->count();
-        $tagihanhistories = Tagihan::where('user_id',\Auth::user()->id)->where('status','=','2')->get();
-        $taskactives = Task::where('user_id',\Auth::user()->id)->where('status','!=','3')->get()->count();
-        $user = User::where('id',\Auth::user()->id)->first();
-
-        // dd($progress);
-        
-        return view("klien.index",compact('dptagihanclient','tagihanclient','websiteclient','adsclient',
-            'siclient','mobileclient','customclient','taskclients','progress'));
+        return view("klien.index",compact('user','dptagihanclient','tagihanclient','websiteclient','adsclient',
+            'siclient','mobileclient','customclient','proyekclients','progress'));
     }
 }

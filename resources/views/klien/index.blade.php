@@ -147,26 +147,26 @@
                         <tr>
                             <th>No</th>
                             <th>Proyek</th>
+                            <th>Total Task</th>
                             <th>Progress</th>
-                            <th>Tenggat Waktu</th>
                         </tr>
                     </thead>
                     <tbody>
                         @php($i = 1)
-                        @foreach ($taskclients as $task)
+                        @foreach ($proyekclients as $proyek)
                             <tr>
                                 <td>{{ $i++ }}</td>
-                                <td><div class="datatable-column-width">{{ $task->nama_proyek }}</div></td>
-                                <td>
+                                <td><div class="datatable-column-width">{{ $proyek->nama_proyek }}</div></td>
+                                <td><div class="datatable-column-width">{{ $proyek->task_count }}</div></td>
+                                <td align="center">
                                     <div class="datatable-column-width">
                                         <div class="progress rounded-round">
                                             <div class="progress-bar bg-warning" style="width: {{ $progress }}%">
-                                                <span>{{ $progress }}%</span>
+                                                <span>{{ $progress }}% Complete</span>
                                             </div>
                                         </div>
                                     </div>
                                 </td>
-                                <td><div class="datatable-column-width"></div>{{ date('d-m-Y', strtotime(@$task->tenggat)) }}</td>
                             </tr>
                         @endforeach
                     </tbody>
