@@ -25,6 +25,7 @@
         }
         .contents{
             padding-left: 30px;
+            padding-bottom: 10px;
         }
         .title{
 
@@ -189,7 +190,7 @@
                                 </div>
 
                                 <div>
-                                    <div style="font-size: 16px;">
+                                    <div style="font-size: 16px">
                                         Proyek Website
                                     </div>
                                     <div class="d-flex">

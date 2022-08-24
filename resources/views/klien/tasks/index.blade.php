@@ -25,7 +25,7 @@
         <div class="card-body">
             <table class="table datatable-basic table-hover">
                 <thead>
-                    <tr>
+                    <tr style="background:#F0FFF0">
                         <th>No</th>
                         <th>Tanggal</th>
                         <th>Kebutuhan</th>
