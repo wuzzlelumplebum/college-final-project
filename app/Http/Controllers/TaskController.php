@@ -32,10 +32,10 @@ class TaskController extends Controller
      */
     public function create()
     {
-        $users = User::where('role','>','20')->where('task_count','>','0')->get(); //role customer
+        $users = User::where('role','>','20')->get(); //role customer
         $handlers = User::where('role','10')->get(); //role karyawan
         $finances = User::where('role','20')->get(); //keuangan
-
+        
         return view('tasks.create', compact('users','handlers','finances'));
     }
 

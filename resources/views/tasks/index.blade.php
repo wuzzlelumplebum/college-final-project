@@ -29,9 +29,9 @@
 <div class="content">
 	
 	<div class="card" style="border-radius: 10px">
-		<div class="card-header">
+		{{-- <div class="card-header">
 			<a href="{{ route('tasks.create')}}"><button type="button" class="btn btn-success rounded-round"style="background: #26a69a"><i class="fa fa-plus" style="font-size:12px"></i>&nbsp Tambah</button></a>
-		</div>
+		</div> --}}
 		<table class="table datatable-basic table-hover">
 			<thead>
 				<tr style="background:#F0FFF0">

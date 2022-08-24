@@ -75,14 +75,6 @@
                     <div id="div-tipe" class="form-group row" style="display:none">
                         <label class="col-form-label col-lg-2">Kelas Layanan</label>
                         <div class="col-lg-10">
-                            {{-- <select name="tipe" class="form-control border-teal border-1" >
-                                @if ($proyek->jenis_proyek == null)
-                                    <option value="">-- Pilih Kelas Layanan --</option>
-                                @endif
-                                @foreach (config('custom.kelas_layanan') as $key => $value)
-                                    <option {{ $proyek->tipe == $key ? 'selected' : '' }} value="{{ $key }}">{{ $value }}</option>
-                                @endforeach
-                            </select> --}}
                             <select id="tipe_web" name="tipe_web" class="form-control select-search border-teal border-1" style="display:none">
                                 <option value="">-- Pilih Kelas Layanan --</option>
                                 <option {{ $proyek->tipe == 99 ? 'selected' : '' }} value="99">Simple</option>
@@ -97,14 +89,6 @@
                     <div id="div-jl" class="form-group row" style="display:none">
                         <label class="col-form-label col-lg-2">Jenis Layanan</label>
                         <div class="col-lg-10">
-                            {{-- <select name="jenis_layanan" class="form-control select-search border-teal border-1" >
-                                @if ($proyek->jenis_proyek == null)
-                                    <option value="">-- Pilih Jenis Layanan --</option>
-                                @endif
-                                @foreach (config('custom.jenis_layanan') as $key => $value)
-                                    <option {{ $proyek->jenis_layanan == $key ? 'selected' : '' }} value="{{ $key }}">{{ $value }}</option>
-                                @endforeach
-                            </select> --}}
                             <select id="jl_web" name="jl_web" class="form-control select-search border-teal border-1" style="display:none">
                                 <option value="">-- Pilih Jenis Layanan --</option>
                                 <option {{ $proyek->jenis_layanan == 1 ? 'selected' : '' }} value="1">Nore</option>

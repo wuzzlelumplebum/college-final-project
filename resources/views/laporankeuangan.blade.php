@@ -205,12 +205,44 @@
 		</div>
 		<div class="card-body">
 			<ul class="nav nav-tabs nav-tabs-solid bg-indigo border-0 nav-tabs-component rounded">
+				<li class="nav-item"><a href="#neto" class="nav-link" data-toggle="tab"><i class="icon-cash3 mr-2"></i> Neto</a></li>
 				<li class="nav-item"><a href="#bruto" class="nav-link" data-toggle="tab"><i class="icon-cash4 mr-2"></i> Bruto</a></li>
 				<li class="nav-item"><a href="#pengeluaran" class="nav-link" data-toggle="tab"><i class="icon-drawer-out mr-2"></i> Pengeluaran</a></li>
-				<li class="nav-item"><a href="#neto" class="nav-link" data-toggle="tab"><i class="icon-cash3 mr-2"></i> Neto</a></li>
 			</ul>
 			<div class="tab-content">
-				<div class="tab-pane chart-container fade active show" id="bruto">
+				<div class="tab-pane chart-container fade active show" id="neto">
+					<div class="chart-container">
+						<table class="table datatable-basic table-hover">
+							<thead>
+								<tr style="background:#F0F8FF">
+									<th>No</th>
+									<th>Bulan</th>
+									<th class="text-warning">Pemasukan / Bruto</th>
+									<th class="text-danger">Pengeluaran</th>
+									<th class="text-success">Pemasukan / Neto</th>
+								</tr>
+							</thead>
+							<tbody>
+								@if(!empty($netotbl))
+								@php ($i = 1)
+								@foreach($netotbl as $key => $value)
+								<tr>
+									<td>{{$i}}</td>
+									<td><div class="datatable-column-width">{{config("custom.bulan.".$key)}} </div></td>
+									<td><div class="datatable-column-width">Rp @angka($brtbl[$key]) </div></td>
+									<td><div class="datatable-column-width">Rp {{ empty($pgtbl[$key]) ? '0' : number_format($pgtbl[$key],0,',','.') }} </div></td>
+									<td><div class="datatable-column-width">Rp @angka($value) </div></td>
+								</tr>
+								@php ($i++)
+								@endforeach
+								@else
+								<tr><td align="center" colspan="4">Data Kosong</td></tr>
+								@endif
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="tab-pane chart-container fade" id="bruto">
 					<div class="chart-container">
 						<table class="table datatable-basic table-hover">
 							<thead>
@@ -244,70 +276,38 @@
 				</div>
 				<div class="tab-pane chart-container fade" id="pengeluaran">
 					<div class="chart-container">
-				<table class="table datatable-basic table-hover">
-					<thead>
-						<tr style="background:#F0F8FF">
-							<th>No</th>
-							<th>Tanggal</th>
-							<th>Jenis Pengeluaran</th>
-							<th>Nominal</th>
-							<th>Keterangan</th>
-						</tr>
-					</thead>
-					<tbody>
-						@if(!$tblpengeluaran->isEmpty())
-						@php ($i = 1)
-						@foreach($tblpengeluaran as $pengeluaran)
-						<tr>
-							<td>{{$i}}</td>
-							<td><div class="datatable-column-width">{{$pengeluaran->tanggal}}
-							</div></td>
-							<td><div class="datatable-column-width">{{config('custom.pengeluaran.'.$pengeluaran->jenis_pengeluaran)}}</div></td>
-							<td><div class="datatable-column-width">Rp {{number_format($pengeluaran->nominal,0,',','.')}}
-							</div></td>
-							<td><div class="datatable-column-width">{{$pengeluaran->keterangan}}
-							</div></td>
-						</tr>
-						@php ($i++)
-						@endforeach
-						@else
-						<tr><td align="center" colspan="4">Data Kosong</td></tr>
-						@endif
-					</tbody>
-				</table>
-			</div>
-				</div>
-				<div class="tab-pane chart-container fade" id="neto">
-					<div class="chart-container">
-				<table class="table datatable-basic table-hover">
-					<thead>
-						<tr style="background:#F0F8FF">
-							<th>No</th>
-							<th>Bulan</th>
-							<th class="text-warning">Pemasukan / Bruto</th>
-							<th class="text-danger">Pengeluaran</th>
-							<th class="text-success">Pemasukan / Neto</th>
-						</tr>
-					</thead>
-					<tbody>
-						@if(!empty($netotbl))
-						@php ($i = 1)
-						@foreach($netotbl as $key => $value)
-						<tr>
-							<td>{{$i}}</td>
-							<td><div class="datatable-column-width">{{config("custom.bulan.".$key)}} </div></td>
-							<td><div class="datatable-column-width">Rp @angka($brtbl[$key]) </div></td>
-							<td><div class="datatable-column-width">Rp {{ empty($pgtbl[$key]) ? '0' : number_format($pgtbl[$key],0,',','.') }} </div></td>
-							<td><div class="datatable-column-width">Rp @angka($value) </div></td>
-						</tr>
-						@php ($i++)
-						@endforeach
-						@else
-						<tr><td align="center" colspan="4">Data Kosong</td></tr>
-						@endif
-					</tbody>
-				</table>
-			</div>
+						<table class="table datatable-basic table-hover">
+							<thead>
+								<tr style="background:#F0F8FF">
+									<th>No</th>
+									<th>Tanggal</th>
+									<th>Jenis Pengeluaran</th>
+									<th>Nominal</th>
+									<th>Keterangan</th>
+								</tr>
+							</thead>
+							<tbody>
+								@if(!$tblpengeluaran->isEmpty())
+								@php ($i = 1)
+								@foreach($tblpengeluaran as $pengeluaran)
+								<tr>
+									<td>{{$i}}</td>
+									<td><div class="datatable-column-width">{{$pengeluaran->tanggal}}
+									</div></td>
+									<td><div class="datatable-column-width">{{config('custom.pengeluaran.'.$pengeluaran->jenis_pengeluaran)}}</div></td>
+									<td><div class="datatable-column-width">Rp {{number_format($pengeluaran->nominal,0,',','.')}}
+									</div></td>
+									<td><div class="datatable-column-width">{!! $pengeluaran->keterangan !!}
+									</div></td>
+								</tr>
+								@php ($i++)
+								@endforeach
+								@else
+								<tr><td align="center" colspan="4">Data Kosong</td></tr>
+								@endif
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
 		</div>

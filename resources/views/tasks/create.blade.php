@@ -25,42 +25,44 @@
 					@csrf
 					<fieldset class="mb-3">
 						<legend class="text-uppercase font-size-sm font-weight-bold">Data Task</legend>
-						@if(\Auth::user()->role==1 || \Auth::user()->role==10 || \Auth::user()->role==20)
 						<div class="form-group row">
-							<label class="col-form-label col-lg-2">User</label>
+							<label class="col-form-label col-lg-2">Klien</label>
 							<div class="col-lg-10">
 								<select name="user_id" class="form-control select-search" data-fouc>
+									<option value="">-- Pilih Klien --</option>
 									@foreach($users as $user)
-										<option value="{{$user->id}}">{{$user->username}} </option>
+										<option data-name="{{ $user->nama }}" data-role="{{ $user->role }}" value="{{$user->id}}">{{$user->nama}} </option>
 				    				@endforeach
 								</select>
-								<span class="form-text text-danger">User tidak akan muncul jika jumlah pengoperasian 0.</span>
 							</div>
 						</div>
-						@else
 						<div class="form-group row">
-							<label class="col-form-label col-lg-2">User</label>
-							<div class="col-lg-10">
-								<label class="col-form-label col-lg-2">{{\Auth::user()->username}}</label>
-								<input style="border-radius: 10px" type="hidden" name="user_id" value="{{\Auth::user()->id}}">
-							</div>
-						</div>
-						@endif
+                            <label class="col-form-label col-lg-2">Proyek</label>
+                            <div class="col-lg-10">
+                                <select style="border-radius: 10px" name="id_proyek" class="form-control select-search" id="id_proyek" data-fuoc>
+                                    <option value="">-- Pilih Proyek --</option>
+                                </select>
+                            </div>
+                        </div>
 						<div class="form-group row">
-							<label class="col-form-label col-lg-2">Kebutuhan</label>
-							<div class="col-lg-10">
-								<textarea style="border-radius: 10px" name="kebutuhan" rows="4" cols="3" class="form-control" placeholder="Kebutuhan User" required></textarea>
-							</div>
-						</div>
-
+                            <label class="col-form-label col-lg-2">Tanggal Pembuatan</label>
+                            <div class="col-lg-10">
+                                <input style="border-radius: 10px" name="tanggal" type="text" class="form-control pickadate-accessibility" placeholder="Contoh: 2022-04-16" value="{{ date('Y-m-d') }}" required>
+                                <span class="form-text text-muted">Ubah tanggal jika pembuatan task tidak dilakukan HARI INI</span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-form-label col-lg-2">Tenggat Waktu</label>
+                            <div class="col-lg-10">
+                                <input style="border-radius: 10px" name="tenggat" type="text" class="form-control pickadate-accessibility" placeholder="Contoh: 2022-04-16" value="{{ date('Y-m-d') }}" required>
+                            </div>
+                        </div>
 						<div class="form-group row">
-							<label class="col-lg-2 col-form-label font-weight-semibold">Attachment:</label>
-							<div class="col-lg-10">
-								<input style="border-radius: 10px" type="file" name="file[]" class="file-input" multiple="multiple" data-fouc>
-								<span class="form-text text-muted">Jumlah max ukuran file : 32MB</span><hr>
-							</div>
-						</div>
-						@if(\Auth::user()->role==1 || \Auth::user()->role==10 || \Auth::user()->role==20)
+                            <label class="col-form-label col-lg-2">Kebutuhan</label>
+                            <div class="col-lg-10">
+                                <input class="form-control border-teal border-1" type="text" name="kebutuhan" id="" required>
+                            </div>
+                        </div>
 						<div class="form-group row">
 							<label class="col-form-label col-lg-2">Severity</label>
 							<div class="col-lg-10">
@@ -72,30 +74,9 @@
 								</select>
 							</div>
 						</div>
-						<div class="form-group row">
-							<label class="col-form-label col-lg-2">Assign</label>
-							<div class="col-lg-10">
-								<select name="handler" class="form-control select-search" data-fouc>
-                                    <option value="">-- Pilih User --</option>
-									@foreach($handlers as $handler)
-										<option value="{{$handler->id}}">{{$handler->username}}</option>
-				    				@endforeach
-								</select>
-							</div>
-						</div>
-						<!-- <div class="form-group row">
-							<label class="col-form-label col-lg-2">Status</label>
-							<div class="col-lg-10">
-								<select name="status" class="form-control">
-                                    <option value="1">Baru</option>
-                                    <option value="2">Sedang Dikerjakan</option>
-                                    <option value="3">Selesai</option>
-                                </select>
-							</div>
-						</div> -->
-						@endif
 					</fieldset>
 					<div class="text-right">
+						<a href="{{ url('/tasks') }}" class="btn bg-slate">Kembali <i class="icon-undo2 ml-2"></i></a>
 						<button type="submit" class="btn btn-primary" style="border-radius: 10px">Simpan <i class="icon-paperplane ml-2"></i></button>
 					</div>
 				</form>
@@ -125,6 +106,24 @@
 	<script src="{{asset('global_assets/js/demo_pages/form_inputs.js')}}"></script>
 	<script src="{{asset('global_assets/js/demo_pages/form_select2.js')}}"></script>
 	<script type="text/javascript">
+
+		$('#user_id').on('change', function(){
+			var nama = $('#user_id option:selected').data('name');
+			var user_id = $("#user_id option:selected").val();
+			if(user_id){
+				console.log('test');	
+			}
+			$.ajax({
+				type: 'GET',
+				data: {user_id:user_id},
+				url:  "{{ url('/getproyekuser') }}",
+				success: function (data) {
+					console.log(data)
+					$('#id_proyek').empty();
+					$('#id_proyek').html(data);
+				}
+			});
+		});
 				
 		var FormValidation = function() {
 

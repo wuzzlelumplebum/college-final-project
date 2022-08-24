@@ -21,7 +21,6 @@
 <!-- Content area -->
 <div class="content">
     <div class="card" style="border-radius: 10px;">
-        <div class="card-header header-elements-inline"></div>
         <div class="card-body">
             <table class="table datatable-basic table-hover">
                 <thead>
