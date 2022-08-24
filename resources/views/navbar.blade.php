@@ -30,27 +30,6 @@
 
 
 			<li class="nav-item dropdown">
-				<a href="#" class="navbar-nav-link dropdown-toggle caret-0" data-toggle="dropdown">
-					<i class="icon-bell3"></i>
-					<span class="d-md-none ml-2">Notification</span>
-					<div id="countNotif"></div>
-				</a>
-				
-				<div class="dropdown-menu dropdown-menu-right dropdown-content wmin-md-350">
-					<div class="dropdown-content-header">
-						<span class="font-weight-semibold">Notifikasi</span>
-						<a href="#" id="clearbutton" class="text-default" data-popup="tooltip" title="Tandai sudah dibaca semua"><i style="font-size: 20px;color: #26a69a;" class="far fa-calendar-check d-block top-0"></i></a>
-					</div>
-
-					<div class="dropdown-content-body dropdown-scrollable">
-						<ul class="media-list" id="bodyNotif">
-						</ul>
-					</div>
-
-					<div class="dropdown-content-footer justify-content-center p-0">
-						<a href="{{route('notifikasi')}}" class="bg-light text-grey w-100 py-2" data-popup="tooltip" title="Lihat Semua"><i class="icon-menu7 d-block top-0"></i></a>
-					</div>
-				</div>
 			</li>
 
 			<li class="nav-item dropdown dropdown-user">

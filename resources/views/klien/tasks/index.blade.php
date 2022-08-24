@@ -26,13 +26,13 @@
             <table class="table datatable-basic table-hover">
                 <thead>
                     <tr style="background:#F0FFF0">
-                        <th>No</th>
-                        <th>Tanggal</th>
-                        <th>Kebutuhan</th>
-                        <th>Severity</th>
-                        <th>Handler</th>
-                        <th>Status</th>
-                        <th class="text-center">Actions</th>
+                        <th style="width: 2%">No</th>
+                        <th style="width: 50px;">Tenggat</th>
+                        <th style="width: 250px;">Kebutuhan</th>
+                        <th style="width: 50px;">Severity</th>
+                        <th style="width: 100px;">Handler</th>
+                        <th style="width: 50px;">Status</th>
+                        <th style="width: 50px;" class="text-center">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -41,7 +41,7 @@
                     @foreach ($tasks as $task)
                         <tr>
                             <td>{{ $i }}</td>
-                            <td><div class="datatable-column-width">{{ date("Y-m-d", strtotime($task->created_at)) }}</div></td>
+                            <td><div class="datatable-column-width">{{ date("Y-m-d", strtotime($task->tenggat)) }}</div></td>
                             <td><div class="datatable-column-width">{!! $task->kebutuhan !!}</div></td>
                             <td><div class="datatable-column-width">{{ config('custom.severity.'.$task->severity) }}</div></td>
                             <td>

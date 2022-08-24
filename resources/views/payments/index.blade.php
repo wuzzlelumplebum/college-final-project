@@ -28,9 +28,9 @@
 	<div class="card" style="border-radius: 10px">
 		<div class="card-header header-elements-inline">
 			<a href="{{ route('payments.create')}}"><button type="button" class="btn btn-success rounded-round" style="background: #26a69a"><i class="fa fa-plus" style="font-size:12px"></i>&nbsp Tambah</button></a>
-			@if (Auth::user()->role==1)
-			<a href={{ url('export_excel')}} target="_blank"><button class="btn btn-success rounded-round" style="background: #26a69a"><i class="icon-file-excel mr-2"></i> Export Excel</button></a>
-			@endif
+			{{-- @if (Auth::user()->role==1) --}}
+			<a href="{{ url('export_excel')}}"><button type="button" class="btn btn-success rounded-round" style="background: #26a69a"><i class="icon-file-excel mr-2"></i> Export Excel</button></a>
+			{{-- @endif --}}
 
 		</div>
 

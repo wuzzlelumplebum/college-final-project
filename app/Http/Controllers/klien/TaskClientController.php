@@ -18,7 +18,7 @@ class TaskClientController extends Controller
      */
     public function index()
     {
-        $tasks = Task::where('user_id', \Auth::user()->id)->orderBy('created_at', 'desc')->get();
+        $tasks = Task::where('user_id', \Auth::user()->id)->where('status','<',2)->orderBy('tenggat', 'asc')->get();
         // dd($proyeks);
 
         return view('klien.tasks.index', compact('tasks'));

@@ -3,7 +3,7 @@
 @section('css')
 <style type="text/css">
 	.datatable-column-width{
-		overflow: hidden; text-overflow: ellipsis; max-width: 200px;
+		overflow: hidden; text-overflow: ellipsis;
 	}
 </style>
 @endsection
@@ -30,21 +30,26 @@
 			<table class="table datatable-basic table-hover">
 				<thead>
 					<tr style="background:#F0FFF0">
-						<th>Klien</th>
-						<th>Kebutuhan</th>
-						<th>Handler</th>
-						<th class="text-center">Status</th>
-						<th class="text-center">Actions</th>
+						<th style="width: 2%;">No</th>
+						<th style="width: 100px;">Klien</th>
+						<th style="width: 250px;">Kebutuhan</th>
+						<th style="width: 100px;">Handler</th>
+						<th style="width: 50px;">Status</th>
+						<th style="width: 50px;" class="text-center">Actions</th>
 					</tr>
 				</thead>
 				<tbody>
 				@if(!$tasks->isEmpty())
+					@php($i=1)
 					@foreach($tasks as $task)
 				    <tr>
+						<td><div class="datatable-column-width">{{ $i++ }}</div></td>
 				        <td><div class="datatable-column-width">{{@$task->user->nama}}</div></td>
 				        <td><div class="datatable-column-width">{{$task->kebutuhan}}</div></td>
 				        <td><div class="datatable-column-width">{{@$task->assign->nama}}</div></td>
-				        <td align="center">{{config('custom.status.'.$task->status)}}</td>
+				        <td>
+							<span style="font-size: 100%;" class="badge badge-pill badge-success">{{ config('custom.status.'.$task->status) }}</span>
+						</td>
 				        <td align="center">
 							<div class="list-icons">
 								<div class="dropdown">
@@ -129,8 +134,8 @@
 		            autoWidth: false,
 		            columnDefs: [{ 
 		                orderable: false,
-		                width: 100,
-		                targets: [ 4 ]
+		                // width: 100,
+		                targets: [ 2,4,5 ]
 		            }],
 		            dom: '<"datatable-header"fl><"datatable-scroll"t><"datatable-footer"ip>',
 		            language: {

@@ -20,7 +20,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks = Task::select()->where('status','<',3)->orderBy('status', 'desc')->orderBy('created_at', 'asc')->get();
+        $tasks = Task::select()->where('status','<',3)->orderBy('tenggat', 'asc')->get();
         
         return view('tasks.index', compact('tasks'));
     }
@@ -157,9 +157,14 @@ class TaskController extends Controller
     {
         $task = Task::find($request->id);
         $task->status = $request->status;
-        
+
         // print_r($task);
         $task->save();
+
+        $proyek = Proyek::find($task->id_proyek);
+        $proyek->task_done += 1;
+
+        $proyek->update();
     }
 
     public function changehandler(Request $request)

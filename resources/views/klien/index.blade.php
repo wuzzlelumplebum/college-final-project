@@ -154,16 +154,16 @@
                     </thead>
                     <tbody>
                         @php($i = 1)
-                        @foreach ($proyekclients as $proyek)
+                        @foreach ($progress as $prog)
                             <tr>
                                 <td>{{ $i++ }}</td>
-                                <td><div class="datatable-column-width">{{ $proyek->nama_proyek }}</div></td>
-                                <td><div class="datatable-column-width">{{ $proyek->task_count }}</div></td>
+                                <td><div class="datatable-column-width">{{ $prog->nama_proyek }}</div></td>
+                                <td><div class="datatable-column-width">{{ $prog->task_count }}</div></td>
                                 <td align="center">
                                     <div class="datatable-column-width">
                                         <div class="progress rounded-round">
-                                            <div class="progress-bar bg-warning" style="width: {{ $progress }}%;">
-                                                <span>{{ $progress }}% Complete</span>
+                                            <div class="progress-bar bg-warning" style="width: {{ ($prog->task_done)/($prog->task_count)*100 }}%;">
+                                                <span>{{ ($prog->task_done)/($prog->task_count)*100 }}% Complete</span>
                                             </div>
                                         </div>
                                     </div>

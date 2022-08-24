@@ -25,42 +25,30 @@
 				@csrf
 				<fieldset class="mb-3">
 					<legend class="text-uppercase font-size-sm font-weight-bold">Data Payment</legend>
-					@if(\Auth::user()->role==1 || \Auth::user()->role==10)
 
+					@if (in_array(\Auth::user()->role, [1,20]))
 					<div class="form-group row">
-						<label class="col-form-label col-lg-2">User</label>
+						<label class="col-form-label col-lg-2">Klien</label>
 						<div class="col-lg-10">
 							<select style="border-radius: 10px" id="user_id" name="user_id" class="form-control select-search" data-fouc {{-- onchange="changeDate(this)" --}} required>
 								<option value="">-- Pilih Pelanggan --</option>
 								@foreach($users as $user)
 								<option data-name="{{$user->nama}}" data-kadaluarsa="{{$user->kadaluarsa}}" data-role="{{$user->role}}" value="{{$user->id}}">{{$user->nama}}</option>
-								{{-- <option data-name="{{$user->nama}}" value="{{$user->id}}" data-kadaluarsa="{{$user->kadaluarsa}}" data-role="{{$user->role}}">{{$user->nama}}</option> --}}
 								@endforeach
 							</select>
 						</div>
 					</div>
 
-					{{-- <div class="form-group row">
-						<label class="col-form-label col-lg-2">Nama</label>
-						<div class="col-lg-10">
-							<input style="border-radius: 10px" id="nama" name="nama" type="text" class="form-control" placeholder="Nama User" required>
-						</div>
-					</div> --}}
 					@else
 					<div class="form-group row">
-						<label class="col-form-label col-lg-2">User</label>
+						<label class="col-form-label col-lg-2">Klien</label>
 						<div class="col-lg-10">
 							<label class="col-form-label col-lg-2">{{\Auth::user()->name}}</label>
 							<input type="hidden" name="user_id" value="{{\Auth::user()->id}}">
 						</div>
 					</div>
-					{{-- <div class="form-group row">
-						<label class="col-form-label col-lg-2">Nama</label>
-						<div class="col-lg-10">
-							<input style="border-radius: 10px" id="nama" name="nama" type="text" class="form-control" placeholder="Nama User" required value="{{\Auth::user()->nama}}">
-						</div>
-					</div> --}}
 					@endif
+
 					<div class="form-group row">
 						<label class="col-form-label col-lg-2">Jenis (Tagihan/Uang Muka)</label>
 						<div class="col-lg-10">
@@ -76,30 +64,14 @@
 							</div>
 						</div>
 					</div>
-					@if (\Auth::user()->role==1)
+
+					@if (in_array(\Auth::user()->role, [1,20]))
 					<div class="form-group row">
 						<label class="col-form-label col-lg-2">Tagihan</label>
 						<div class="col-lg-10">
 							<select style="border-radius: 10px" name="tagihan_id" id="tagihan_id" class="form-control select-search" data-fouc onchange="changeTagihan(this)" required>
 								<option value="">-- Pilih Tagihan --</option>
 							</select>
-						</div>
-					</div>
-					@else
-					<div class="form-group row">
-						<label class="col-form-label col-lg-2">Tagihan</label>
-						<div class="col-lg-10">
-							@if ($tagihanuser2 != null)
-							<label class="col-form-label">{{$tagihanuser2->invoice}} - Rp. {{number_format($tagihanuser2->total,0,',','.')}}</label>
-							<input class="form-control" type="hidden" name="tagihan_id" id="tagihan_id" value="{{$tagihanuser2->id}}">
-							@else
-							<select name="tagihan_id" id="tagihan_id" class="form-control select-search" data-fouc onchange="changeTagihan(this)" required>
-								<option value="">-- Pilih Tagihan --</option>
-								@foreach ($tagihanuser as $tagihan)
-								<option value="{{$tagihan->id}}" data-jmlbayar="{{ $tagihan->jml_terbayar }}" data-tagihan="{{$tagihan->total}}" >{{$tagihan->invoice}} {{number_format($tagihan->total,0,',','.')}}</option>'
-								@endforeach
-							</select>
-							@endif
 						</div>
 					</div>
 					@endif
@@ -134,7 +106,6 @@
 							<input type="hidden" id="nominal" name="nominal" class="form-control border-teal border-1">
 						</div>
 						<div class="col-lg-2">
-							{{-- <a href="" id="lunas" class="btn btn-success">Pelunasan<i class="icon-checkmark4 ml-2"></i></a> --}}
 							<div class="form-check">
 								<label class="form-check-label">
 									<input style="border-radius: 10px" type="checkbox" class="form-check-input-styled pelunasan" data-fouc>
@@ -150,61 +121,6 @@
 							<span class="form-text text-muted">Ubah tanggal jika pembayaran tidak dilakukan HARI INI</span>
 						</div>
 					</div>
-					{{-- @if(\Auth::user()->role==1 || \Auth::user()->role==10)
-						<div class="form-group row">
-							<label class="col-form-label col-lg-2">Masa Aktif</label>
-							<div class="col-lg-10">
-								<!-- <span class="input-group-prepend">
-									<span class="input-group-text"><i class="icon-calendar3"></i></span>
-								</span> -->
-								<input name="kadaluarsa" type="text" class="form-control pickadate-accessibility kadaluarsa" placeholder="Contoh: 2025-04-16">
-								<span class="form-text text-muted">Biarkan kosong jika tidak ada update masa aktif</span>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-form-label col-lg-2">Status</label>
-							<div class="col-lg-10">
-								<select name="status" class="form-control">
-									<option value="0">Belum Dikonfirmasi</option>
-									<option value="1">Sudah Dikonfirmasi</option>
-									<option value="2">Ditolak</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-form-label col-lg-2">Jumlah Update Task</label>
-							<div class="col-lg-10">
-								<input type="number" id="updtask" name="task_count" class="form-control border-teal border-1" placeholder="Contoh: 10">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-form-label col-lg-2">Penerima</label>
-							<div class="col-lg-10">
-								<input id="penerima" name="penerima" type="text" class="form-control" placeholder="Penerima" required value="{{$setting? $setting->penerima : ''}}">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-form-label col-lg-2">TTD Penerima</label>
-							<div class="col-lg-10">
-								<input id="ttd_penerima" name="ttd_penerima" type="text" class="form-control" placeholder="Ttd Penerima" required value="{{$setting? $setting->ttd_penerima : ''}}">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-form-label col-lg-2">Posisi TTD Penerima</label>
-							<div class="col-lg-10">
-								<input id="ttd_pospenerima" name="ttd_pospenerima" type="text" class="form-control" placeholder="Posisi TTd Penerima" required value="{{$setting? $setting->ttd_pospenerima : ''}}">
-							</div>
-						</div>
-					@elseif (\Auth::user()->role > 10)
-						<div class="form-group row">
-							<label class="col-form-label col-lg-2">Penerima</label>
-							<div class="col-lg-10">
-								<input id="penerima" name="penerima" type="text" class="form-control" placeholder="Penerima" required value="{{$setting? $setting->penerima : ''}}" readonly>
-								<input id="ttd_penerima" name="ttd_penerima" type="hidden" class="form-control" placeholder="Ttd Penerima" required value="{{$setting? $setting->ttd_penerima : ''}}" readonly>
-								<input id="ttd_pospenerima" name="ttd_pospenerima" type="hidden" class="form-control" placeholder="Posisi TTd Penerima" required value="{{$setting? $setting->ttd_pospenerima : ''}}" readonly>
-							</div>
-						</div>
-					@endif --}}
 					<div class="form-group row">
 						<label class="col-form-label col-lg-2">Keterangan</label>
 						<div class="col-lg-10">

@@ -101,7 +101,7 @@
                         <font color="#000000">Tagihan & DP Tagihan</font>
 						</span>
 					</a>
-                    <ul class="nav nav-group-sub" data-submenu-title="JSON forms" style="display: {{ (request()->is('tagihanuser*','dptagihanuser*')) ? 'block' : 'none' }};">
+                    <ul class="nav nav-group-sub" data-submenu-title="JSON forms" style="display: {{ (request()->is('dptagihanuser*','tagihanuser*')) ? 'block' : 'none' }};">
                         <li class="nav-item">
                             <a href="{{ url('/dptagihanuser') }}" class="nav-link {{ (request()->is('dptagihanuser*')) ? 'active' : '' }}">
                                 <i class="icon-clipboard" style="color: #000000"></i>
@@ -121,7 +121,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url('/paymentclients') }}" class="nav-link {{ (request()->is('paymentclients*')) ? 'active' : '' }}">
+                    <a href="{{ url('/paymentclients') }}" class="nav-link {{ (request()->is('paymentclients*','bayardpuser*')) ? 'active' : '' }}">
                         <i class="icon-cash" style="color: #000000"></i>
                         <span>
                         <font color="#000000">Pembayaran</font>

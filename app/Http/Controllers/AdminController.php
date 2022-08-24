@@ -12,6 +12,7 @@ use App\Model\Pengeluaran;
 use App\Model\RekapDptagihan;
 use App\Model\RekapTagihan;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
@@ -270,32 +271,9 @@ class AdminController extends Controller
         $customclient = Proyek::where('user_id', \Auth::user()->id)->where('jenis_proyek','=',5)->get()->count();
 
         // progress proyek
-        $taskclients = Task::where('user_id', \Auth::user()->id)->get();
-        $proyekclients = Proyek::where('user_id', \Auth::user()->id)->get();
-
-        $totaltask = $taskclients->count();
-        $donetask = $taskclients->where('status','=',3)->count();
-
-        // dd($donetask);
-
-        $taskclients = New Task();
-        $taskclients = Task::selectRaw('id_proyek, count(*) as total')
-        ->selectRaw("count(case when status = '3' then 1 end) as done")
-        ->groupBy('id_proyek')
-        ->get();
-
-        // dd($taskclients);
-
-        foreach($taskclients as $task){
-            $progress = 0;
-            $total = $task->total;
-            $done = $task->done;
-            $progress = ($done/$total) * 100;
-            $progress = number_format($progress,2);
-            dump($progress);
-        }
+        $progress = Proyek::where('user_id', '=', \Auth::user()->id)->get();
         
         return view("klien.index",compact('user','dptagihanclient','tagihanclient','websiteclient','adsclient',
-            'siclient','mobileclient','customclient','proyekclients','taskclients','progress'));
+            'siclient','mobileclient','customclient','progress'));
     }
 }

@@ -36,16 +36,11 @@
 					<tr style="background:#F0FFF0">
 						<th>No</th>
 						<th>Nama</th>
-						{{-- <th>Username</th> --}}
-						{{-- <th>Invoice</th> --}}
 						<th>Nama Proyek</th>
                         <th>Masa Berlaku</th>
 						<th>Uang Muka (Rp)</th>
 						<th>Tagihan (Rp)</th>
 						<th>Keterangan</th>
-						{{-- <th>Terbayar</th>
-						<th>Sisa Tagihan</th>
-						<th class="text-center">Status</th> --}}
 						<th class="text-center">Actions</th>
 					</tr>
 				</thead>
@@ -56,25 +51,10 @@
 				    <tr>
 				        <td>{{$i}}</td>
 				        <td><div class="datatable-column-width">{{$tagihan->nama}}</div></td>
-				        {{-- <td><div class="datatable-column-width">{{@$tagihan->user->username}}</div></td> --}}
-				        {{-- <td><div class="datatable-column-width">{{$tagihan->invoice}}</div></td> --}}
 				        <td><div class="datatable-column-width">{{$tagihan->nama_proyek}}</div></td>
                         <td><div class="datatable-column-width">{{$tagihan->masa_berlaku}}</div></td>
 						<td><div class="datatable-column-width">{{ number_format($tagihan->uang_muka, 0, ',', ',') }}</div></td>
 						<td><div class="datatable-column-width">{{ number_format($tagihan->jml_tagih, 0, ',', ',') }}</div></td>
-				        {{-- <td><div class="datatable-column-width">Rp @angka(($tagihan->langganan)+($tagihan->ads)+($tagihan->lainnya))</div></td> --}}
-						{{-- <td><div class="datatable-column-width">Rp @angka($tagihan->payment->sum('nominal'))</div></td>
-						<td><div class="datatable-column-width">Rp @angka($tagihan->jml_bayar)</div></td>
-						<td><div class="datatable-column-width">Rp @angka($tagihan->jml_tagih)</div></td>
-						<td align="center">
-							@if ($tagihan->status == 2)
-							<span style="font-size:100%;" class="badge badge-pill bg-success-400 ml-auto ml-md-0">{{config('custom.tagihan_status.'.$tagihan->status)}}</span>
-							@elseif ($tagihan->status == 1)
-							<span style="font-size:100%;" class="badge badge-pill bg-orange-400 ml-auto ml-md-0">{{config('custom.tagihan_status.'.$tagihan->status)}}</span>
-							@else
-							<span style="font-size:100%;" class="badge badge-pill bg-info-400 ml-auto ml-md-0">{{config('custom.tagihan_status.'.$tagihan->status)}}</span>
-							@endif
-						</td> --}}
 						<td><div class="datatable-column-width">{!! $tagihan->keterangan !!}</div></td>
 				        <td align="center">
 							<div class="list-icons">
@@ -85,9 +65,9 @@
 
 									<div class="dropdown-menu dropdown-menu-right">
 										<a href="{{ route('tagihans.edit',$tagihan->id)}}" class="dropdown-item"><i class="icon-pencil7"></i> Edit</a>
-										<a href="{{url('/tagihans/cetak/'.$tagihan->id)}}" class="dropdown-item" target="_blank"><i class="icon-printer2"></i> Print</a>
-										<a href="{{url('/tagihans/lampiran/'.$tagihan->id)}}" class="dropdown-item"><i class="icon-images3"></i> Lampiran</a>
+										@if(in_array(\Auth::user()->role, [1]))
 							            <a class="dropdown-item delbutton" data-toggle="modal" data-target="#modal_theme_danger" data-uri="{{ route('tagihans.destroy', $tagihan->id)}}"><i class="icon-x"></i> Delete</a>
+										@endif
 									</div>
 								</div>
 							</div>
