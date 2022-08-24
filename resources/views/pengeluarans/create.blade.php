@@ -17,7 +17,7 @@
 	<div class="content">
 
 		<!-- Hover rows -->
-		<div class="card">
+		<div class="card" style="border-radius: 10px">
 			<div class="card-header header-elements-inline">
 			</div>
 			<div class="card-body">
@@ -29,7 +29,7 @@
                         <div class="form-group row">
 							<label class="col-form-label col-lg-2">Tanggal</label>
 							<div class="col-lg-10">
-								<input name="tanggal" type="text" class="form-control pickadate-accessibility" placeholder="Tanggal Pengeluaran" value="{{  date('Y-m-d') }}" required>
+								<input style="border-radius: 10px" name="tanggal" type="text" class="form-control pickadate-accessibility" placeholder="Tanggal Pengeluaran" value="{{  date('Y-m-d') }}" required>
                                 <span class="form-text text-muted">Ubah tanggal jika pengeluaran tidak dilakukan HARI INI</span>
 							</div>
                         </div>
@@ -73,7 +73,7 @@
 						</div>
 
 						<div class="form-group row">
-							<label class="col-form-label col-lg-2">Nominal</label>
+							<label style="border-radius: 10px" class="col-form-label col-lg-2">Nominal</label>
 							<div class="col-lg-10">
 								<input id="tertulis" type="text" onkeyup="ribuan()" class="form-control" placeholder="Nominal" required>
 								<input id="nominal" type="hidden" name="nominal" value="{{old('nominal')}}">
@@ -89,8 +89,8 @@
 						</div>
 					</fieldset>
 					<div class="text-right">
-						<a href="{{ url('/pengeluarans') }}" class="btn bg-slate">Kembali <i class="icon-undo2 ml-2"></i></a>
-						<button type="submit" class="btn btn-primary">Simpan <i class="icon-paperplane ml-2"></i></button>
+						<a href="{{ url('/pengeluarans') }}" class="btn bg-slate" style="border-radius: 10px">Kembali <i class="icon-undo2 ml-2"></i></a>
+						<button type="submit" class="btn btn-primary" style="border-radius: 10px">Simpan <i class="icon-paperplane ml-2"></i></button>
 					</div>
 				</form>
 			</div>
