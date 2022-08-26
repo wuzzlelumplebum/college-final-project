@@ -96,29 +96,13 @@
 			</div>
 		</div>
 		<div class="col-xl-5">
-			<div class="card" style="border-radius: 10px; height: auto;">
+			<div class="card" style="border-radius: 10px; height: 97%;">
 				<div class="card-header header-elements-inline">
 					<h5 class="font-weight-semibold">Chart Proyek Klien</h5>
 				</div>
 				<div class="card-body">
 					<div class="chart-container">
 						<div class="chart has-fixed-height" id="pie_jproyek"></div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="col-xl-12">
-			<div class="card" style="border-radius: 10px">
-				<div class="card-header header-elements-inline">
-					<h5 class="font-weight-semibold">Chart Jenis Layanan Proyek Klien</h5>
-				</div>
-				<div class="card-body">
-					<div class="chart-container">
-						<div class="d-flex align-items-center mb-3 mb-sm-0">
-							<div class="chart has-fixed-height" id="pie_jlayananweb"></div>
-							<div class="chart has-fixed-height" id="pie_jlayanansi"></div>
-							<div class="chart has-fixed-height" id="pie_jlayananmobile"></div>
-						</div>
 					</div>
 				</div>
 			</div>

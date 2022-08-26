@@ -162,9 +162,15 @@
                                 <td align="center">
                                     <div class="datatable-column-width">
                                         <div class="progress rounded-round">
+                                            @if ($prog->task_done && $prog->task_count > 0)
                                             <div class="progress-bar bg-warning" style="width: {{ ($prog->task_done)/($prog->task_count)*100 }}%;">
                                                 <span>{{ ($prog->task_done)/($prog->task_count)*100 }}% Complete</span>
                                             </div>
+                                            @else
+                                            <div class="progress-bar bg-warning" style="width: 0%;">
+                                                <span>0% Complete</span>
+                                            </div>
+                                            @endif
                                         </div>
                                     </div>
                                 </td>

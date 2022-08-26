@@ -18,7 +18,7 @@ class TaskClientController extends Controller
      */
     public function index()
     {
-        $tasks = Task::where('user_id', \Auth::user()->id)->where('status','<',2)->orderBy('tenggat', 'asc')->get();
+        $tasks = Task::where('user_id', \Auth::user()->id)->where('status','<=',2)->orderBy('tenggat', 'asc')->get();
         // dd($proyeks);
 
         return view('klien.tasks.index', compact('tasks'));
@@ -133,7 +133,7 @@ class TaskClientController extends Controller
 
     public function history()
     {
-        $tasks = Task::where('status','=',3)->get();
+        $tasks = Task::where('user_id', \Auth::user()->id)->where('status','=',3)->get();
 
         // dd($tasks);
         return view('klien.tasks.history', compact('tasks'));

@@ -18,7 +18,7 @@
             <td> {{$tagihan->nama}} </td>
             <td> {{$tagihan->nama_proyek}} </td>
             <td> Rp @angka($tagihan->uang_muka) </td>
-            <td> Rp @angka($tagihan->tagihan) </td>
+            <td> Rp @angka($tagihan->nominal) </td>
             <td> {!! $tagihan->keterangan !!} </td>
         </tr>
         @php ($i++)
